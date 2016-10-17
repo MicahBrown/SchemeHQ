@@ -11,6 +11,9 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree ./all
- *= require foundation_and_overrides
  *= require_self
  */
+
+@import "foundation_and_overrides";
+@import "font-awesome-sprockets";
+@import "font-awesome";
