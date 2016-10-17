@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments, only: [:create]
   resources :discussions, only: [:new, :create, :show]
   devise_for :users
   root 'home#index'
