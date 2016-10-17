@@ -1,0 +1,14 @@
+<%= form_for [@discussion, Comment.new] do |f| %>
+  <div class="row">
+    <div class="columns">
+      <%= f.label :message, "Add New Comment" %>
+      <%= f.text_area :message %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns">
+      <%= f.submit class: "button" %>
+    </div>
+  </div>
+<% end %>
