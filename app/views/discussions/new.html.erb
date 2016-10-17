@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="columns">
+    <h1>New Discussion</h1>
+  </div>
+</div>
+
+<%= form_for @discussion do |f| %>
+  <div class="row">
+    <div class="columns">
+      <%= f.label :title %>
+      <%= f.text_field :title, placeholder: "Put topic name or descriptor here" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns">
+      <%= f.submit class: "button" %>
+    </div>
+  </div>
+<% end %>
