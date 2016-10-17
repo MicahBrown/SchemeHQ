@@ -14,6 +14,9 @@ class DiscussionsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
     def discussion_params
