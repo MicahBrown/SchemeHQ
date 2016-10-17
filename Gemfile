@@ -54,6 +54,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added after here
 gem 'foundation-rails'
+gem 'font-awesome-sass', '~> 4.6.2'
 gem 'cancancan', '~> 1.10'
 gem 'devise'
 
