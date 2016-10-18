@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20161018025659) do
     t.boolean  "private",    default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["token"], name: "index_discussions_on_token", unique: true, using: :btree
     t.index ["user_id"], name: "index_discussions_on_user_id", using: :btree
   end
 

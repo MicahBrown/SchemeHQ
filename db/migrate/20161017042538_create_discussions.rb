@@ -7,5 +7,7 @@ class CreateDiscussions < ActiveRecord::Migration[5.0]
       t.boolean :private, null: false, default: false
       t.timestamps        null: false
     end
+
+    add_index :discussions, :token, unique: true
   end
 end
