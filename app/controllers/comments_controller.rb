@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to @comment.discussion, notice: "Successfully saved comment!" }
       else
-        format.html { redirect_to @commetn.discussion, alert: "Unable to save comment." }
+        format.html { redirect_to @comment.discussion, alert: "Unable to save comment." }
       end
     end
   end
