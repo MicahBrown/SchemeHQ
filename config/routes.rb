@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :discussions, only: [:new, :create, :show] do
+    resources :polls, only: [:create]
     resources :comments, only: [:create]
   end
   devise_for :users
