@@ -1,3 +1,6 @@
 <div class="row">
-  <div class="columns"><%= simple_format comment.message %></div>
+  <div class="columns">
+    <div><small><b><%= comment.user.display_name %></b></small></div>
+    <%= simple_format comment.message %>
+  </div>
 </div>
