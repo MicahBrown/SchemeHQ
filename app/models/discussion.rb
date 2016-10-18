@@ -5,4 +5,14 @@ class Discussion < ApplicationRecord
 
   validates :user, presence: true
   validates :title, presence: true
+
+  before_create :generate_token
+
+  def generate_token
+    self[:token] = loop do
+      token = SecureRandom.urlsafe_base64(8)
+
+      break token unless self.class.exists?(token: token)
+    end
+  end
 end
