@@ -1,5 +1,5 @@
 class DiscussionsController < ApplicationController
-  load_and_authorize_resource param_method: :discussion_params
+  load_and_authorize_resource param_method: :discussion_params, find_by: :token
 
   def new
   end
