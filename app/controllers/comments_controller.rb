@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource :discussion
+  load_and_authorize_resource :discussion, find_by: :token
   load_and_authorize_resource through: :discussion, param_method: :comment_params
 
   def create
