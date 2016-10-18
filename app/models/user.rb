@@ -7,4 +7,5 @@ class User < ApplicationRecord
 
   has_many :discussions
   has_many :comments
+  has_many :polls
 end
