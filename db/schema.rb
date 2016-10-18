@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20161018025659) do
   create_table "discussions", force: :cascade do |t|
     t.integer  "user_id",                    null: false
     t.string   "title",                      null: false
+    t.string   "token",                      null: false
     t.boolean  "private",    default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
