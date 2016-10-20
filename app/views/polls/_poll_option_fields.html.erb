@@ -2,7 +2,7 @@
   deletable ||= false
   index       = fields_for.options[:child_index]
 %>
-<li>
+<li class="poll-option-fields">
   <%= fields_for.label :value, "Poll Option ##{index.is_a?(String) ? "0" : index + 1}" %>
   <%= wrap_content_tag_if deletable, :div, class: "input-group" do  %>
     <%= fields_for.text_field :value,

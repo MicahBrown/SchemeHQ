@@ -1,11 +1,27 @@
 class Discussion
   pollForm: ->
+    # initialize variables
     $reveal = $("#poll_reveal")
+
+    # assign functions
+    renumberOptions = ->
+      $list = $reveal.find("#poll_poll_options")
+                     .find("li.poll-option-fields:visible")
+      count = $list.length
+
+      $list.each (idx) ->
+        $(this).find 'label'
+               .text (i, txt) ->
+                txt.replace(/\d+/, idx + 1)
+
+    # register events
     $reveal.on "click", ".remove-poll-option", (e) ->
       e.preventDefault()
 
-      $(this).closest('li').hide().find(':input').attr 'disabled', 'disabled'
+      $(this).closest('li.poll-option-fields').hide().find(':input').attr 'disabled', 'disabled'
              # .remove() # inadvertantly closes reveal modal
+
+      renumberOptions()
       true
 
     $reveal.on "click", ".add-poll-option", (e) ->
@@ -18,6 +34,7 @@ class Discussion
       regexp       = new RegExp "new_" + fieldHash.association, "g"
 
       $pollOptions.append fieldHash.content.replace(regexp, newId)
+      renumberOptions()
       true
 
     $reveal
