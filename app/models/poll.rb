@@ -7,5 +7,4 @@ class Poll < ApplicationRecord
   validates :title, presence: true
   validates :user, presence: true
   validates :discussion, presence: true
-  validates :poll_options, presence: true
 end
