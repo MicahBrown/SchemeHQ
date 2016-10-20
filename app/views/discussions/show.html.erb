@@ -4,4 +4,8 @@
   </div>
 </div>
 
+<%= link_to "Add Poll", "javascript:void(0);", data: { open: 'poll_reveal' } %>
+<%= reveal 'poll_reveal' do %>
+  <%= render 'polls/form' %>
+<% end %>
 <%= render 'comments/comments' %>
