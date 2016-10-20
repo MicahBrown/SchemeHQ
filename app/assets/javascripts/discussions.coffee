@@ -10,9 +10,13 @@ class Discussion
       count = $list.length
 
       $list.each (idx) ->
+        $(this).find 'input[type="hidden"][name$="[position]"]'
+               .val  idx
+
         $(this).find 'label'
                .text (i, txt) ->
                 txt.replace(/\d+/, idx + 1)
+
 
     # register events
     $reveal.on "click", ".remove-poll-option", (e) ->

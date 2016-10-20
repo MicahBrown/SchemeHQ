@@ -9,6 +9,7 @@
       placeholder: "Enter a response to the poll",
       class:       deletable ? 'input-group-field' : nil
     %>
+    <%= fields_for.hidden_field :position, value: index.is_a?(String) ? 0 : index %>
     <% if deletable %>
       <div class="input-group-button"><%= link_to_remove_poll_option %></div>
     <% end %>
