@@ -4,7 +4,7 @@
 %>
 <li class="poll-option-fields">
   <%= fields_for.label :value, "Poll Option ##{index.is_a?(String) ? "0" : index + 1}" %>
-  <%= wrap_content_tag_if deletable, :div, class: "input-group" do  %>
+  <%= wrap_content_tag_if deletable, class: "input-group" do  %>
     <%= fields_for.text_field :value,
       placeholder: "Enter a response to the poll",
       class:       deletable ? 'input-group-field' : nil
