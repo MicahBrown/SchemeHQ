@@ -9,12 +9,7 @@ class Discussion
                      .find("li.poll-option-fields:visible")
       count = $list.length
 
-      if count < 8
-        $reveal.find        '.add-poll-option'
-               .removeClass 'disabled'
-      else
-        $reveal.find     '.add-poll-option'
-               .addClass 'disabled'
+      $reveal.find('.add-poll-option').toggle count < 8
 
       $list.each (idx) ->
         $(this).find 'input[type="hidden"][name$="[position]"]'
@@ -43,10 +38,6 @@ class Discussion
       fieldHash    = $link.data 'field-hash'
       newId        = new Date().getTime()
       regexp       = new RegExp "new_" + fieldHash.association, "g"
-
-      if $link.hasClass 'disabled'
-        alert "8 options is the max."
-        return false
 
       $pollOptions.append fieldHash.content.replace(regexp, newId)
       renumberOptions()
