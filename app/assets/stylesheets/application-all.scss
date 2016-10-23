@@ -17,3 +17,16 @@
 @import "foundation_and_overrides";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+
+.flash {
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
+  color: #fff;
+  background: $secondary-color;
+  &.alert { background: $alert-color; }
+  &.notice { background: $success-color; }
+  .message { margin-bottom: 0; padding-right: 2rem; }
+  .column, .columns { position: relative; }
+  .close-button { top: -0.5rem; }
+}
