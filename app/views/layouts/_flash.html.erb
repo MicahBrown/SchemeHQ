@@ -2,7 +2,7 @@
   <div class="flash <%= f.first %>" data-closable>
     <div class="row">
       <div class="columns">
-        <%= button_tag '&times;'.html_safe, class: 'close-button', data: { close: '' } %>
+        <%= close_button %>
         <p class="message"><%= f.last %></p>
       </div>
     </div>
