@@ -1,2 +1,0 @@
-class DisucssionEntry < ApplicationRecord
-end

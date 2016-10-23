@@ -1,0 +1,2 @@
+class DiscussionEntry < ApplicationRecord
+end
