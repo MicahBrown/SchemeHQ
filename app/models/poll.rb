@@ -1,7 +1,8 @@
 class Poll < ApplicationRecord
+  include Discussable
+
   belongs_to :user
   belongs_to :discussion
-  has_many :discussion_entries, as: :discussable
   has_many :poll_options
     accepts_nested_attributes_for :poll_options
 
