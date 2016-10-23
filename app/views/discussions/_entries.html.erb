@@ -1,0 +1,2 @@
+<%= render 'comments/form' %>
+<%= render @discussion.discussion_entries.includes(:discussable).map(&:discussable) %>
