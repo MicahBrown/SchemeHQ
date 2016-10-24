@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="columns">
+    <div><small><b><%= poll.user.display_name %></b></small></div>
+    <div>
+      <%= poll.title %>
+      <ol>
+        <% poll.poll_options.each do |po| %>
+          <li><%= po.value %></li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</div>

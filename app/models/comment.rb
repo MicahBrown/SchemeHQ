@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  include Discussable
+
   belongs_to :user
   belongs_to :discussion
 
