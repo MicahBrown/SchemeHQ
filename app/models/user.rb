@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :discussions
   has_many :comments
   has_many :polls
+  has_many :poll_responses
 
   before_validation :set_display_name
 
