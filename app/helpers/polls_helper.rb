@@ -19,4 +19,18 @@ module PollsHelper
         }.to_json
       }
   end
+
+  def can_vote? poll, user
+    return false unless user.is_a?(User)
+
+    poll.poll_responses.pluck(:user_id).exclude?(user.id)
+  end
+
+  def vote_display poll_option, vote
+    value = poll_option.value
+    return value if vote.nil?
+
+    value = icon("check", value) if vote.poll_option_id == poll_option.id
+    value
+  end
 end

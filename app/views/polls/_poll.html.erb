@@ -3,11 +3,16 @@
     <div><small><b><%= poll.user.display_name %></b></small></div>
     <div>
       <%= poll.title %>
-      <ol>
-        <% poll.poll_options.each do |po| %>
-          <li><%= po.value %></li>
-        <% end %>
-      </ol>
+      <% if can_vote?(poll, current_user) %>
+        <%= render 'polls/poll_response_form', poll: poll %>
+      <% else %>
+        <ol>
+          <% vote = current_user ? current_user.poll_responses.where(poll: poll).first : nil %>
+          <% poll.poll_options.each do |po| %>
+            <li><%= vote_display po, vote %></li>
+          <% end %>
+        </ol>
+      <% end %>
     </div>
   </div>
 </div>
