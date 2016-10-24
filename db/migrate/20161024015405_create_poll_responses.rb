@@ -6,5 +6,7 @@ class CreatePollResponses < ActiveRecord::Migration[5.0]
       t.belongs_to :poll_option, null: false
       t.timestamps               null: false
     end
+
+    add_index :poll_responses, [:user_id, :poll_id], unique: true
   end
 end

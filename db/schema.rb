@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20161024015405) do
     t.datetime "updated_at",     null: false
     t.index ["poll_id"], name: "index_poll_responses_on_poll_id", using: :btree
     t.index ["poll_option_id"], name: "index_poll_responses_on_poll_option_id", using: :btree
+    t.index ["user_id", "poll_id"], name: "index_poll_responses_on_user_id_and_poll_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_poll_responses_on_user_id", using: :btree
   end
 
