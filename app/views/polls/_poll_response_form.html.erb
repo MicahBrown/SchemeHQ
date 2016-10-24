@@ -1,0 +1,12 @@
+<%= form_for PollResponse.new, url: discussion_poll_vote_path(poll.discussion, poll) do |f| %>
+  <%= f.label :poll_option_id, "Select an option:" %>
+  <ol>
+    <% poll.poll_options.each do |po| %>
+      <li>
+        <%= f.radio_button :poll_option_id, po.id %>
+        <%= f.label :poll_option_id, po.value, value: po.id %>
+      </li>
+    <% end %>
+  </ol>
+  <%= f.submit "Submit", class: "button" %>
+<% end %>
