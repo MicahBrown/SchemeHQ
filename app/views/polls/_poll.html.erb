@@ -1,18 +1,13 @@
-<div class="row">
-  <div class="columns">
-    <div><small><b><%= poll.user.display_name %></b></small></div>
-    <div>
-      <%= poll.title %>
-      <% if can_vote?(poll, current_user) %>
-        <%= render 'polls/poll_response_form', poll: poll %>
-      <% else %>
-        <ul class="fa-ul">
-          <% vote = current_user ? current_user.poll_responses.where(poll: poll).first : nil %>
-          <% poll.poll_options.each do |po| %>
-            <li><%= vote_display po, vote %></li>
-          <% end %>
-        </ul>
+<div>
+  <%= poll.title %>
+  <% if can_vote?(poll, current_user) %>
+    <%= render 'polls/poll_response_form', poll: poll %>
+  <% else %>
+    <ul class="fa-ul">
+      <% vote = current_user ? current_user.poll_responses.where(poll: poll).first : nil %>
+      <% poll.poll_options.each do |po| %>
+        <li><%= vote_display po, vote %></li>
       <% end %>
-    </div>
-  </div>
+    </ul>
+  <% end %>
 </div>
