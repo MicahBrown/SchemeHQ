@@ -30,7 +30,6 @@ module PollsHelper
     value = poll_option.value
     return value if vote.nil?
 
-    value = icon("check", value) if vote.poll_option_id == poll_option.id
-    value
+    icon vote.poll_option_id == poll_option.id ? "check" : "", value, class: "fa-li"
   end
 end
