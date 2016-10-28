@@ -1,3 +1,15 @@
-// Place all the styles related to the discussions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.entries {
+  margin: 0 0 1rem;
+  list-style-type: none;
+  .entry-li {
+    .entry {
+      padding: 0.75rem 1rem;
+      border: 1px solid #eee;
+      border-bottom-color: transparent;
+      .details { }
+      .content { *:last-child { margin-bottom: 0; } }
+      .actions { }
+    }
+    &:last-child  .entry { border-bottom-color: #eee; }
+  }
+}

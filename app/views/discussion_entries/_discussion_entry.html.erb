@@ -1,10 +1,8 @@
 <% discussable = discussion_entry.discussable %>
 
-<div class="entry">
-  <div class="row">
-    <div class="columns">
-      <div><small><b><%= discussable.user.display_name %></b></small></div>
-      <%= render discussable %>
-    </div>
+<li class="entry-li">
+  <div class="entry">
+    <div class="details"><small><b><%= discussable.user.display_name %></b></small></div>
+    <%= render discussable %>
   </div>
-</div>
+</li>

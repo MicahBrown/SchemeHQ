@@ -1,4 +1,4 @@
-<div>
+<div class="content">
   <%= poll.title %>
   <% if can_vote?(poll, current_user) %>
     <%= render 'polls/poll_response_form', poll: poll %>

@@ -9,4 +9,9 @@
   <%= render 'polls/form' %>
 <% end %>
 <%= render 'comments/form' %>
-<%= render discussion_entries(@discussion) %>
+
+<div class="row">
+  <div class="columns">
+    <ul class="entries"><%= render discussion_entries(@discussion) %></ul>
+  </div>
+</div>
