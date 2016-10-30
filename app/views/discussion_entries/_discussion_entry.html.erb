@@ -2,7 +2,12 @@
 
 <li class="entry-li">
   <div class="entry">
-    <div class="details"><small><b><%= discussable.user.display_name %></b></small></div>
+    <div class="details">
+      <small>
+        <b><%= discussable.user.display_name %></b>
+        <%= discussion_entry_timestamp discussable %>
+      </small>
+    </div>
     <%= render discussable %>
   </div>
 </li>
