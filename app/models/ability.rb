@@ -36,6 +36,7 @@ class Ability
       can :manage, Comment, user_id: user.id
       can :create, Discussion
       can :manage, Discussion, user_id: user.id
+      can :read,   Discussion, private: false
     end
   end
 end
