@@ -16,6 +16,8 @@
 //= require turbolinks
 //= require_tree .
 
+var spinner = "<div class='spinner'>Loading...</div>";
+
 var load_javascript = function(controller, action){
   $.event.trigger( controller + ".load");
   $.event.trigger( controller + "_" + action + ".load" );
