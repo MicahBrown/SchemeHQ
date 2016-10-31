@@ -38,7 +38,9 @@ module PollsHelper
     links = []
 
     if current_user == poll.user
-      links.push link_to("Delete", discussion_poll_path(poll.discussion, poll), method: :delete, data: { confirm: "Are you sure?" })
+      links.push link_to(icon("remove", "Delete"), discussion_poll_path(poll.discussion, poll),
+                    method: :delete,
+                    data:   { confirm: "Are you sure?" })
     end
 
     action_links links
