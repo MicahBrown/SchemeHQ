@@ -4,7 +4,7 @@ module Discussable
   extend ActiveSupport::Concern
 
   included do
-    has_one :discussion_entry, as: :discussable
+    has_one :discussion_entry, as: :discussable, dependent: :destroy
 
     before_create :link_to_discussion
   end
