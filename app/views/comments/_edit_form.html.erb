@@ -1,10 +1,10 @@
 <%= form_for [@discussion, @comment] do |f| %>
   <div>
-    <%= f.label :message, "Add New Comment" %>
+    <%#= f.label :message, "Add New Comment" %>
     <%= f.text_area :message %>
   </div>
 
   <div>
-    <%= f.submit "Post Comment", class: "button" %>
+    <%= f.submit "Post Comment", class: "button no-margin" %>
   </div>
 <% end %>
