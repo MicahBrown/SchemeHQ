@@ -45,7 +45,27 @@ class Discussion
 
     $reveal
 
+  commentEditForm: ->
+    $(".entries").on "click", ".edit", (e) ->
+      e.preventDefault()
+
+      $link  = $(this)
+      $entry = $link.closest ".entry"
+      $form  = $entry.siblings ".form"
+
+      $entry.hide()
+
+      if $form.length > 0
+        $form.show()
+      else
+        $entry.after "<div class='form'>" + spinner + "</div>"
+
+        path = $link.attr "href"
+
+        $.get path, undefined, undefined,  "script"
+
 
 $(document).on 'discussions_show.load', (e, obj) =>
   discussion = new Discussion
   discussion.pollForm()
+  discussion.commentEditForm()
