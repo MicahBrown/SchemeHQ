@@ -2,10 +2,10 @@
   margin: 0 0 1rem;
   list-style-type: none;
   .entry-li {
+    padding: 0.75rem 1rem;
+    border: 1px solid #eee;
+    border-bottom-color: transparent;
     .entry {
-      padding: 0.75rem 1rem;
-      border: 1px solid #eee;
-      border-bottom-color: transparent;
       .details, .actions { font-size: 0.8rem; }
       .details {
         time { float: right; color: #999; }
@@ -13,6 +13,6 @@
       .content { *:last-child { margin-bottom: 0; } }
       .actions { }
     }
-    &:last-child  .entry { border-bottom-color: #eee; }
+    &:last-child { border-bottom-color: #eee; }
   }
 }
