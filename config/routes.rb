@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :discussions, only: [:new, :create, :show] do
-    resources :polls, only: [:create] do
+    resources :polls, only: [:create, :destroy] do
       post 'vote' => 'poll_responses#create'
     end
     resources :comments, only: [:create, :edit, :update, :destroy]

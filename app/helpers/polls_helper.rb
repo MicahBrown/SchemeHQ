@@ -32,4 +32,15 @@ module PollsHelper
 
     icon vote.poll_option_id == poll_option.id ? "check" : "", value, class: "fa-li"
   end
+
+  def poll_actions poll
+    return nil unless current_user
+    links = []
+
+    if current_user == poll.user
+      links.push link_to("Delete", discussion_poll_path(poll.discussion, poll), method: :delete, data: { confirm: "Are you sure?" })
+    end
+
+    action_links links
+  end
 end
