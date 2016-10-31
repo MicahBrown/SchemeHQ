@@ -12,6 +12,16 @@ class PollsController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if @poll.destroy
+        format.html { redirect_to @poll.discussion, notice: "Successfully deleted poll!" }
+      else
+        format.html { redirect_to @poll.discussion, alert: "Unable to delete poll." }
+      end
+    end
+  end
+
   private
 
     def poll_params
