@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :polls, only: [:create] do
       post 'vote' => 'poll_responses#create'
     end
-    resources :comments, only: [:create, :update, :destroy]
+    resources :comments, only: [:create, :edit, :update, :destroy]
   end
   devise_for :users
   root 'home#index'
