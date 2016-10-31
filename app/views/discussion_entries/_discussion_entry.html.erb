@@ -1,6 +1,8 @@
 <% discussable = discussion_entry.discussable %>
 
-<li class="entry-li">
+<li class="entry-li"
+    data-entry-id="<%= discussion_entry.discussable_id %>"
+    data-entry-type="<%= discussion_entry.discussable_type %>">
   <div class="entry">
     <div class="details">
       <b><%= discussable.user.display_name %></b>
