@@ -12,6 +12,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if @comment.destroy
+        format.html { redirect_to @comment.discussion, notice: "Successfully deleted comment!" }
+      else
+        format.html { redirect_to @comment.discussion, alert: "Unable to delete comment." }
+      end
+    end
+  end
+
   private
 
     def comment_params
