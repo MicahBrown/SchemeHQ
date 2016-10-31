@@ -3,8 +3,8 @@ class Poll < ApplicationRecord
 
   belongs_to :user
   belongs_to :discussion
-  has_many :poll_responses
-  has_many :poll_options
+  has_many :poll_responses, dependent: :destroy
+  has_many :poll_options, dependent: :destroy
     accepts_nested_attributes_for :poll_options
 
   validates :title, presence: true
