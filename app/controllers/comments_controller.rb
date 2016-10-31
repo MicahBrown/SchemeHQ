@@ -12,6 +12,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def destroy
     respond_to do |format|
       if @comment.destroy
