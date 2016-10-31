@@ -21,4 +21,10 @@ module ApplicationHelper
       capture(&block)
     end
   end
+
+  def action_links links, simple=true
+    return nil if links.blank?
+    links = links.map{|link| content_tag :li, link }.join.html_safe
+    content_tag :ul, links, class: "menu#{' simple' if simple}"
+  end
 end
