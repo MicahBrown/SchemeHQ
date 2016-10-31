@@ -1,9 +1,11 @@
 class PollResponsesController < ApplicationController
-  load_and_authorize_resource :discussion, find_by: :token
-  load_and_authorize_resource :poll, through: :discussion
+  load_resource :discussion, find_by: :token
+  load_resource :poll, through: :discussion
   load_resource through: :poll, param_method: :poll_response_params
 
   def create
+    authorize! :respond, @discussion
+
     @poll_response.user = current_user
 
     respond_to do |format|
