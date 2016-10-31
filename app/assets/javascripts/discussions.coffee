@@ -46,7 +46,7 @@ class Discussion
     $reveal
 
   commentEditForm: ->
-    $(".entries").on "click", ".edit", (e) ->
+    $(".entries").on "click", ".entry .edit", (e) ->
       e.preventDefault()
 
       $link  = $(this)
@@ -63,6 +63,13 @@ class Discussion
         path = $link.attr "href"
 
         $.get path, undefined, undefined,  "script"
+
+    $(".entries").on "click", ".form .cancel", (e) ->
+      $form = $(this).closest ".form"
+      $entry = $form.siblings ".entry"
+
+      $form.hide()
+      $entry.show()
 
 
 $(document).on 'discussions_show.load', (e, obj) =>
