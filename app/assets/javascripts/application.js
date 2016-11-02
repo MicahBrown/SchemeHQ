@@ -33,11 +33,10 @@ var initializePage = function(){
     return false;
 
   $(document).foundation();
+  initializeValidator();
   loadJavascript(controller, action);
 
   $('body').addClass('js-initialized');
-
-  initializeValidator();
 
   return true;
 }
