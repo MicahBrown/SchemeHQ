@@ -3,15 +3,19 @@
   index       = fields_for.options[:child_index]
 %>
 <li class="poll-option-fields">
-  <%= fields_for.label :value, "Poll Option ##{index.is_a?(String) ? "0" : index + 1}" %>
-  <%= wrap_content_tag_if deletable, class: "input-group" do  %>
+  <div class="input-group">
+    <%= fields_for.label :value, "Poll Option ##{index.is_a?(String) ? "0" : index + 1}", class: 'input-group-label' %>
     <%= fields_for.text_field :value,
       placeholder: "Enter a response to the poll",
-      class:       deletable ? 'input-group-field' : nil
+      class:       "input-group-field",
+      data:        deletable ? nil : { guard_required: true, guard_errors_container: "#poll_option_#{index}_errors" }
     %>
     <%= fields_for.hidden_field :position, value: index.is_a?(String) ? 0 : index %>
     <% if deletable %>
       <div class="input-group-button"><%= link_to_remove_poll_option %></div>
     <% end %>
+  </div>
+  <% unless deletable %>
+    <div id="poll_option_<%= index %>_errors"></div>
   <% end %>
 </li>
