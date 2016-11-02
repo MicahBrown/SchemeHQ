@@ -1,8 +1,8 @@
-<%= form_for [@discussion, Comment.new] do |f| %>
+<%= form_for [@discussion, Comment.new], html: { data: { guard_validate: '' } } do |f| %>
   <div class="row">
     <div class="columns">
       <%= f.label :message, "Add New Comment" %>
-      <%= f.text_area :message %>
+      <%= f.text_area :message, data: { guard_required: '' } %>
     </div>
   </div>
 
