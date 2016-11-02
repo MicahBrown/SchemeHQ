@@ -19,12 +19,12 @@
 
 var spinner = "<div class='spinner'>Loading...</div>";
 
-var load_javascript = function(controller, action){
+var loadJavascript = function(controller, action){
   $.event.trigger( controller + ".load");
   $.event.trigger( controller + "_" + action + ".load" );
 }
 
-var initialize_page = function(){
+var initializePage = function(){
   var controller  = $('body').data('controller'),
       action      = $('body').data('action'),
       initialized = $('body').hasClass('js-initialized');
@@ -33,7 +33,7 @@ var initialize_page = function(){
     return false;
 
   $(document).foundation();
-  load_javascript(controller, action);
+  loadJavascript(controller, action);
 
   $('body').addClass('js-initialized');
 
@@ -43,9 +43,9 @@ var initialize_page = function(){
 }
 
 $(document).bind('turbolinks:load', function(){
-  initialize_page();
+  initializePage();
 });
 
 $(document).ready(function(){
-  initialize_page();
+  initializePage();
 });
