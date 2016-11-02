@@ -30,3 +30,14 @@
   .column, .columns { position: relative; }
   .close-button { top: -0.5rem; }
 }
+
+.parsley-errors-list { display: none; }
+.parsley-errors-list.filled {
+  display: block;
+  margin: -0.75rem 0 1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: $alert-color;
+  list-style: none;
+}
+.no-margin.is-invalid-input + .parsley-errors-list.filled { margin-top: 0; margin-bottom: 0; }
