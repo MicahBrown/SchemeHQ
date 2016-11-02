@@ -7,5 +7,9 @@ var initializeValidator = function(){
   Parsley.options.successClass = 'is-valid-input'
 
   if ( $('[data-guard-validate]')[0] )
-    $('[data-guard-validate]').parsley();
+    setValidator($('[data-guard-validate]'));
+}
+
+var setValidator = function(element){
+  return $(element).parsley();
 }

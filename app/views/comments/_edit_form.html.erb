@@ -1,7 +1,7 @@
-<%= form_for [@discussion, @comment], remote: true do |f| %>
+<%= form_for [@discussion, @comment], remote: true, html: { data: { guard_validate: '' } } do |f| %>
   <div>
     <%#= f.label :message, "Add New Comment" %>
-    <%= f.text_area :message %>
+    <%= f.text_area :message, data: { guard_required: true } %>
   </div>
 
   <div>
