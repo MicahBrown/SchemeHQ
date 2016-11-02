@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require validator/parsley
 //= require_tree .
 
 var spinner = "<div class='spinner'>Loading...</div>";
@@ -35,6 +36,8 @@ var initialize_page = function(){
   load_javascript(controller, action);
 
   $('body').addClass('js-initialized');
+
+  initializeValidator();
 
   return true;
 }
