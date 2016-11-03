@@ -55,6 +55,7 @@
 
 .tabs.active-tabs {
   border-bottom: 0;
+  background: #f7f7f7;
   .tabs-title > a:focus, .tabs-title > a[aria-selected="true"] {
     background: $primary-color;
     outline: 1px $primary-color solid;
