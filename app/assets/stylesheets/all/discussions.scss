@@ -2,7 +2,7 @@
   margin: 0 0 1rem;
   list-style-type: none;
   .entry-li {
-    border: 1px solid #eee;
+    border: 1px solid #e6e6e6;
     border-bottom-color: transparent;
     .form { padding: 1rem; }
     .entry {
@@ -14,6 +14,6 @@
       .content { *:last-child { margin-bottom: 0; } }
       .actions { }
     }
-    &:last-child { border-bottom-color: #eee; }
+    &:last-child { border-bottom-color: #e6e6e6; }
   }
 }

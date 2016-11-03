@@ -52,3 +52,25 @@
 // @include motion-ui-animations;
 
 .row { max-width: 60rem; }
+
+.tabs.active-tabs {
+  border-bottom: 0;
+  .tabs-title > a:focus, .tabs-title > a[aria-selected="true"] {
+    background: $primary-color;
+    outline: 1px $primary-color solid;
+    color: $white;
+    &.secondary {
+      background: $warning-color;
+      outline: 1px $warning-color solid;
+    }
+  }
+}
+.tabs-content.active-tabs {
+  border: 0;
+  .tabs-panel.is-active {
+    border: 1px $primary-color solid;
+    &.secondary {
+      border-color: $warning-color;
+    }
+  }
+}
