@@ -5,7 +5,7 @@
 </div>
 
 <% poll = Poll.new; 2.times {|x| poll.poll_options.build } %>
-<%= form_for [@discussion, poll], html: { data: { guard_validate: '' } } do |f| %>
+<%= form_for [@discussion, poll], remote: true, html: { data: { guard_validate: '' } } do |f| %>
   <div class="row">
     <div class="columns">
       <%= f.label :title, content_tag(:strong, "Enter Poll Question or Title") %>

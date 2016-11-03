@@ -4,11 +4,23 @@
   </div>
 </div>
 
-<%= link_to "Add Poll", "javascript:void(0);", data: { open: 'poll_reveal' } %>
-<%= reveal 'poll_reveal' do %>
-  <%= render 'polls/form' %>
-<% end %>
-<%= render 'comments/create_form' %>
+<div class="row">
+  <div class="columns">
+    <ul class="tabs" data-tabs id="action_tabs">
+      <li class="tabs-title"><%= link_to icon("comment", "Add Comment"), "#panel1" %></li>
+      <li class="tabs-title"><%= link_to icon("bar-chart", "Add Poll"), "#panel2" %></li>
+    </ul>
+
+    <div class="tabs-content" data-tabs-content="action_tabs">
+      <div class="tabs-panel" id="panel1">
+        <%= render 'comments/create_form' %>
+      </div>
+      <div class="tabs-panel" id="panel2">
+        <%= render 'polls/form' %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="row">
   <div class="columns">

@@ -1,15 +1,16 @@
 class Discussion
   pollForm: ->
     # initialize variables
-    $reveal = $("#poll_reveal")
+    $tabs = $("[data-tabs-content='action_tabs']")
+    $tab  = $tabs.find "#panel2"
 
     # assign functions
     renumberOptions = ->
-      $list = $reveal.find("#poll_poll_options")
-                     .find("li.poll-option-fields:visible")
+      $list = $tab.find("#poll_poll_options")
+                  .find("li.poll-option-fields:visible")
       count = $list.length
 
-      $reveal.find('.add-poll-option').toggle count < 8
+      $tab.find('.add-poll-option').toggle count < 8
 
       $list.each (idx) ->
         $(this).find 'input[type="hidden"][name$="[position]"]'
@@ -21,16 +22,15 @@ class Discussion
 
 
     # register events
-    $reveal.on "click", ".remove-poll-option", (e) ->
+    $tab.on "click", ".remove-poll-option", (e) ->
       e.preventDefault()
 
-      $(this).closest('li.poll-option-fields').hide().find(':input').attr 'disabled', 'disabled'
-             # .remove() # inadvertantly closes reveal modal
+      $(this).closest('li.poll-option-fields').remove()
 
       renumberOptions()
       true
 
-    $reveal.on "click", ".add-poll-option", (e) ->
+    $tab.on "click", ".add-poll-option", (e) ->
       e.preventDefault()
 
       $link        = $(this)
@@ -43,7 +43,7 @@ class Discussion
       renumberOptions()
       true
 
-    $reveal
+    $tab
 
   commentEditForm: ->
     $(".entries").on "click", ".entry .edit", (e) ->
