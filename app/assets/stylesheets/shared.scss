@@ -2,6 +2,7 @@ a.disabled { opacity: 0.5; }
 
 .no-margin { margin: 0 !important; }
 .no-padding { padding: 0 !important; }
+.no-radius { border-radius: 0 !important; }
 
 .alert-text { color: $alert-color !important; }
 .success-text { color: $success-color !important; }
