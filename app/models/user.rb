@@ -18,6 +18,14 @@ class User < ApplicationRecord
     self.display_name = self.email
   end
 
+  def add_omniauth(auth, force=false)
+    return if provider.present? && uid.present? && !force
+
+    self.uid      = auth.uid
+    self.provider = auth.provider
+    self.email  ||= auth.info.email
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.email = auth.info.email
