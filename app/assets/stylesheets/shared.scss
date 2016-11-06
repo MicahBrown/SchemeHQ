@@ -12,3 +12,34 @@ a.disabled { opacity: 0.5; }
 .va-middle { vertical-align: middle !important; }
 .va-bottom { vertical-align: bottom !important; }
 .va-top    { vertical-align: top !important; }
+
+.flash {
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
+  color: #fff;
+  background: $secondary-color;
+  &.alert { background: $alert-color; }
+  &.notice { background: $success-color; }
+  .message { margin-bottom: 0; padding-right: 2rem; }
+  .column, .columns { position: relative; }
+  .close-button { top: -0.5rem; }
+}
+
+.errors {
+  background: $alert-color;
+  color: #fff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  ul { margin-bottom: 0; }
+}
+
+.parsley-errors-list { display: none; }
+.parsley-errors-list.filled {
+  display: block;
+  margin: -0.75rem 0 1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: $alert-color;
+  list-style: none;
+}
+.no-margin.is-invalid-input + .parsley-errors-list.filled { margin-top: 0; margin-bottom: 0; }
