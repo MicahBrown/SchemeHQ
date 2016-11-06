@@ -6,6 +6,12 @@
 
 <div class="row">
   <div class="columns">
+    Participants: <%= @discussion.participants.map(&:display_name).to_sentence %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="columns">
     <ul class="tabs active-tabs" data-tabs id="action_tabs">
       <li class="tabs-title"><%= link_to icon("comment", "Add Comment"), "#panel1" %></li>
       <li class="tabs-title"><%= link_to icon("bar-chart", "Add Poll"), "#panel2", class: "secondary" %></li>
