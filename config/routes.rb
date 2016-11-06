@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :discussions, only: [:new, :create, :show] do
+    resources :invitations, controller: :discussion_invitations, only: :create
     resources :polls, only: [:create, :destroy] do
       post 'vote' => 'poll_responses#create'
     end

@@ -1,0 +1,2 @@
+class DiscussionInvitationsController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class DiscussionInvitation < ApplicationRecord
+end
