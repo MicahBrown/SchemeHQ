@@ -22,8 +22,12 @@
 
   <div class="row">
     <div class="columns">
-      <ul class="no-bullet">
-        <li class="empty">No invitations have been added.</li>
+      <ul class="no-bullet invitations-list">
+        <% if @discussion.discussion_invitations.blank? %>
+          <li class="empty">No invitations have been added.</li>
+        <% else %>
+          <%= render @discussion.discussion_invitations %>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -34,3 +38,7 @@
     </div>
   </div>
 <% end %>
+
+<ul class="toolbox">
+  <%= render clonable_discussion_invitation %>
+</ul>

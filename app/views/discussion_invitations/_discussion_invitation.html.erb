@@ -1,0 +1,7 @@
+<li>
+  <%= discussion_invitation.email %>
+  <%= hidden_field_tag "discussions[invitees][]", discussion_invitation.email, disabled: discussion_invitation.persisted? %>
+  <% unless discussion_invitation.persisted? %>
+    <%= content_tag :a, icon('trash'), class: 'float-right', title: "Remove Invitation" %>
+  <% end %>
+</li>

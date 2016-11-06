@@ -75,21 +75,20 @@ class Discussion
     $dialog    = $("#invitation_dialog")
     $submit    = $dialog.find 'button.button'
     $textField = $dialog.find '#new_invitee'
-    $list      = $dialog.find 'ul'
+    $list      = $dialog.find 'ul.invitations-list'
+    validator  = $textField.parsley()
 
     # Adding an invitation
     $submit.on 'click', (e) ->
       e.preventDefault()
+      validator.validate()
       value = $textField.val()
 
-      if value == ""
-        alert "Please enter a value first"
-      else
-        deleteLink = "<a class='float-right'><i class='fa fa-trash'></i></a>"
-        input = "<input type='hidden' value='" + value + "' name='discussions[invitees][]' />"
-        $newRow = $("<li>" + value + deleteLink + input + "</li>")
+      if validator.isValid()
+        $toolbox = $dialog.find '.toolbox'
+        $newRow  = $toolbox.html().split("{ email }").join value
 
-        $list.append($newRow).find('.empty').hide()
+        $list.prepend($newRow).find('.empty').hide()
         $textField.focus().val ''
 
     # Deleting an invitation
