@@ -27,4 +27,22 @@ module ApplicationHelper
     links = links.map{|link| content_tag :li, link }.join.html_safe
     content_tag :ul, links, class: "menu#{' simple' if simple}"
   end
+
+  def form_errors object, options={}
+    return unless object.present?
+    errors = case object
+             when ActiveRecord::Base then object.errors.full_messages
+             when String             then Array(object)
+             when Array              then object
+             else
+               return
+             end
+    return unless errors.present?
+
+    message   = options[:message]
+    message ||= I18n.t("errors.messages.not_saved", count: errors.size, resource: object.class.model_name.human.downcase) if object.is_a?(ActiveRecord::Base)
+    message ||= "Please fix the following and try again:"
+
+    render 'shared/form_errors', errors: errors, message: message
+  end
 end

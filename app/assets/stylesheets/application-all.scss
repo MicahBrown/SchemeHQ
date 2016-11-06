@@ -31,6 +31,14 @@
   .close-button { top: -0.5rem; }
 }
 
+.errors {
+  background: $alert-color;
+  color: #fff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  ul { margin-bottom: 0; }
+}
+
 .parsley-errors-list { display: none; }
 .parsley-errors-list.filled {
   display: block;
