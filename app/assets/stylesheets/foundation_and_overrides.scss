@@ -75,3 +75,17 @@
     }
   }
 }
+
+
+table.simple {
+  width: auto;
+  border-color: transparent;
+  thead, tbody, tfoot { border: 0; }
+  tbody tr:nth-child(2n) { background: none; }
+  thead, tfoot { background: none; }
+
+  tr {
+    td, th { padding: 0.15rem 1rem 0.15rem 0; }
+    :last-child { padding-right: 0; }
+  }
+}

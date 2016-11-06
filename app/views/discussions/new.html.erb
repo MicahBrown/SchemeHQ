@@ -14,6 +14,30 @@
 
   <div class="row">
     <div class="columns">
+      <table class="simple">
+        <thead>
+          <tr>
+            <th colspan="3"><%= f.label :private, "Access Type" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= f.radio_button :private, false, class: 'no-margin va-middle' %></td>
+            <td><%= f.label :private, icon("users", "Public", class: "fa-fw"), value: false %></td>
+            <td><%= f.label :private, "Anyone with the link can participate.", value: false, class: "secondary-text"  %></td>
+          </tr>
+          <tr>
+            <td><%= f.radio_button :private, true, class: 'no-margin va-middle' %></td>
+            <td><%= f.label :private, icon("lock", "Private", class: "fa-fw"), value: true%></td>
+            <td><%= f.label :private, "Only those you invite will be able to participate.", value: true, class: "secondary-text"  %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns">
       <%= f.submit class: "button" %>
     </div>
   </div>
