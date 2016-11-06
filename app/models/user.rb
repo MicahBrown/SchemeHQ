@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
   has_many :discussions
+  has_many :discussion_participants
   has_many :comments
   has_many :polls
   has_many :poll_responses

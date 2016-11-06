@@ -2,6 +2,7 @@ class Discussion < ApplicationRecord
   belongs_to :user
   has_many :comments
   has_many :polls
+  has_many :discussion_participants
   has_many :discussion_entries
 
   validates :user, presence: true
