@@ -34,4 +34,17 @@ class Discussion < ApplicationRecord
   end
 
   def to_param; token; end
+
+  def invite emails
+    emails = emails.select(&:present?)
+
+    return false if emails.blank?
+
+    emails.all? do |email|
+      email = email.downcase
+      user  = User.where('LOWER(email) = ?', email).first
+
+      discussion_invitations.create(email: email, user_id: user.try(:id) || 0)
+    end
+  end
 end
