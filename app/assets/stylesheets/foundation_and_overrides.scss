@@ -69,7 +69,7 @@
 .tabs-content.active-tabs {
   border: 0;
   .tabs-panel.is-active {
-    border: 1px $primary-color solid;
+    border: 2px $primary-color solid;
     &.secondary {
       border-color: $warning-color;
     }
