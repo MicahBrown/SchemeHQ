@@ -3,6 +3,7 @@ class Discussion < ApplicationRecord
   has_many :comments
   has_many :polls
   has_many :discussion_participants
+  has_many :participants, through: :discussion_participants, source: :user
   has_many :discussion_entries
   has_one  :facilitator, -> { facilitator }, class_name: "DiscussionParticipant" # condition uses the enum scope
 
