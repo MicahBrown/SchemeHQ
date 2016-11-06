@@ -5,12 +5,13 @@
 <li class="poll-option-fields">
   <div class="input-group">
     <%= fields_for.label :value, "Poll Option ##{index.is_a?(String) ? "0" : index + 1}", class: 'input-group-label' %>
+    <!-- :position field must be between input-group label and field for border radius to work as expected -->
+    <%= fields_for.hidden_field :position, value: index.is_a?(String) ? 0 : index %>
     <%= fields_for.text_field :value,
       placeholder: "Enter a response to the poll",
       class:       "input-group-field",
       data:        deletable ? nil : { guard_required: true, guard_errors_container: "#poll_option_#{index}_errors" }
     %>
-    <%= fields_for.hidden_field :position, value: index.is_a?(String) ? 0 : index %>
     <% if deletable %>
       <div class="input-group-button"><%= link_to_remove_poll_option %></div>
     <% end %>

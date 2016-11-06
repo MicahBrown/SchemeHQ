@@ -53,6 +53,9 @@
 
 .row { max-width: 60rem; }
 
+.input-group > *:last-child > *,
+.input-group > .input-group-field:last-child { border-radius: 0 $global-radius $global-radius 0; }
+
 .tabs.active-tabs {
   border-bottom: 0;
   background: #f7f7f7;
@@ -75,7 +78,6 @@
     }
   }
 }
-
 
 table.simple {
   width: auto;
