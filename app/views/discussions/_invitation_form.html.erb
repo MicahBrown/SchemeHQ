@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="columns">
+    <h1>Invite Participants</h1>
+  </div>
+</div>
+
+<%= form_for @discussion, url: discussion_invitations_path(@discussion), remote: true, html: { method: :post } do |f| %>
+
+  <div class="row">
+    <div class="columns">
+      <%= label_tag :new_invitee, "Enter participant's email address" %>
+    </div>
+
+    <div class="columns small-9">
+      <%= text_field_tag :new_invitee, nil, data: { guard_required: true } %>
+    </div>
+
+    <div class="columns small-3">
+      <%= button_tag "Add", class: 'button expanded secondary' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns">
+      <ul class="no-bullet">
+        <li class="empty">No invitations have been added.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="columns">
+      <%= f.submit class: 'button' %>
+    </div>
+  </div>
+<% end %>

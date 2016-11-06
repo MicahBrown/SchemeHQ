@@ -6,7 +6,10 @@
 
 <div class="row">
   <div class="columns">
-    Participants: <%= @discussion.participants.map(&:display_name).to_sentence %>
+    <div class="participants-list">
+      Participants: <%= @discussion.participants.map(&:display_name).to_sentence %>
+      <%= link_to "Invite Participants", 'javascript:void(0);', data: { open: "invitation_dialog" } %>
+    </div>
   </div>
 </div>
 
@@ -35,3 +38,8 @@
     </ul>
   </div>
 </div>
+
+
+<%= reveal 'invitation_dialog' do %>
+  <%= render 'invitation_form' %>
+<% end %>

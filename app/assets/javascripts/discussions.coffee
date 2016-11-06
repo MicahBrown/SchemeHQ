@@ -71,8 +71,36 @@ class Discussion
       $form.hide()
       $entry.show()
 
+  invitationForm: ->
+    $dialog    = $("#invitation_dialog")
+    $submit    = $dialog.find 'button.button'
+    $textField = $dialog.find '#new_invitee'
+    $list      = $dialog.find 'ul'
+
+    # Adding an invitation
+    $submit.on 'click', (e) ->
+      e.preventDefault()
+      value = $textField.val()
+
+      if value == ""
+        alert "Please enter a value first"
+      else
+        deleteLink = "<a class='float-right'><i class='fa fa-trash'></i></a>"
+        input = "<input type='hidden' value='" + value + "' name='discussions[invitees][]' />"
+        $newRow = $("<li>" + value + deleteLink + input + "</li>")
+
+        $list.append($newRow).find('.empty').hide()
+        $textField.focus().val ''
+
+    # Deleting an invitation
+    $list.on 'click', 'a', (e) ->
+      e.preventDefault()
+
+      $(this).closest('li')[0].remove()
+      $list.find('.empty').show() if $list.children().length < 2
 
 $(document).on 'discussions_show.load', (e, obj) =>
   discussion = new Discussion
   discussion.pollForm()
   discussion.commentEditForm()
+  discussion.invitationForm()
