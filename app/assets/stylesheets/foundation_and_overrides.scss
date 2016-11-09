@@ -89,7 +89,7 @@
 table.simple {
   width: auto;
   border-color: transparent;
-  thead, tbody, tfoot { border: 0; }
+  thead, tbody, tfoot { background: transparent; border: 0; }
   tbody tr:nth-child(2n) { background: none; }
   thead, tfoot { background: none; }
 
@@ -108,4 +108,13 @@ table.simple {
   &.warning { background: none; border: 1px solid; color: $warning-color; }
   &.alert { background: none; border: 1px solid; color: $alert-color; }
   &.success { background: none; border: 1px solid; color: $success-color; }
+}
+
+.top-bar-title {
+  > a {
+    display: block;
+    background: #fff;
+    border-radius: 0 0 40px 4px;
+    padding: 0.5rem 2.5rem 0.5rem 2rem;
+  }
 }

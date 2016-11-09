@@ -1,17 +1,12 @@
 <div class="row">
   <div class="columns">
     <h1><%= @discussion.title %></h1>
-  </div>
-</div>
-
-<div class="row">
-  <div class="columns">
-    <div class="participants-list">
-      Participants: <%= @discussion.participants.map(&:display_name).to_sentence %>
-      <%= link_to "Invite Participants", 'javascript:void(0);', data: { open: "invitation_dialog" } %>
+    <div class="discussion-subheader">
+      <%= link_to icon("user", pluralize(@discussion.participants.count, "Participant") + " - Invite More!"), 'javascript:void(0);', data: { open: "invitation_dialog" } %>
     </div>
   </div>
 </div>
+
 
 <div class="row">
   <div class="columns">
