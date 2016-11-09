@@ -51,4 +51,5 @@ a.disabled { opacity: 0.5; }
   color: $alert-color;
   list-style: none;
 }
-.no-margin.is-invalid-input + .parsley-errors-list.filled { margin-top: 0; margin-bottom: 0; }
+.no-margin.is-invalid-input + .parsley-errors-list.filled,
+.no-margin-errors-container .parsley-errors-list.filled { margin-top: 0; margin-bottom: 0; }

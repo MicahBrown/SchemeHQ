@@ -73,13 +73,14 @@ class Discussion
 
   invitationForm: ->
     $dialog    = $("#invitation_dialog")
-    $submit    = $dialog.find 'button.button'
+    $addBtn    = $dialog.find 'button#invitation_add'
+    $submitBtn = $dialog.find 'input#invitation_submit'
     $textField = $dialog.find '#new_invitee'
     $list      = $dialog.find 'ul.invitations-list'
     validator  = $textField.parsley()
 
     # Adding an invitation
-    $submit.on 'click', (e) ->
+    $addBtn.on 'click', (e) ->
       e.preventDefault()
       validator.validate()
       value = $.trim $textField.val()
@@ -88,15 +89,18 @@ class Discussion
         $toolbox = $dialog.find '.toolbox'
         $newRow  = $toolbox.html().split("{ email }").join value
 
-        $list.prepend($newRow).find('.empty').hide()
+        $list.find('.empty').hide().after($newRow)
+        $submitBtn.fadeIn()
         $textField.focus().val ''
 
     # Deleting an invitation
     $list.on 'click', 'a', (e) ->
       e.preventDefault()
-
       $(this).closest('li')[0].remove()
-      $list.find('.empty').show() if $list.children().length < 2
+
+      if $list.find('.invitation').length == 0
+        $submitBtn.hide()
+        $list.find('.empty').show()
 
 $(document).on 'discussions_show.load', (e, obj) =>
   discussion = new Discussion

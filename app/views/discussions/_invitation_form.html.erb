@@ -5,36 +5,29 @@
 </div>
 
 <%= form_for @discussion, url: discussion_invitations_path(@discussion), remote: true, html: { method: :post } do |f| %>
-
-  <div class="row">
-    <div class="columns">
-      <%= label_tag :new_invitee, "Enter participant's email address" %>
-    </div>
-
-    <div class="columns small-9">
-      <%= text_field_tag :new_invitee, nil, data: { guard_required: true } %>
-    </div>
-
-    <div class="columns small-3">
-      <%= button_tag "Add", class: 'button expanded secondary' %>
-    </div>
-  </div>
-
   <div class="row">
     <div class="columns">
       <ul class="no-bullet invitations-list">
-        <% if @discussion.discussion_invitations.blank? %>
-          <li class="empty">No invitations have been added.</li>
-        <% else %>
-          <%= render @discussion.discussion_invitations %>
-        <% end %>
+        <li class="header">
+          <div class="input-group no-margin">
+            <%= text_field_tag :new_invitee, nil, data: { guard_required: true, guard_errors_container: "#new_invitee_errors" }, class: 'input-group-field', placeholder: "Enter an email address" %>
+            <div class="input-group-button">
+              <%= button_tag class: 'button expanded secondary', id: "invitation_add" do %>
+                <%= icon("plus-circle", "Add") %>
+              <% end %>
+            </div>
+          </div>
+          <div id="new_invitee_errors" class="no-margin-errors-container"></div>
+        </li>
+        <li class="empty" style="<%= 'display: none;' if @discussion.discussion_invitations.present? %>">No invitations have been added.</li>
+        <%= render @discussion.discussion_invitations %>
       </ul>
     </div>
   </div>
 
   <div class="row">
     <div class="columns">
-      <%= f.submit class: 'button' %>
+      <%= f.submit "Send Invitations", class: 'button', style: 'display: none;', id: "invitation_submit" %>
     </div>
   </div>
 <% end %>

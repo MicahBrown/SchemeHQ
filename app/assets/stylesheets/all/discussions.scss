@@ -18,3 +18,15 @@
     &:last-child { border-bottom-color: #eee; }
   }
 }
+
+.invitations-list {
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  > li { border-bottom: 1px solid #ccc; background: #fff }
+  .empty { text-align: center; padding: 2rem 1rem; }
+  .header { background: #eee; padding: 1rem; }
+  .invitation {
+    padding: 0.5rem 1rem;
+    label { display: inline-block; }
+  }
+}
