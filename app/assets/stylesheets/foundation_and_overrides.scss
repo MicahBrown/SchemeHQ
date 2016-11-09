@@ -91,3 +91,14 @@ table.simple {
     :last-child { padding-right: 0; }
   }
 }
+
+
+.label.hollow {
+  background: none;
+  border: 1px solid;
+  color: $primary-color;
+  &.secondary { background: none; border: 1px solid; color: $secondary-color; }
+  &.warning { background: none; border: 1px solid; color: $warning-color; }
+  &.alert { background: none; border: 1px solid; color: $alert-color; }
+  &.success { background: none; border: 1px solid; color: $success-color; }
+}
