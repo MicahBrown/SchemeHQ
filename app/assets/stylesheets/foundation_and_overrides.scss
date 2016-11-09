@@ -73,8 +73,10 @@
   border: 0;
   .tabs-panel.is-active {
     border: 2px $primary-color solid;
+    background: scale-color($primary-color, $lightness: $callout-background-fade);
     &.secondary {
       border-color: $warning-color;
+      background: scale-color($warning-color, $lightness: $callout-background-fade);
     }
   }
 }
