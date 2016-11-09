@@ -2,7 +2,7 @@
   margin: 0 0 1rem;
   list-style-type: none;
   .entry-li {
-    border: 1px solid #eee;
+    border: 1px solid #ccc;
     border-bottom-color: transparent;
     background: #fff;
     .form { padding: 1rem; }
@@ -16,7 +16,7 @@
       .actions { }
     }
     &.empty { padding: 4rem 1rem; color: #999; text-align: center; }
-    &:last-child { border-bottom-color: #eee; }
+    &:last-child { border-bottom-color: #ccc; }
   }
 }
 
