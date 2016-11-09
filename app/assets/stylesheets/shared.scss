@@ -35,6 +35,13 @@ a.disabled { opacity: 0.5; }
   ul { margin-bottom: 0; }
 }
 
+
+.errors-ul {
+  color: $alert-color;
+  margin-bottom: 0.5rem;
+  font-size: $small-font-size;
+}
+
 .parsley-errors-list { display: none; }
 .parsley-errors-list.filled {
   display: block;
