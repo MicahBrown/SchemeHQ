@@ -1,8 +1,11 @@
+require 'invitation_processor'
+
 class DiscussionInvitationsController < ApplicationController
   load_and_authorize_resource :discussion, find_by: :token
 
   def create
-    @discussion.invite(discussion_invitation_params[:invitees])
+    @processor = InvitationProcessor.new @discussion, discussion_invitation_params[:invitees]
+    @processor.process
 
     respond_to do |format|
       format.js
