@@ -82,7 +82,7 @@ class Discussion
     $submit.on 'click', (e) ->
       e.preventDefault()
       validator.validate()
-      value = $textField.val()
+      value = $.trim $textField.val()
 
       if validator.isValid()
         $toolbox = $dialog.find '.toolbox'
@@ -103,3 +103,20 @@ $(document).on 'discussions_show.load', (e, obj) =>
   discussion.pollForm()
   discussion.commentEditForm()
   discussion.invitationForm()
+
+
+window.postInvitationErrors = (jsonString) ->
+  errors    = JSON.parse(jsonString)
+  $list     = $(".invitations-list")
+  $newItems = $list.children(".invitation").filter ".new"
+
+  $.each errors, (invEmail, invErrors) ->
+    $item   = $newItems.find("input[value='" + invEmail + "']").closest "li"
+    $errors = $("<ul class='errors-ul'></ul>")
+
+    $.each invErrors, (index, error) ->
+      $errors.append "<li>" + error + "</li>"
+
+    $item.find ".errors-ul"
+         .remove()
+    $item.append $errors

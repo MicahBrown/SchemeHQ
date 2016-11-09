@@ -1,0 +1,5 @@
+if (parseInt("<%= @processor.errors.size %>") > 0) {
+  postInvitationErrors("<%=j @processor.errors.to_json.html_safe %>")
+} else {
+  $(".invitations-list").html("<%=j render @discussion.discussion_invitations %>")
+}
