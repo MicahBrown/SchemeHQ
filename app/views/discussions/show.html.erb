@@ -1,6 +1,6 @@
 <div class="row">
   <div class="columns">
-    <h1><%= @discussion.title %></h1>
+    <h1 class="discussion-title"><%= @discussion.title %></h1>
     <div class="discussion-subheader">
       <%= link_to icon("user", pluralize(@discussion.participants.count, "Participant") + " - Invite More!"), 'javascript:void(0);', data: { open: "invitation_dialog" } %>
     </div>
@@ -11,7 +11,7 @@
 <div class="row">
   <div class="columns">
     <div class="discussion-tree">
-      <ul class="tabs active-tabs" data-tabs id="action_tabs">
+      <ul class="tabs active-tabs" id="action_tabs">
         <li class="tabs-title"><%= link_to icon("comment", "Add Comment"), "#panel1" %></li>
         <li class="tabs-title"><%= link_to icon("bar-chart", "Add Poll"), "#panel2", class: "secondary" %></li>
       </ul>

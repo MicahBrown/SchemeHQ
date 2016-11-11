@@ -64,7 +64,8 @@
   color: $white;
   .tabs-title > a { color: $white; }
   .tabs-title > a:hover { background: rgba(255,255,255,0.15); }
-  .tabs-title > a:focus, .tabs-title > a[aria-selected="true"] {
+  .tabs-title > a:focus { background: $secondary-color; }
+  .tabs-title > a[aria-selected="true"] {
     background: $primary-color;
     outline: 1px $primary-color solid;
     color: $white;

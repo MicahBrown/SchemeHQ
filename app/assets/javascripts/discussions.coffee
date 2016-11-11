@@ -108,6 +108,8 @@ $(document).on 'discussions_show.load', (e, obj) =>
   discussion.commentEditForm()
   discussion.invitationForm()
 
+  activeTabs()
+
 
 window.postInvitationErrors = (jsonString) ->
   errors    = JSON.parse(jsonString)
