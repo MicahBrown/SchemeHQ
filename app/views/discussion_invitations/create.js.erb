@@ -1,5 +1,6 @@
 if (parseInt("<%= @processor.errors.size %>") > 0) {
-  postInvitationErrors("<%=j @processor.errors.to_json.html_safe %>")
+  postInvitationErrors("<%=j @processor.errors.to_json.html_safe %>");
 } else {
-  $(".invitations-list").html("<%=j render @discussion.discussion_invitations %>")
+  $(".invitations-list").find('.invitation').remove();
+  $(".invitations-list").append("<%=j render @discussion.discussion_invitations %>");
 }
