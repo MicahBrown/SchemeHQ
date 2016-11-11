@@ -5,7 +5,7 @@
         <%= link_to content_tag(:strong, "SchemeHQ"), root_path %>
       </div>
 
-      <div class="float-right hide-for-large" style="padding: 1rem;">
+      <div class="float-right hide-for-large" style="padding: 0.5rem 0;">
         <span data-responsive-toggle="responsive-menu" data-hide-for="large">
           <button class="menu-icon" type="button" data-toggle></button>
         </span>
@@ -26,4 +26,5 @@
       </div>
     </div>
   </div>
+  <%= render 'layouts/flash' if flash.present? %>
 </div>

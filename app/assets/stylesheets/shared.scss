@@ -19,6 +19,7 @@ a.disabled { opacity: 0.5; }
   padding: 0.5rem 0;
   font-size: 1.2rem;
   color: #fff;
+  margin: 1rem 0 0;
   background: $secondary-color;
   &.alert { background: $alert-color; }
   &.notice { background: $success-color; }

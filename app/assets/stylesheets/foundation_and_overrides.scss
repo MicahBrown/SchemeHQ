@@ -111,11 +111,23 @@ table.simple {
   &.success { background: none; border: 1px solid; color: $success-color; }
 }
 
+.top-bar { margin-bottom: 1rem; }
 .top-bar-title {
   > a {
     display: block;
     background: #fff;
     border-radius: 0 0 40px 4px;
     padding: 0.5rem 2.5rem 0.5rem 2rem;
+  }
+}
+
+.menu-icon {
+  &:after {
+    background: $anchor-color;
+    box-shadow: 0 7px 0 $anchor-color, 0 14px 0 $anchor-color;
+  }
+  &:hover:after {
+    background: $anchor-color-hover;
+    box-shadow: 0 7px 0 $anchor-color-hover, 0 14px 0 $anchor-color-hover;
   }
 }
