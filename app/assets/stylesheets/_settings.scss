@@ -55,14 +55,14 @@ $foundation-palette: (
   warning: #ffae00,
   alert: #ec5840,
 );
-$light-gray: #e6e6e6;
-$medium-gray: #cacaca;
-$dark-gray: #8a8a8a;
+$light-gray: #f7f7f7;
+$medium-gray: #eee;
+$dark-gray: #777;
 $black: #333;
-$white: #fefefe;
-$body-background: $white;
+$white: #fff;
+$body-background: $light-gray;
 $body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: Roboto, 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -247,7 +247,9 @@ $button-sizes: (
   default: 0.9rem,
   large: 1.25rem,
 );
-$button-opacity-disabled: 0.25;
+$button-opacity-disabled: 0.5;
+$button-background-hover-lightness: -20%;
+$button-hollow-hover-lightness: -50%;
 
 // 12. Button Group
 // ----------------
@@ -261,7 +263,7 @@ $buttongroup-expand-max: 6;
 // -----------
 
 $callout-background: $white;
-$callout-background-fade: 85%;
+$callout-background-fade: 90%;
 $callout-border: 1px solid rgba($black, 0.25);
 $callout-margin: 0 0 1rem 0;
 $callout-padding: 1rem;
@@ -330,9 +332,9 @@ $form-spacing: rem-calc(16);
 $helptext-color: $black;
 $helptext-font-size: rem-calc(13);
 $helptext-font-style: italic;
-$input-prefix-color: $black;
-$input-prefix-background: $light-gray;
-$input-prefix-border: 1px solid $medium-gray;
+$input-prefix-color: $white;
+$input-prefix-background: $secondary-color;
+$input-prefix-border: 1px solid $secondary-color;
 $input-prefix-padding: 1rem;
 $form-label-color: $black;
 $form-label-font-size: rem-calc(14);
@@ -348,7 +350,7 @@ $input-font-size: rem-calc(16);
 $input-background: $white;
 $input-background-focus: $white;
 $input-background-disabled: $light-gray;
-$input-border: 1px solid $medium-gray;
+$input-border: 1px solid #ccc;
 $input-border-focus: 1px solid $dark-gray;
 $input-shadow: inset 0 1px 2px rgba($black, 0.1);
 $input-shadow-focus: 0 0 5px $medium-gray;
@@ -356,6 +358,7 @@ $input-cursor-disabled: not-allowed;
 $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 $input-number-spinners: true;
 $input-radius: $global-radius;
+$button-radius: $global-radius;
 
 // 20. Label
 // ---------
@@ -436,6 +439,7 @@ $pagination-item-color-current: foreground($pagination-item-background-current);
 $pagination-item-color-disabled: $medium-gray;
 $pagination-ellipsis-color: $black;
 $pagination-mobile-items: false;
+$pagination-mobile-current-item: false;
 $pagination-arrows: true;
 
 // 27. Progress Bar
@@ -450,7 +454,7 @@ $progress-radius: $global-radius;
 // 28. Reveal
 // ----------
 
-$reveal-background: $white;
+$reveal-background: $light-gray;
 $reveal-width: 600px;
 $reveal-max-width: $global-width;
 $reveal-padding: $global-padding;
@@ -502,8 +506,11 @@ $table-row-stripe-hover: darken($table-background, $table-color-scale + $table-h
 $table-striped-background: smart-scale($table-background, $table-color-scale);
 $table-stripe: even;
 $table-head-background: smart-scale($table-background, $table-color-scale / 2);
+$table-head-row-hover: darken($table-head-background, $table-hover-scale);
 $table-foot-background: smart-scale($table-background, $table-color-scale);
+$table-foot-row-hover: darken($table-foot-background, $table-hover-scale);
 $table-head-font-color: $body-font-color;
+$table-foot-font-color: $body-font-color;
 $show-header-for-stacked: false;
 
 // 32. Tabs
@@ -517,7 +524,7 @@ $tab-item-background-hover: $white;
 $tab-item-padding: 1.25rem 1.5rem;
 $tab-expand-max: 6;
 $tab-content-background: $white;
-$tab-content-border: $light-gray;
+$tab-content-border: $medium-gray;
 $tab-content-color: foreground($tab-background, $primary-color);
 $tab-content-padding: 1rem;
 
@@ -558,7 +565,7 @@ $tooltip-radius: $global-radius;
 // 36. Top Bar
 // -----------
 
-$topbar-padding: 0.5rem;
+$topbar-padding: 0;
 $topbar-background: $light-gray;
 $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 1rem;

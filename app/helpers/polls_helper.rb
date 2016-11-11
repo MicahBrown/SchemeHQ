@@ -1,7 +1,7 @@
 module PollsHelper
   def link_to_remove_poll_option
-    button_tag class: "remove-poll-option button alert", title: "Remove Poll Option" do
-      icon("minus-circle", content_tag(:span, 'delete option', class: 'show-for-sr'))
+    button_tag class: "remove-poll-option button alert", title: "Delete Poll Option" do
+      icon("trash", content_tag(:span, 'delete option', class: 'show-for-sr'))
     end
   end
 

@@ -1,9 +1,19 @@
+.discussion-title { font-size: 2rem; margin: 1rem 0 0; }
+.discussion-subheader {
+  font-size: 0.75rem;
+  border-top: 1px solid #ddd;
+  display: inline-block;
+  padding: 0.25rem 0 0;
+  margin: 0 0 2rem;
+}
+
 .entries {
   margin: 0 0 1rem;
   list-style-type: none;
   .entry-li {
-    border: 1px solid #e6e6e6;
+    border: 1px solid #ccc;
     border-bottom-color: transparent;
+    background: #fff;
     .form { padding: 1rem; }
     .entry {
       padding: 0.75rem 1rem;
@@ -15,6 +25,26 @@
       .actions { }
     }
     &.empty { padding: 4rem 1rem; color: #999; text-align: center; }
-    &:last-child { border-bottom-color: #e6e6e6; }
+    &:last-child { border-bottom-color: #ccc; }
   }
+}
+
+.invitations-list {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  > li { border-bottom: 1px solid #ccc; background: #fff }
+  .empty { text-align: center; padding: 2rem 1rem; }
+  .header { background: #eee; padding: 1rem; }
+  .invitation {
+    padding: 0.5rem 1rem;
+    label { display: inline-block; }
+  }
+}
+
+
+.discussion-tree {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+  margin: auto auto 2rem;
+  .entries { margin-bottom: 0; }
 }

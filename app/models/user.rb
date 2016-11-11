@@ -5,7 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
-  has_many :discussions
+  has_many :discussions # created discussions
+  has_many :discussion_participants
+  has_many :discussion_invitations
+  has_many :participated_discussions, through: :discussion_participants, source: :discussion
   has_many :comments
   has_many :polls
   has_many :poll_responses

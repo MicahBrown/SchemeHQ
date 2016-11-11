@@ -53,10 +53,19 @@
 
 .row { max-width: 60rem; }
 
+.input-group > *:last-child > *,
+.input-group > .input-group-field:last-child { border-radius: 0 $global-radius $global-radius 0; }
+.input-group .input-group-field:focus { box-shadow: none; }
+
 .tabs.active-tabs {
+  border: 1px solid $secondary-color;
   border-bottom: 0;
-  background: #f7f7f7;
-  .tabs-title > a:focus, .tabs-title > a[aria-selected="true"] {
+  background: $secondary-color;
+  color: $white;
+  .tabs-title > a { color: $white; }
+  .tabs-title > a:hover { background: rgba(255,255,255,0.15); }
+  .tabs-title > a:focus { background: $secondary-color; }
+  .tabs-title > a[aria-selected="true"] {
     background: $primary-color;
     outline: 1px $primary-color solid;
     color: $white;
@@ -69,23 +78,44 @@
 .tabs-content.active-tabs {
   border: 0;
   .tabs-panel.is-active {
-    border: 1px $primary-color solid;
+    border: 2px $primary-color solid;
+    background: scale-color($primary-color, $lightness: $callout-background-fade);
     &.secondary {
       border-color: $warning-color;
+      background: scale-color($warning-color, $lightness: $callout-background-fade);
     }
   }
 }
 
-
 table.simple {
   width: auto;
   border-color: transparent;
-  thead, tbody, tfoot { border: 0; }
+  thead, tbody, tfoot { background: transparent; border: 0; }
   tbody tr:nth-child(2n) { background: none; }
   thead, tfoot { background: none; }
 
   tr {
     td, th { padding: 0.15rem 1rem 0.15rem 0; }
     :last-child { padding-right: 0; }
+  }
+}
+
+
+.label.hollow {
+  background: none;
+  border: 1px solid;
+  color: $primary-color;
+  &.secondary { background: none; border: 1px solid; color: $secondary-color; }
+  &.warning { background: none; border: 1px solid; color: $warning-color; }
+  &.alert { background: none; border: 1px solid; color: $alert-color; }
+  &.success { background: none; border: 1px solid; color: $success-color; }
+}
+
+.top-bar-title {
+  > a {
+    display: block;
+    background: #fff;
+    border-radius: 0 0 40px 4px;
+    padding: 0.5rem 2.5rem 0.5rem 2rem;
   }
 }

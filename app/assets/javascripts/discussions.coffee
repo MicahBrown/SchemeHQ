@@ -71,8 +71,58 @@ class Discussion
       $form.hide()
       $entry.show()
 
+  invitationForm: ->
+    $dialog    = $("#invitation_dialog")
+    $addBtn    = $dialog.find 'button#invitation_add'
+    $submitBtn = $dialog.find 'input#invitation_submit'
+    $textField = $dialog.find '#new_invitee'
+    $list      = $dialog.find 'ul.invitations-list'
+    validator  = $textField.parsley()
+
+    # Adding an invitation
+    $addBtn.on 'click', (e) ->
+      e.preventDefault()
+      validator.validate()
+      value = $.trim $textField.val()
+
+      if validator.isValid()
+        $toolbox = $dialog.find '.toolbox'
+        $newRow  = $toolbox.html().split("{ email }").join value
+
+        $list.find('.empty').hide().after($newRow)
+        $submitBtn.fadeIn()
+        $textField.focus().val ''
+
+    # Deleting an invitation
+    $list.on 'click', 'a', (e) ->
+      e.preventDefault()
+      $(this).closest('li')[0].remove()
+
+      if $list.find('.invitation').length == 0
+        $submitBtn.hide()
+        $list.find('.empty').show()
 
 $(document).on 'discussions_show.load', (e, obj) =>
   discussion = new Discussion
   discussion.pollForm()
   discussion.commentEditForm()
+  discussion.invitationForm()
+
+  activeTabs()
+
+
+window.postInvitationErrors = (jsonString) ->
+  errors    = JSON.parse(jsonString)
+  $list     = $(".invitations-list")
+  $newItems = $list.children(".invitation").filter ".new"
+
+  $.each errors, (invEmail, invErrors) ->
+    $item   = $newItems.find("input[value='" + invEmail + "']").closest "li"
+    $errors = $("<ul class='errors-ul'></ul>")
+
+    $.each invErrors, (index, error) ->
+      $errors.append "<li>" + error + "</li>"
+
+    $item.find ".errors-ul"
+         .remove()
+    $item.append $errors
