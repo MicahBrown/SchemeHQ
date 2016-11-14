@@ -6,21 +6,23 @@
       </div>
 
       <div class="form-container">
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= form_for(resource, as: resource_name,
+                              url: password_path(resource_name),
+                             html: { method: :put, data: { guard_validate: '' } }) do |f| %>
           <%= form_errors(resource) %>
           <%= f.hidden_field :reset_password_token %>
 
           <div class="form-field">
             <%= f.label :password, "New password" %>
             <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <span class="form-tip"><%= @minimum_password_length %> characters min.</span>
             <% end %>
-            <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "off", data: { guard_required: "" } %>
           </div>
 
           <div class="form-field">
             <%= f.label :password_confirmation, "Confirm new password" %>
-            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", data: { guard_required: '', guard_equalto: '#user_password', guard_equalto_message: 'Value must match password.' } %>
           </div>
 
           <div class="form-field">

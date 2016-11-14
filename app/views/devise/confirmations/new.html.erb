@@ -6,12 +6,12 @@
       </div>
 
       <div class="form-container">
-        <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, data: { guard_validate: '' } }) do |f| %>
           <%= form_errors(resource) %>
 
           <div class="form-field">
             <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+            <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), data: { guard_required: '' } %>
           </div>
 
           <div class="form-field">

@@ -90,6 +90,7 @@ a.disabled { opacity: 0.5; }
       float: right;
       font-size: $form-label-font-size;
       color: $secondary-color;
+      line-height: $form-label-line-height;
     }
   }
 }
