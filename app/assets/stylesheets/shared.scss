@@ -56,20 +56,51 @@ a.disabled { opacity: 0.5; }
 .no-margin-errors-container .parsley-errors-list.filled { margin-top: 0; margin-bottom: 0; }
 
 .form {
-  background: #fff;
   margin: 1rem auto;
   max-width: 30rem;
-  box-shadow: 0 2px 3px rgba(0,0,0,0.15);
-  border-radius: $global-radius;
-  overflow: hidden;
   .form-header {
-    padding: 0.5rem 2rem;
-    background: $secondary-color;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.15);
+    border-radius: $global-radius $global-radius 0 0;
+    padding: 0.5rem 1.5rem;
+    background: #fff;
+    display: inline-block;
+    position: relative;
+    background: $primary-color;
     color: $white;
+    margin: 0 0.5rem;
+    z-index: 89;
+    * { display: inline-block; }
     :first-child { font-size: 2rem; }
     :last-child { margin-bottom: 0; }
   }
-  .form-container { padding: 2rem; }
+  .form-container {
+    background: #fff;
+    border-radius: $global-radius;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.15);
+    padding: 2rem;
+    position: relative;
+    z-index: 90;
+  }
 
-  label { font-weight: 300; }
+  .form-field {
+    label { float: left; }
+    input[type='checkbox'] + label,
+    input[type='radio'] + label { float: none; }
+    .form-tip {
+      float: right;
+      font-size: $form-label-font-size;
+      color: $secondary-color;
+    }
+  }
+}
+
+.field_with_errors {
+  [type="text"], [type="password"], [type="date"], [type="datetime"],
+  [type="datetime-local"], [type="month"], [type="week"], [type="email"],
+  [type="number"], [type="search"], [type="tel"], [type="time"], [type="url"],
+  [type="color"], textarea {
+    border-color: $alert-color;
+    background: scale-color($alert-color, $lightness: $callout-background-fade);
+  }
+  label { color: $alert-color; }
 }
