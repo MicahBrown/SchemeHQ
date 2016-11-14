@@ -22,7 +22,7 @@
         time { float: right; color: #999; }
       }
       .content { *:last-child { margin-bottom: 0; } }
-      .actions { margin-top: 1rem; }
+      .actions > .menu { margin-top: 1rem; }
     }
     &.empty { padding: 4rem 1rem; color: #999; text-align: center; }
     &:last-child { border-bottom-color: #ccc; }
