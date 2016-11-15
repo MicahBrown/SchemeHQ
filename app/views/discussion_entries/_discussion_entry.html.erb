@@ -5,7 +5,7 @@
     data-entry-type="<%= discussion_entry.discussable_type %>">
   <div class="entry">
     <div class="details">
-      <b><%= discussable.user.display_name %></b>
+      <b><%= discussable_author discussable %></b>
       <%= discussion_entry_timestamp discussable %>
     </div>
     <%= render discussable %>

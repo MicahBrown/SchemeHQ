@@ -1,5 +1,5 @@
 <%= form_for PollResponse.new, url: discussion_poll_vote_path(poll.discussion, poll) do |f| %>
-  <%= f.label :poll_option_id, "Select an option:" %>
+  <%= f.label :poll_option_id, poll.title %>
   <ul class="no-bullet">
     <% poll.poll_options.each do |po| %>
       <li>
