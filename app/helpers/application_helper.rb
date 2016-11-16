@@ -1,11 +1,16 @@
 module ApplicationHelper
-  def reveal name, options={}, &block
+  def reveal dialog_name, partial_name=nil, options={}, &block
+    options, partial_name = partial_name, nil if partial_name.is_a?(Hash)
+
+    content   = capture(&block) if block_given?
+    content ||= render(partial_name) if partial_name.present?
+
     css_class = options.has_key?(:class) ? "reveal #{options[:class]}" : "reveal"
-    options   = options.deep_merge id:    name,
+    options   = options.deep_merge id:    dialog_name,
                                    class: css_class,
                                    data:  { reveal: ''}
 
-    content_tag :div, close_button + capture(&block), options
+    content_tag :div, close_button + content, options
   end
 
   def close_button
