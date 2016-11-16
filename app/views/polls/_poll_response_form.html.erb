@@ -3,8 +3,10 @@
   <ul class="no-bullet">
     <% poll.poll_options.each do |po| %>
       <li>
-        <%= f.radio_button :poll_option_id, po.id %>
-        <%= f.label :poll_option_id, po.value, value: po.id %>
+        <%= f.label :poll_option_id, value: po.id do %>
+          <%= f.radio_button :poll_option_id, po.id %>
+          <%= po.value %>
+        <% end %>
       </li>
     <% end %>
   </ul>
