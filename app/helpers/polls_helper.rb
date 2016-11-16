@@ -27,10 +27,8 @@ module PollsHelper
   end
 
   def vote_display poll_option, vote
-    value = poll_option.value
-    return value if vote.nil?
-
-    icon vote.poll_option_id == poll_option.id ? "check" : "", value, class: "fa-li"
+    return if vote.nil? || vote.poll_option_id != poll_option.id
+    content_tag :span, icon("check", "Your Vote"), class: "label hollow success float-right"
   end
 
   def poll_actions poll
