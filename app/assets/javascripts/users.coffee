@@ -12,15 +12,33 @@ window.userLinks = (method, opt_id) ->
       e.preventDefault()
       $formWrapper.toggle()
 
+    $dialog.find '.menu'
+           .find '.nickname-delete-link'
+           .on "click", (e) ->
+      e.preventDefault()
+
+      return false if $dialog.hasClass 'deleting'
+      $dialog.addClass 'deleting'
+
+      $link = $(this)
+      $.ajax
+        url:    $link.attr 'href'
+        method: 'DELETE'
+        success: ->
+          $dialog.removeClass 'deleting'
+
+      false # must return false for link behavior to be prevented
+
+
     $form.on 'submit', (e) ->
       e.preventDefault()
       values = $form.serialize()
 
-      return false if $form.hasClass 'submitting'
+      return false if $dialog.hasClass 'submitting'
 
-      $form.addClass 'submitting'
+      $dialog.addClass 'submitting'
       $.post $form.attr('action'), values, (response) ->
-        $form.removeClass 'submitting'
+        $dialog.removeClass 'submitting'
 
 
   loadProfile = (id) ->

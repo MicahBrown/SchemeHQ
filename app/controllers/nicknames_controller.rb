@@ -20,6 +20,14 @@ class NicknamesController < ApplicationController
     end
   end
 
+  def destroy
+    @nickname.destroy
+
+    respond_to do |format|
+      format.js { render :create }
+    end
+  end
+
   private
 
     def nickname_params

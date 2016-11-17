@@ -4,7 +4,7 @@
   <div class="menu-centered">
     <ul class="menu">
       <% if nickname %>
-        <li><%= link_to icon("trash", "Remove Nickname"), "javscript:void(0);" %></li>
+        <li><%= link_to icon("trash", "Remove Nickname"), [@user, nickname], method: :delete, class: 'nickname-delete-link' %></li>
         <li><%= link_to icon("pencil", "Edit Nickname"), "javscript:void(0);", class: "nickname-edit-link" %></li>
       <% else %>
         <li><%= link_to icon("plus-circle", "Add Nickname"), "javascript:void(0);", class: 'nickname-add-link' %></li>

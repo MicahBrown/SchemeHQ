@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, only: :show do
-    resources :nicknames, only: [:create, :update]
+    resources :nicknames, only: [:create, :update, :destroy]
   end
 
   resources :discussions, only: [:new, :create, :show] do
