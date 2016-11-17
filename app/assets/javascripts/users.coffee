@@ -1,4 +1,28 @@
-window.initializeUserLinks = ->
+window.userLinks = (method, opt_id) ->
+  initializeProfile = (id) ->
+    $dialog      = getDialog id
+    $formWrapper = $dialog.find '.nickname-form'
+    $form        = $formWrapper.find 'form'
+
+    setValidator $form
+
+    $dialog.find '.menu'
+           .find '.nickname-edit-link, .nickname-add-link'
+           .on "click", (e) ->
+      e.preventDefault()
+      $formWrapper.toggle()
+
+    $form.on 'submit', (e) ->
+      e.preventDefault()
+      values = $form.serialize()
+
+      return false if $form.hasClass 'submitting'
+
+      $form.addClass 'submitting'
+      $.post $form.attr('action'), values, (response) ->
+        $form.removeClass 'submitting'
+
+
   loadProfile = (id) ->
     $dialog = getDialog id
 
@@ -10,6 +34,8 @@ window.initializeUserLinks = ->
     $.get '/users/' + id, (response) ->
       $dialog.html response
       $dialog.removeClass 'loading'
+
+      initializeProfile id
 
 
   getDialog = (id) ->
@@ -29,12 +55,17 @@ window.initializeUserLinks = ->
     loadProfile(id) if $dialog.find('.profile').length < 1
     $dialog
 
+  initialize = ->
+    $(".user-link").off("click").on "click", (e) ->
+      e.preventDefault()
 
-  $(".user-link").off("click").on "click", (e) ->
-    e.preventDefault()
+      $link = $(this)
+      id    = $link.data 'user'
 
-    $link = $(this)
-    id    = $link.data 'user'
+      openDialog id
 
-    openDialog id
 
+  if method == 'initializeProfile'
+    initializeProfile(opt_id)
+  else
+    initialize()
