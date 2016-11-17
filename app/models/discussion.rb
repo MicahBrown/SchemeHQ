@@ -13,6 +13,7 @@ class Discussion < ApplicationRecord
 
   before_create :generate_token
   after_create :assign_facilitator!
+  before_validation { trim_whitespace :title }
 
   def generate_token
     self[:token] = loop do

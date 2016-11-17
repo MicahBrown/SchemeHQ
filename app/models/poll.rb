@@ -10,4 +10,6 @@ class Poll < ApplicationRecord
   validates :title, presence: true
   validates :user, presence: true
   validates :discussion, presence: true
+
+  before_validation { trim_whitespace :title }
 end

@@ -7,4 +7,6 @@ class Comment < ApplicationRecord
   validates :user, presence: true
   validates :discussion, presence: true
   validates :message, presence: true
+
+  before_validation { trim_whitespace :message }
 end

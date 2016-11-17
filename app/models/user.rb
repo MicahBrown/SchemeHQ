@@ -18,6 +18,8 @@ class User < ApplicationRecord
   validates :display_name, presence: true, length: { maximum: DISPLAY_NAME_LIMIT }
 
   before_validation :set_display_name
+  before_validation { trim_whitespace :display_name }
+
 
   def set_display_name
     return true if persisted? || email.blank? || display_name.present?

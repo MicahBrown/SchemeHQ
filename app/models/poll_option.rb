@@ -4,4 +4,6 @@ class PollOption < ApplicationRecord
 
   validates :value, presence: true
   validates :position, presence: true
+
+  before_validation { trim_whitespace :value }
 end

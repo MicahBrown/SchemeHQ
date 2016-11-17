@@ -6,13 +6,5 @@ class DiscussionInvitation < ApplicationRecord
                     uniqueness: { scope: :discussion_id },
                     format:     { with: EMAIL_REGEX, allow_blank: true }
 
-
-  before_validation { strip_whitespace :email }
-
-  def strip_whitespace attr_sym
-    value = send(attr_sym)
-    value = value.strip if value.is_a?(String)
-
-    write_attribute(attr_sym, value)
-  end
+  before_validation { trim_whitespace :email }
 end
