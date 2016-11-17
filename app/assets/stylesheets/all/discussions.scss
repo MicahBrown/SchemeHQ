@@ -24,7 +24,8 @@
       .details, .actions { font-size: 0.8rem; }
       .details {
         color: #999;
-        time { float: right;; }
+        margin-bottom: 1rem;
+        time { float: right; }
       }
       .content { > *:last-child { margin-bottom: 0; } }
       .actions > .menu { margin-top: 1rem; }
