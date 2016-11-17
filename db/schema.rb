@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106054459) do
+ActiveRecord::Schema.define(version: 20161117045022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 20161106054459) do
     t.datetime "updated_at",                 null: false
     t.index ["token"], name: "index_discussions_on_token", unique: true, using: :btree
     t.index ["user_id"], name: "index_discussions_on_user_id", using: :btree
+  end
+
+  create_table "nicknames", force: :cascade do |t|
+    t.integer  "namer_id",   null: false
+    t.integer  "namee_id",   null: false
+    t.string   "value",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["namee_id"], name: "index_nicknames_on_namee_id", using: :btree
+    t.index ["namer_id", "namee_id"], name: "index_nicknames_on_namer_id_and_namee_id", unique: true, using: :btree
+    t.index ["namer_id"], name: "index_nicknames_on_namer_id", using: :btree
   end
 
   create_table "poll_options", force: :cascade do |t|
