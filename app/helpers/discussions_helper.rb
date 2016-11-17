@@ -11,12 +11,13 @@ module DiscussionsHelper
   end
 
   def discussable_author discussable
+    user      = discussable.user
     icon_name = case discussable
                 when Comment then 'comment'
                 when Poll    then 'bar-chart'
                 end
 
-    icon(icon_name, discussable.user.display_name, class: 'fa-fw')
+    user_link user, icon(icon_name, user_display_name(user), class: 'fa-fw')
   end
 
   def clonable_discussion_invitation
