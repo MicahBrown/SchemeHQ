@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :nicknames, only: :create
   resources :discussions, only: [:new, :create, :show] do
     resources :invitations, controller: :discussion_invitations, only: :create
     resources :polls, only: [:create, :destroy] do
