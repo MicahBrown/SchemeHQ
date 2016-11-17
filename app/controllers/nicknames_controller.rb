@@ -1,6 +1,6 @@
 class NicknamesController < ApplicationController
   load_resource :user, find_by: :public_token
-  load_resource param_method: :nickname_params
+  load_and_authorize_resource param_method: :nickname_params
 
   def create
     @nickname.namee = @user
