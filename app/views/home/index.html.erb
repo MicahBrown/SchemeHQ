@@ -1,9 +1,0 @@
-<% if current_user %>
-  <%= link_to "New Discussion", new_discussion_path %>
-
-  <ul>
-    <% Discussion.order('created_at DESC').each do |discussion| %>
-      <li><%= link_to discussion.title, discussion %></li>
-    <% end %>
-  </ul>
-<% end %>
