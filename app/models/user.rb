@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :polls
   has_many :poll_responses
+  has_many :nicknames, foreign_key: :namer_id
 
   validates :display_name, presence: true, length: { maximum: DISPLAY_NAME_LIMIT }
 
