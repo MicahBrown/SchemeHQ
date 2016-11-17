@@ -1,0 +1,11 @@
+var $poll        = $(".entry-li[data-entry-type='Poll'][data-entry-id='<%= @poll.id %>']"),
+    $pollContent = $poll.find('.content');
+
+if (parseInt("<%= @poll_response.errors.size %>") > 0) {
+  var $form = $pollContent.find('form')
+
+  $form.find('.errors').closest('.row').remove();
+  $form.prepend('<%=j form_errors(@poll_response) %>');
+} else {
+  $pollContent.html('<%=j render "polls/poll_display", poll: @poll %>');
+}

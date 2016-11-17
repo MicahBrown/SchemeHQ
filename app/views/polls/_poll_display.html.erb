@@ -1,0 +1,26 @@
+<%
+  vote  = current_user ? current_user.poll_responses.where(poll: poll).first : nil
+  votes = poll.poll_responses if vote
+%>
+<h4><%= poll.title %></h4>
+<ul class="poll-list">
+  <% poll.poll_options.each do |po| %>
+    <li class="poll-li">
+      <div class="poll-item clearfix">
+        <%= po.value %>
+        <%= vote_display(po, vote) if vote %>
+      </div>
+      <% if vote %>
+        <%
+          vote_count   = votes.select{ |v| v.poll_option_id == po.id }.count
+          vote_percent = vote_count != 0 ? (vote_count.to_f / votes.size) * 100 : 0
+        %>
+
+        <div class="poll-result">
+          <span class="stat"><%= vote_percent %>%</span>
+          <div style="width: <%= vote_percent %>%;"></div>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
