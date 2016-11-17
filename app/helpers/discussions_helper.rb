@@ -16,7 +16,7 @@ module DiscussionsHelper
                 when Poll    then 'bar-chart'
                 end
 
-    icon(icon_name, discussable.user.display_name, class: 'fa-fw')
+    icon(icon_name, user_display_name(discussable.user), class: 'fa-fw')
   end
 
   def clonable_discussion_invitation
