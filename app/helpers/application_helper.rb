@@ -50,11 +50,4 @@ module ApplicationHelper
 
     render 'shared/form_errors', errors: errors, message: message
   end
-
-  def user_display_name user
-    return user.display_name if current_nicknames.blank?
-
-    nickname = current_nicknames.detect { |n| n.namee_id == user.id }
-    nickname ? nickname.value : user.display_name
-  end
 end
