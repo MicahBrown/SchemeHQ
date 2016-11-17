@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  DISPLAY_NAME_LIMIT = 50.freeze
+  DISPLAY_NAME_LIMIT = (4..50).freeze
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :poll_responses
   has_many :nicknames, foreign_key: :namer_id
 
-  validates :display_name, presence: true, length: { maximum: DISPLAY_NAME_LIMIT }
+  validates :display_name, presence: true, length: { in: DISPLAY_NAME_LIMIT, allow_blank: true }
 
   before_validation :set_display_name
   before_validation { trim_whitespace :display_name }
