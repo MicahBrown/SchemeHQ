@@ -30,6 +30,8 @@ class User < ApplicationRecord
     self.display_name = self.email[0...DISPLAY_NAME_LIMIT]
   end
 
+  def to_param; public_token; end
+
   def add_omniauth(auth, force=false)
     return if omniauthed? && !force
 
