@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  DISPLAY_NAME_LIMIT = 50.freeze
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
@@ -13,12 +15,14 @@ class User < ApplicationRecord
   has_many :polls
   has_many :poll_responses
 
+  validates :display_name, presence: true, length: { maximum: DISPLAY_NAME_LIMIT }
+
   before_validation :set_display_name
 
   def set_display_name
     return true if persisted? || email.blank? || display_name.present?
 
-    self.display_name = self.email
+    self.display_name = self.email[0...DISPLAY_NAME_LIMIT]
   end
 
   def add_omniauth(auth, force=false)
