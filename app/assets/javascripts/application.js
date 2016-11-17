@@ -35,6 +35,7 @@ var initializePage = function(){
   $(document).foundation();
   initializeValidator();
   loadJavascript(controller, action);
+  initializeUserLinks();
 
   $('body').addClass('js-initialized');
 
