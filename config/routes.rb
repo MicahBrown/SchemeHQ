@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :edit, :update, :destroy]
   end
 
+  get   '/my'              => 'dashboard#show'
   get   '/settings'        => 'settings#edit'
   patch '/update_settings' => 'settings#update'
 
