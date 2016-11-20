@@ -13,5 +13,10 @@ if (parseInt("<%= @nickname.errors.size %>") > 0) {
   $reveal.html("<%=j render 'users/profile' %>");
   userLinks('initializeProfile', id);
 
+  // Update user links to new nickname
+  var $links = $(".user-link[data-user='<%= @user.to_param %>']");
+
+  $links.find('.value').text("<%= user_display_name(@user) %>");
+
   // TO-DO: Add success message
 }

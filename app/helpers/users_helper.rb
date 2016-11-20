@@ -6,9 +6,10 @@ module UsersHelper
     nickname ? nickname.value : user.display_name
   end
 
-  def user_link user, value=nil, options={}
-    options, value = value, nil if value.is_a?(Hash)
-    value ||= user_display_name(user)
+  def user_link user, icon_name=nil, options={}
+    options, icon_name = icon_name, nil if icon_name.is_a?(Hash)
+    value = content_tag :span, user_display_name(user), class: 'value'
+    value = icon(icon_name, value, class: 'fa-fw') if icon_name
 
     options[:class]   = "user-link #{options[:class]}" if options.key?(:class)
     options[:class] ||= "user-link"
