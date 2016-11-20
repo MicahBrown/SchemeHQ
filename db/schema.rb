@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20161117052519) do
   create_table "discussion_participants", force: :cascade do |t|
     t.integer  "user_id",                          null: false
     t.integer  "discussion_id",                    null: false
-    t.string   "role",          default: "player", null: false
+    t.string   "role",          default: "member", null: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.index ["discussion_id"], name: "index_discussion_participants_on_discussion_id", using: :btree

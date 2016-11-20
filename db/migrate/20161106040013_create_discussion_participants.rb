@@ -3,7 +3,7 @@ class CreateDiscussionParticipants < ActiveRecord::Migration[5.0]
     create_table :discussion_participants do |t|
       t.belongs_to :user,       null: false
       t.belongs_to :discussion, null: false
-      t.string     :role,       null: false, default: 'player' # options: facilitator, mediator, player
+      t.string     :role,       null: false, default: 'member' # options: facilitator, mediator, member
       t.timestamps              null: false
     end
 
