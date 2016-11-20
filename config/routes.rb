@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   resources :users, only: :show do
     resources :nicknames, only: [:create, :update, :destroy]
   end
@@ -16,7 +18,6 @@ Rails.application.routes.draw do
   patch '/update_settings' => 'settings#update'
 
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
