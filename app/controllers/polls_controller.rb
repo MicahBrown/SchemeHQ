@@ -1,13 +1,13 @@
 class PollsController < ApplicationController
-  load_and_authorize_resource :discussion, find_by: :token
-  load_and_authorize_resource through: :discussion, param_method: :poll_params
+  load_and_authorize_resource :scheme, find_by: :token
+  load_and_authorize_resource through: :scheme, param_method: :poll_params
 
   def create
     respond_to do |format|
       if @poll.save
-        format.html { redirect_to @discussion, notice: "Successfully saved poll!" }
+        format.html { redirect_to @scheme, notice: "Successfully saved poll!" }
       else
-        format.html { redirect_to @discussion, alert: "Unable to save poll." }
+        format.html { redirect_to @scheme, alert: "Unable to save poll." }
       end
     end
   end
@@ -15,9 +15,9 @@ class PollsController < ApplicationController
   def destroy
     respond_to do |format|
       if @poll.destroy
-        format.html { redirect_to @poll.discussion, notice: "Successfully deleted poll!" }
+        format.html { redirect_to @poll.scheme, notice: "Successfully deleted poll!" }
       else
-        format.html { redirect_to @poll.discussion, alert: "Unable to delete poll." }
+        format.html { redirect_to @poll.scheme, alert: "Unable to delete poll." }
       end
     end
   end

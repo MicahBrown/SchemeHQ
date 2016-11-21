@@ -1,0 +1,13 @@
+<% schemable = scheme_entry.schemable %>
+
+<li class="entry-li"
+    data-entry-id="<%= scheme_entry.schemable_id %>"
+    data-entry-type="<%= scheme_entry.schemable_type %>">
+  <div class="entry">
+    <div class="details">
+      <b><%= schemable_author schemable %></b>
+      <%= scheme_entry_timestamp schemable %>
+    </div>
+    <%= render schemable %>
+  </div>
+</li>

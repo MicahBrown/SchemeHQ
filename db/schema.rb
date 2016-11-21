@@ -16,58 +16,13 @@ ActiveRecord::Schema.define(version: 20161117052519) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "user_id",       null: false
-    t.integer  "discussion_id", null: false
-    t.text     "message",       null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["discussion_id"], name: "index_comments_on_discussion_id", using: :btree
+    t.integer  "user_id",    null: false
+    t.integer  "scheme_id",  null: false
+    t.text     "message",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scheme_id"], name: "index_comments_on_scheme_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
-  end
-
-  create_table "discussion_entries", force: :cascade do |t|
-    t.integer  "discussion_id",    null: false
-    t.string   "discussable_type"
-    t.integer  "discussable_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["discussable_type", "discussable_id"], name: "index_discussion_entries_on_discussable_type_and_discussable_id", using: :btree
-    t.index ["discussion_id"], name: "index_discussion_entries_on_discussion_id", using: :btree
-  end
-
-  create_table "discussion_invitations", force: :cascade do |t|
-    t.integer  "user_id",       default: 0, null: false
-    t.integer  "discussion_id",             null: false
-    t.string   "email",                     null: false
-    t.datetime "sent_at"
-    t.datetime "accepted_at"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["discussion_id", "email"], name: "index_discussion_invitations_on_discussion_id_and_email", unique: true, using: :btree
-    t.index ["discussion_id"], name: "index_discussion_invitations_on_discussion_id", using: :btree
-    t.index ["user_id"], name: "index_discussion_invitations_on_user_id", using: :btree
-  end
-
-  create_table "discussion_participants", force: :cascade do |t|
-    t.integer  "user_id",                          null: false
-    t.integer  "discussion_id",                    null: false
-    t.string   "role",          default: "member", null: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.index ["discussion_id"], name: "index_discussion_participants_on_discussion_id", using: :btree
-    t.index ["user_id", "discussion_id"], name: "index_discussion_participants_on_user_id_and_discussion_id", unique: true, using: :btree
-    t.index ["user_id"], name: "index_discussion_participants_on_user_id", using: :btree
-  end
-
-  create_table "discussions", force: :cascade do |t|
-    t.integer  "user_id",                    null: false
-    t.string   "title",                      null: false
-    t.string   "token",                      null: false
-    t.boolean  "private",    default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.index ["token"], name: "index_discussions_on_token", unique: true, using: :btree
-    t.index ["user_id"], name: "index_discussions_on_user_id", using: :btree
   end
 
   create_table "nicknames", force: :cascade do |t|
@@ -103,14 +58,59 @@ ActiveRecord::Schema.define(version: 20161117052519) do
   end
 
   create_table "polls", force: :cascade do |t|
-    t.integer  "user_id",       null: false
-    t.integer  "discussion_id", null: false
-    t.string   "title",         null: false
+    t.integer  "user_id",    null: false
+    t.integer  "scheme_id",  null: false
+    t.string   "title",      null: false
     t.datetime "locked_at"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scheme_id"], name: "index_polls_on_scheme_id", using: :btree
     t.index ["user_id"], name: "index_polls_on_user_id", using: :btree
+  end
+
+  create_table "scheme_entries", force: :cascade do |t|
+    t.integer  "scheme_id",      null: false
+    t.string   "schemable_type"
+    t.integer  "schemable_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["schemable_type", "schemable_id"], name: "index_scheme_entries_on_schemable_type_and_schemable_id", using: :btree
+    t.index ["scheme_id"], name: "index_scheme_entries_on_scheme_id", using: :btree
+  end
+
+  create_table "scheme_invitations", force: :cascade do |t|
+    t.integer  "user_id",     default: 0, null: false
+    t.integer  "scheme_id",               null: false
+    t.string   "email",                   null: false
+    t.datetime "sent_at"
+    t.datetime "accepted_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["scheme_id", "email"], name: "index_scheme_invitations_on_scheme_id_and_email", unique: true, using: :btree
+    t.index ["scheme_id"], name: "index_scheme_invitations_on_scheme_id", using: :btree
+    t.index ["user_id"], name: "index_scheme_invitations_on_user_id", using: :btree
+  end
+
+  create_table "scheme_participants", force: :cascade do |t|
+    t.integer  "user_id",                       null: false
+    t.integer  "scheme_id",                     null: false
+    t.string   "role",       default: "member", null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["scheme_id"], name: "index_scheme_participants_on_scheme_id", using: :btree
+    t.index ["user_id", "scheme_id"], name: "index_scheme_participants_on_user_id_and_scheme_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_scheme_participants_on_user_id", using: :btree
+  end
+
+  create_table "schemes", force: :cascade do |t|
+    t.integer  "user_id",                    null: false
+    t.string   "title",                      null: false
+    t.string   "token",                      null: false
+    t.boolean  "private",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["token"], name: "index_schemes_on_token", unique: true, using: :btree
+    t.index ["user_id"], name: "index_schemes_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

@@ -9,10 +9,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
-  has_many :discussions # created discussions
-  has_many :discussion_participants
-  has_many :discussion_invitations
-  has_many :participated_discussions, through: :discussion_participants, source: :discussion
+  has_many :schemes # created schemes
+  has_many :scheme_participants
+  has_many :scheme_invitations
+  has_many :participated_schemes, through: :scheme_participants, source: :scheme
   has_many :comments
   has_many :polls
   has_many :poll_responses
@@ -27,7 +27,7 @@ class User < ApplicationRecord
   def set_display_name
     return true if persisted? || email.blank? || display_name.present?
 
-    self.display_name = self.email[0...DISPLAY_NAME_LIMIT]
+    self.display_name = self.email[0...DISPLAY_NAME_LIMIT.max]
   end
 
   def to_param; public_token; end

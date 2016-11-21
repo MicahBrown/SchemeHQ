@@ -1,11 +1,11 @@
 class InvitationProcessor
-  def initialize discussion, emails
-    @discussion = discussion
-    @emails     = emails
-    @errors     = {}
+  def initialize scheme, emails
+    @scheme = scheme
+    @emails = emails
+    @errors = {}
   end
 
-  attr_accessor :discussion, :emails, :errors
+  attr_accessor :scheme, :emails, :errors
 
   def process
     errors.clear
@@ -26,6 +26,6 @@ class InvitationProcessor
     user    = User.where('LOWER(email) = ?', email).first
     user_id = user.try(:id) || 0
 
-    discussion.discussion_invitations.new(email: email, user_id: user_id)
+    scheme.scheme_invitations.new(email: email, user_id: user_id)
   end
 end

@@ -36,9 +36,9 @@ class Ability
       can :manage, Poll, user_id: user.id
       can :create, Comment
       can :manage, Comment, user_id: user.id
-      can :create, Discussion
-      can :manage, Discussion, user_id: user.id
-      can [:read, :respond], Discussion, private: false
+      can :create, Scheme
+      can :manage, Scheme, user_id: user.id
+      can [:read, :respond], Scheme, private: false
     end
   end
 end

@@ -1,19 +1,19 @@
 class PollResponsesController < ApplicationController
-  load_resource :discussion, find_by: :token
-  load_resource :poll, through: :discussion
+  load_resource :scheme, find_by: :token
+  load_resource :poll, through: :scheme
   load_resource through: :poll, param_method: :poll_response_params
 
   def create
-    authorize! :respond, @discussion
+    authorize! :respond, @scheme
 
     @poll_response.user = current_user
 
     respond_to do |format|
       if @poll_response.save
-        format.html { redirect_to @discussion, notice: "Successfully saved vote!" }
+        format.html { redirect_to @scheme, notice: "Successfully saved vote!" }
         format.js
       else
-        format.html { redirect_to @discussion, alert: "Unable to save vote." }
+        format.html { redirect_to @scheme, alert: "Unable to save vote." }
         format.js
       end
     end

@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource :discussion, find_by: :token
-  load_and_authorize_resource through: :discussion, param_method: :comment_params
+  load_and_authorize_resource :scheme, find_by: :token
+  load_and_authorize_resource through: :scheme, param_method: :comment_params
 
   def create
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment.discussion, notice: "Successfully saved comment!" }
+        format.html { redirect_to @comment.scheme, notice: "Successfully saved comment!" }
       else
-        format.html { redirect_to @comment.discussion, alert: "Unable to save comment." }
+        format.html { redirect_to @comment.scheme, alert: "Unable to save comment." }
       end
     end
   end
@@ -29,9 +29,9 @@ class CommentsController < ApplicationController
   def destroy
     respond_to do |format|
       if @comment.destroy
-        format.html { redirect_to @comment.discussion, notice: "Successfully deleted comment!" }
+        format.html { redirect_to @comment.scheme, notice: "Successfully deleted comment!" }
       else
-        format.html { redirect_to @comment.discussion, alert: "Unable to delete comment." }
+        format.html { redirect_to @comment.scheme, alert: "Unable to delete comment." }
       end
     end
   end

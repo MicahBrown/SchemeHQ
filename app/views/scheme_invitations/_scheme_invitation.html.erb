@@ -1,0 +1,9 @@
+<li class="invitation<%= ' new' if scheme_invitation.new_record? %>">
+  <label><strong><%= scheme_invitation.email %></strong></label>
+  <%= hidden_field_tag "scheme[invitees][]", scheme_invitation.email, disabled: scheme_invitation.persisted? %>
+  <% unless scheme_invitation.persisted? %>
+    <%= content_tag :a, icon('trash'), class: 'float-right', title: "Remove Invitation" %>
+  <% else %>
+    <%= content_tag :span, "Invited", class: 'float-right label success hollow' %>
+  <% end %>
+</li>

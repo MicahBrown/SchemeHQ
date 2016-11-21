@@ -1,9 +1,9 @@
 <div class="row">
   <div class="columns">
-    <%= link_to "New Discussion", new_discussion_path %>
+    <%= link_to icon("plus-circle", "New Scheme"), new_scheme_path %>
     <ul>
-      <% current_user.discussion_participants.includes(:discussion).each do |dp| %>
-        <% d = dp.discussion %>
+      <% current_user.scheme_participants.includes(:scheme).each do |dp| %>
+        <% d = dp.scheme %>
         <li><%= link_to d.title, d %> <small><%= dp.role %></small></li>
       <% end %>
     </ul>
