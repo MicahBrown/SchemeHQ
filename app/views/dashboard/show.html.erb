@@ -1,11 +1,35 @@
 <div class="row">
   <div class="columns">
-    <%= link_to icon("plus-circle", "New Scheme"), new_scheme_path %>
-    <ul>
-      <% current_user.scheme_participants.includes(:scheme).each do |dp| %>
-        <% d = dp.scheme %>
-        <li><%= link_to d.title, d %> <small><%= dp.role %></small></li>
-      <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-3 columns">
+    <ul class="tabs vertical simple" id="dashboard-tabs" data-tabs>
+      <li class="tabs-title is-active">
+        <a href="#panel1v" aria-selected="true">
+          <%= icon("sitemap", "Schemes", class: "fa-fw") %>
+        </a>
+      </li>
+      <li class="tabs-title"><a href="#panel2v"><%= icon("envelope", "Invitations") %></a></li>
     </ul>
+  </div>
+  <div class="medium-9 columns medium-border-left">
+    <div class="tabs-content vertical simple" data-tabs-content="dashboard-tabs">
+      <div class="tabs-panel is-active" id="panel1v">
+        <h3 class="subheader"><%= icon('sitemap', 'My Schemes') %></h3>
+        <%= link_to icon("plus-circle", "New Scheme"), new_scheme_path %>
+        <ul>
+          <% current_user.scheme_participants.includes(:scheme).each do |dp| %>
+            <% d = dp.scheme %>
+            <li><%= link_to d.title, d %> <small><%= dp.role %></small></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="tabs-panel" id="panel2v">
+        <h3 class="subheader"><%= icon("envelope", "My Invitations") %></h3>
+        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+      </div>
+    </div>
   </div>
 </div>
