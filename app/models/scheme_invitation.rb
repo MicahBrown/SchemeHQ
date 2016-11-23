@@ -7,4 +7,5 @@ class SchemeInvitation < ApplicationRecord
                     format:     { with: EMAIL_REGEX, allow_blank: true }
 
   before_validation { trim_whitespace :email }
+  before_validation { downcase :email }
 end
