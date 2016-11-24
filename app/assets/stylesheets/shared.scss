@@ -21,6 +21,7 @@ div.empty {
   background: $white;
   color: $secondary-color;
   text-align: center;
+  border-radius: $global-radius;
   :last-child { margin-bottom: 0; }
 }
 
