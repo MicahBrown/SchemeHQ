@@ -4,15 +4,7 @@
   <% if invite.responded? %>
     <td colspan="2"><%= invitation_response_label(invite) %></td>
   <% else %>
-    <td>
-      <%= button_to scheme_invitation_response_path(invite.scheme, invite), method: :put, params: { response: true }, form_class: "invitation-response-form", data: { disable_with: "Please wait..." } do %>
-        <%= icon("check-circle-o", "Accept") %>
-      <% end %>
-    </td>
-    <td>
-      <%= button_to scheme_invitation_response_path(invite.scheme, invite), method: :put, params: { response: false }, form_class: "invitation-response-form", data: { disable_with: "Please wait..." } do %>
-        <%= icon("times-circle-o", "Decline") %>
-      <% end %>
-    </td>
+    <td><%= invitation_response_form invite %></td>
+    <td><%= invitation_response_form invite, false %></td>
   <% end %>
 </tr>
