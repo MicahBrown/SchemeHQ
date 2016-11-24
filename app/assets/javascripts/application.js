@@ -32,8 +32,8 @@ var initializePage = function(){
   if ( initialized )
     return false;
 
-  $(document).foundation();
   initializeValidator();
+  initializeFoundation()
   loadJavascript(controller, action);
   userLinks();
 

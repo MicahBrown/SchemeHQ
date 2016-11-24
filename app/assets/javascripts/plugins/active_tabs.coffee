@@ -1,57 +1,106 @@
-window.activeTabs = ->
-  $tabs    = $('.active-tabs.tabs')
-  $content = $('.tabs-content[data-tabs-content="' + $tabs.attr('id') + '"]')
-  $current = $tabs.find '[aria-selected=true]'
+# A class-based template for jQuery plugins in Coffeescript
+#
+#     $('.target').activeTabs({ paramA: 'not-foo' });
+#     $('.target').activeTabs('myMethod', 'Hello, world');
+#
+# Check out Alan Hogan's original jQuery plugin template:
+# https://github.com/alanhogan/Coffeescript-jQuery-Plugin-Template
+#
+(($, window) ->
 
-  hideTab = ($link) ->
-    $tab = $content.find $link.attr('href')
-    $tab.removeClass 'is-active'
-        .attr 'aria-hidden', true
+  # Define the plugin class
+  class ActiveTabs
 
-  showTab = ($link) ->
-    $tab = $content.find $link.attr('href')
-    $tab.addClass 'is-active'
-        .attr 'aria-hidden', false
+    defaults:
+      default: null
 
-  activate = ($link) ->
-    $current = $link
-    $link.attr 'aria-selected', true
+    constructor: (el, options) ->
+      @options      = $.extend({}, @defaults, options)
+      @$tabs        = $(el)
+      @key          = @$tabs.attr('id')
+      @$tabsContent = $(".tabs-content[data-tabs-content='" + @key + "']")
+      self          = this
 
-    showTab $link
+      @$tabs.on 'click', 'a', (event) ->
+        event.preventDefault()
 
-  deactivate = ($link) ->
-    $current = null
-    $link.attr 'aria-selected', false
+        self.activateLink(this)
 
-    hideTab $link
+      self.initialize()
 
-  initialize = ->
-    $tabs.find('a').each ->
-      $link = $(this)
-      id    = $link.attr('href').substring(1)
+    # Additional plugin methods go here
+    initialize: ->
+      @$tabs.children().each ->
+        $listItem = $(this)
+        $link     = $listItem.find 'a'
+        $listItem.attr 'role', 'presentation'
 
-      $link.attr 'role', 'tab'
-           .attr 'aria-controls', id
+        if $link.length > 0
+          key = $link.attr    'href'
+                     .replace '#', ''
 
-      $link.attr('id', id + '-label')    if $link.attr('id') == undefined
-      $link.attr('aria-selected', false) if $link.attr('aria-selected') == undefined
+          $link.attr 'id',            key + '-label'
+               .attr 'aria-controls', key
+               .attr 'role',          'tab'
+               .attr 'aria-selected', false
 
-    $content.find('.tabs-panel').each ->
-      $tab = $(this)
-      id   = $tab.attr 'id'
+      @$tabsContent.children().each ->
+        $content = $(this)
+        key      = $content.attr 'id'
 
-      $tab.attr 'role', 'tabpanel'
-          .attr 'aria-labelledby', id + '-label'
+        $content.attr 'role',           'tabpanel'
+                .attr 'aria-hidden',     true
+                .attr 'aria-labelledby', key + '-label'
 
-      $tab.attr('aria-hidden', false) if $tab.attr('aria-hidden') == undefined
+    getTab: ($link) ->
+      tabKey = $link.attr 'href'
 
-  $tabs.on 'click', 'a', (e) ->
-    e.preventDefault()
-    $new = $(this)
-    $old = $current
+      @$tabsContent.find tabKey
 
-    deactivate($old) if $old
-    activate($new)   if !$old || $new.attr('id') != $old.attr('id')
+    getCurrent: ->
+      @$tabs.find 'a[aria-selected="true"]'
+
+    deactivateTab: ($link) ->
+      return false if $link.length < 1
+      $tab = this.getTab $link
+
+      $tab.removeClass 'is-active'
+          .attr        'aria-hidden', true
+      $link.attr       'aria-selected', false
+      true
+
+    activateTab: ($link) ->
+      return false if $link.length < 1
+      $tab = this.getTab $link
+
+      $tab.addClass 'is-active'
+          .attr     'aria-hidden', false
+      $link.attr    'aria-selected', true
+      true
 
 
-  initialize()
+    activateLink: (link) ->
+      $newLink    = $(link)
+      $oldLink    = getCurrent()
+      activateNew = $newLink.attr('id') != $oldLink.attr('id')
+
+      changed = false
+      changed = true if this.deactivateTab $oldLink
+      changed = true if activateNew and this.activateTab($newLink)
+
+      @$tabs.trigger 'changed.tabs'
+      changed
+
+
+  # Define the plugin
+  $.fn.extend activeTabs: (option, args...) ->
+    @each ->
+      $this = $(this)
+      data  = $this.data 'tabs'
+
+      if !data
+        $this.data 'tabs', (data = new ActiveTabs(this, option))
+      if typeof option == 'string'
+        data[option].apply data, args
+
+) window.jQuery, window

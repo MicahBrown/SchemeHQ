@@ -108,8 +108,6 @@ $(document).on 'schemes_show.load', (e, obj) =>
   scheme.commentEditForm()
   scheme.invitationForm()
 
-  activeTabs()
-
 
 window.postInvitationErrors = (jsonString) ->
   errors    = JSON.parse(jsonString)
