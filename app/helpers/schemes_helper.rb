@@ -23,4 +23,19 @@ module SchemesHelper
   def clonable_scheme_invitation
     SchemeInvitation.new(email: "{ email }")
   end
+
+  def invitation_response_label invitation
+    css_class  = 'label hollow '
+    status     = nil
+
+    if invitation.response?
+      css_class += 'success'
+      status     = icon('check-circle-o', 'Accepted')
+    else
+      css_class += 'alert'
+      status     = icon('times-circle-o', 'Declined')
+    end
+
+    content_tag :span, status, class: css_class
+  end
 end
