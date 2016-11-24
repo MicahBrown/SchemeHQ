@@ -1,6 +1,7 @@
 class SchemeInvitation < ApplicationRecord
   belongs_to :scheme
   belongs_to :user
+  belongs_to :sender, class_name: "User"
 
   validates :email, presence:   true,
                     uniqueness: { scope: :scheme_id },
