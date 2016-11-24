@@ -20,12 +20,17 @@
   <div class="medium-9 columns medium-border-left">
     <div class="tabs-content vertical simple" data-tabs-content="dashboard-tabs">
       <div class="tabs-panel is-active" id="panel1v">
-        <h3 class="tabs-header"><%= icon('book', 'My Activity Log', class: 'fa-fw') %></h3>
+        <div class="tabs-header">
+          <h3 class="tabs-header-title"><%= icon('book', 'My Activity Log', class: 'fa-fw') %></h3>
+        </div>
         <div class="empty">You have no recent activity.</div>
       </div>
 
       <div class="tabs-panel" id="panel2v">
-        <h3 class="tabs-header"><%= icon('sitemap', 'My Schemes', class: 'fa-fw') %></h3>
+        <div class="tabs-header">
+          <h3 class="tabs-header-title"><%= icon('sitemap', 'My Schemes', class: 'fa-fw') %></h3>
+          <%= link_to icon("plus-circle", "Start New Scheme"), new_scheme_path, class: 'float-right button small' %>
+        </div>
         <% schemes = current_user.scheme_participants.includes(:scheme) %>
         <% if schemes.present? %>
           <table>
@@ -55,7 +60,9 @@
         <% end %>
       </div>
       <div class="tabs-panel" id="panel3v">
-        <h3 class="tabs-header"><%= icon("envelope", "My Invitations", class: 'fa-fw') %></h3>
+        <div class="tabs-header">
+          <h3 class="tabs-header-title"><%= icon("envelope", "My Invitations", class: 'fa-fw') %></h3>
+        </div>
         <% invitations = current_user.all_invitations.includes(:scheme) %>
         <% if invitations.present? %>
           <table id="scheme_invitations">
