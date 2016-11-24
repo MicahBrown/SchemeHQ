@@ -3,6 +3,7 @@ class CreateSchemeInvitations < ActiveRecord::Migration[5.0]
     create_table :scheme_invitations do |t|
       t.integer    :user_id,      null: false, default: 0
       t.belongs_to :scheme,       null: false
+      t.belongs_to :sender,       null: false
       t.string     :email,        null: false
       t.datetime   :sent_at
       t.datetime   :accepted_at

@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20161117052519) do
   create_table "scheme_invitations", force: :cascade do |t|
     t.integer  "user_id",      default: 0, null: false
     t.integer  "scheme_id",                null: false
+    t.integer  "sender_id",                null: false
     t.string   "email",                    null: false
     t.datetime "sent_at"
     t.datetime "accepted_at"
@@ -90,6 +91,7 @@ ActiveRecord::Schema.define(version: 20161117052519) do
     t.datetime "updated_at",               null: false
     t.index ["scheme_id", "email"], name: "index_scheme_invitations_on_scheme_id_and_email", unique: true, using: :btree
     t.index ["scheme_id"], name: "index_scheme_invitations_on_scheme_id", using: :btree
+    t.index ["sender_id"], name: "index_scheme_invitations_on_sender_id", using: :btree
     t.index ["user_id"], name: "index_scheme_invitations_on_user_id", using: :btree
   end
 
