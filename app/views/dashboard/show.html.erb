@@ -7,25 +7,25 @@
   <div class="medium-3 columns">
     <ul class="tabs vertical simple" id="dashboard-tabs" data-tabs>
       <li class="tabs-title is-active">
-        <%= link_to icon("book", "Activity Log"), '#panel1v', aria_selected: true %>
+        <%= link_to icon("book", "Activity Log", class: 'fa-fw'), '#panel1v', aria_selected: true %>
       </li>
       <li class="tabs-title">
         <%= link_to icon("sitemap", "Schemes", class: "fa-fw"), "#panel2v" %>
       </li>
       <li class="tabs-title">
-        <%= link_to icon("envelope", "Invitations #{content_tag :span, "(#{current_user.all_invitations.unresponded.count})",class: 'secondary-text'}".html_safe), "#panel3v" %>
+        <%= link_to icon("envelope", "Invitations #{content_tag :span, "(#{current_user.all_invitations.unresponded.count})",class: 'secondary-text'}".html_safe, class: 'fa-fw'), "#panel3v" %>
       </li>
     </ul>
   </div>
   <div class="medium-9 columns medium-border-left">
     <div class="tabs-content vertical simple" data-tabs-content="dashboard-tabs">
       <div class="tabs-panel is-active" id="panel1v">
-        <h3 class="subheader"><%= icon('book', 'My Activity Log') %></h3>
+        <h3 class="subheader"><%= icon('book', 'My Activity Log', class: 'fa-fw') %></h3>
         <div class="empty">You have no recent activity.</div>
       </div>
 
       <div class="tabs-panel" id="panel2v">
-        <h3 class="subheader"><%= icon('sitemap', 'My Schemes') %></h3>
+        <h3 class="subheader"><%= icon('sitemap', 'My Schemes', class: 'fa-fw') %></h3>
         <% schemes = current_user.scheme_participants.includes(:scheme) %>
         <% if schemes.present? %>
           <table>
@@ -55,7 +55,7 @@
         <% end %>
       </div>
       <div class="tabs-panel" id="panel3v">
-        <h3 class="subheader"><%= icon("envelope", "My Invitations") %></h3>
+        <h3 class="subheader"><%= icon("envelope", "My Invitations", class: 'fa-fw') %></h3>
         <% invitations = current_user.all_invitations.includes(:scheme) %>
         <% if invitations.present? %>
           <table id="scheme_invitations">
