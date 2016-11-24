@@ -46,16 +46,31 @@
             <tr>
               <th>Scheme Title</th>
               <th>Invitation Date</th>
+              <th colspan="2">Reply</th>
             </tr>
           </thead>
           <tbody>
             <% if current_user.all_invitations.present? %>
-              <tr>
-                <% current_user.all_invitations.includes(:scheme).each do |invite| %>
+              <% current_user.all_invitations.includes(:scheme).each do |invite| %>
+                <tr>
                   <td><%= link_to invite.scheme.title, invite.scheme %></td>
                   <td><%= invite.created_at %></td>
-                <% end %>
-              </tr>
+                  <% if invite.responded? %>
+                    <td colspan="2"></td>
+                  <% else %>
+                    <td>
+                      <%= button_to scheme_invitation_response_path(invite.scheme, invite), params: { response: true } do %>
+                        <%= icon("check-circle-o", "Accept") %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= button_to scheme_invitation_response_path(invite.scheme, invite), params: { response: false } do %>
+                        <%= icon("times-circle-o", "Decline") %>
+                      <% end %>
+                    </td>
+                  <% end %>
+                </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>
