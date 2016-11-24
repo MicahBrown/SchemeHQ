@@ -13,4 +13,10 @@ class SchemeInvitation < ApplicationRecord
   def responded?
     responded_at?
   end
+
+  def respond boolean
+    self.response     = boolean
+    self.responded_at = Time.now if response_changed?
+    self.save
+  end
 end
