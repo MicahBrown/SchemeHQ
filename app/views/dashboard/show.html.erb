@@ -13,7 +13,7 @@
         <%= link_to icon("sitemap", "Schemes", class: "fa-fw"), "#panel2v" %>
       </li>
       <li class="tabs-title">
-        <%= link_to icon("envelope", "Invitations #{content_tag :span, "(#{current_user.all_invitations.unresponded.count})",class: 'secondary-text'}".html_safe, class: 'fa-fw'), "#panel3v" %>
+        <%= link_to icon("envelope", "Invitations #{content_tag :span, "(#{current_user.all_invitations.unresponded.count})"}".html_safe, class: 'fa-fw'), "#panel3v" %>
       </li>
     </ul>
   </div>
