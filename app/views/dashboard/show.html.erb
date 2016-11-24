@@ -51,26 +51,7 @@
           </thead>
           <tbody>
             <% if current_user.all_invitations.present? %>
-              <% current_user.all_invitations.includes(:scheme).each do |invite| %>
-                <tr>
-                  <td><%= link_to invite.scheme.title, invite.scheme %></td>
-                  <td><%= invite.created_at %></td>
-                  <% if invite.responded? %>
-                    <td colspan="2"></td>
-                  <% else %>
-                    <td>
-                      <%= button_to scheme_invitation_response_path(invite.scheme, invite), method: :put, params: { response: true } do %>
-                        <%= icon("check-circle-o", "Accept") %>
-                      <% end %>
-                    </td>
-                    <td>
-                      <%= button_to scheme_invitation_response_path(invite.scheme, invite), method: :put, params: { response: false } do %>
-                        <%= icon("times-circle-o", "Decline") %>
-                      <% end %>
-                    </td>
-                  <% end %>
-                </tr>
-              <% end %>
+              <%= render partial: 'scheme_invitations/invitation_row', collection: current_user.all_invitations.includes(:scheme), as: :invite %>
             <% end %>
           </tbody>
         </table>

@@ -1,0 +1,18 @@
+<tr class="invite-<%= invite.id %>">
+  <td><%= link_to invite.scheme.title, invite.scheme %></td>
+  <td><%= invite.created_at %></td>
+  <% if invite.responded? %>
+    <td colspan="2"></td>
+  <% else %>
+    <td>
+      <%= button_to scheme_invitation_response_path(invite.scheme, invite), method: :put, params: { response: true }, form_class: "invitation-response-form", data: { disable_with: "Please wait..." } do %>
+        <%= icon("check-circle-o", "Accept") %>
+      <% end %>
+    </td>
+    <td>
+      <%= button_to scheme_invitation_response_path(invite.scheme, invite), method: :put, params: { response: false }, form_class: "invitation-response-form", data: { disable_with: "Please wait..." } do %>
+        <%= icon("times-circle-o", "Decline") %>
+      <% end %>
+    </td>
+  <% end %>
+</tr>
