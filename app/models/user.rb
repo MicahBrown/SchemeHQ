@@ -53,6 +53,10 @@ class User < ApplicationRecord
     end
   end
 
+  def all_invitations
+    SchemeInvitation.where(email: self.email)
+  end
+
   protected
 
     def confirmation_required?
