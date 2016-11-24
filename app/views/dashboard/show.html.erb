@@ -7,16 +7,23 @@
   <div class="medium-3 columns">
     <ul class="tabs vertical simple" id="dashboard-tabs" data-tabs>
       <li class="tabs-title is-active">
-        <a href="#panel1v" aria-selected="true">
-          <%= icon("sitemap", "Schemes", class: "fa-fw") %>
-        </a>
+        <%= link_to icon("book", "Activity Log"), '#panel1v', aria_selected: true %>
       </li>
-      <li class="tabs-title"><a href="#panel2v"><%= icon("envelope", "Invitations (#{current_user.all_invitations.unresponded.count})") %></a></li>
+      <li class="tabs-title">
+        <%= link_to icon("sitemap", "Schemes", class: "fa-fw"), "#panel2v" %>
+      </li>
+      <li class="tabs-title">
+        <%= link_to icon("envelope", "Invitations (#{current_user.all_invitations.unresponded.count})"), "#panel3v" %>
+      </li>
     </ul>
   </div>
   <div class="medium-9 columns medium-border-left">
     <div class="tabs-content vertical simple" data-tabs-content="dashboard-tabs">
       <div class="tabs-panel is-active" id="panel1v">
+        <h3 class="subheader"><%= icon('book', 'My Activity Log') %></h3>
+      </div>
+
+      <div class="tabs-panel" id="panel2v">
         <h3 class="subheader"><%= icon('sitemap', 'My Schemes') %></h3>
         <%= link_to icon("plus-circle", "New Scheme"), new_scheme_path, class: 'float-right' %>
         <table>
@@ -39,7 +46,7 @@
           </tbody>
         </table>
       </div>
-      <div class="tabs-panel" id="panel2v">
+      <div class="tabs-panel" id="panel3v">
         <h3 class="subheader"><%= icon("envelope", "My Invitations") %></h3>
         <table id="scheme_invitations">
           <thead>
