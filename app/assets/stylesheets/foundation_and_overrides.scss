@@ -91,12 +91,13 @@
   border: 0;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
-  background: $medium-gray;
+  background: $dark-gray;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   border-radius: $global-radius;
   overflow: hidden;
   > li {
     > a {
+      color: $white;
       padding: 0.75rem 1rem;
     }
     &.is-active {
@@ -116,7 +117,7 @@
   }
   .tabs-title > a:focus,
   .tabs-title > a[aria-selected="true"] {
-    background: #fff;
+    background: $secondary-color;
   }
 }
 
