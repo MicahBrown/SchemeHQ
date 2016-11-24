@@ -126,16 +126,18 @@
   .tabs-panel { padding: 0; }
 }
 
+thead > :last-child { border-bottom: 1px solid $medium-gray; }
+
 table.simple {
   width: auto;
   border-color: transparent;
   thead, tbody, tfoot { background: transparent; border: 0; }
   tbody tr:nth-child(2n) { background: none; }
   thead, tfoot { background: none; }
-
+  thead > :last-child { border-bottom: 0; }
   tr {
     td, th { padding: 0.15rem 1rem 0.15rem 0; }
-    :last-child { padding-right: 0; }
+    > :last-child { padding-right: 0; }
   }
 }
 
