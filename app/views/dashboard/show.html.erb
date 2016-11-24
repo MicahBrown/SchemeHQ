@@ -59,12 +59,12 @@
                     <td colspan="2"></td>
                   <% else %>
                     <td>
-                      <%= button_to scheme_invitation_response_path(invite.scheme, invite), params: { response: true } do %>
+                      <%= button_to scheme_invitation_response_path(invite.scheme, invite), method: :put, params: { response: true } do %>
                         <%= icon("check-circle-o", "Accept") %>
                       <% end %>
                     </td>
                     <td>
-                      <%= button_to scheme_invitation_response_path(invite.scheme, invite), params: { response: false } do %>
+                      <%= button_to scheme_invitation_response_path(invite.scheme, invite), method: :put, params: { response: false } do %>
                         <%= icon("times-circle-o", "Decline") %>
                       <% end %>
                     </td>
