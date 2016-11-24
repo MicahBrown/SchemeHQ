@@ -52,45 +52,49 @@
                 .attr 'aria-hidden',     true
                 .attr 'aria-labelledby', key + '-label'
 
+    # Retrieves tab corresponding with supplied link
     getTab: ($link) ->
       tabKey = $link.attr 'href'
 
       @$tabsContent.find tabKey
 
+    # Returns currently activated link
     getCurrent: ->
       @$tabs.find 'a[aria-selected="true"]'
 
+    # Hides tab that corresponds with supplied link
     deactivateTab: ($link) ->
       return false if $link.length < 1
-      $tab = this.getTab $link
+      $tab = @getTab $link
 
       $tab.removeClass 'is-active'
           .attr        'aria-hidden', true
       $link.attr       'aria-selected', false
       true
 
+    # Displays tab that corresponds with supplied link
     activateTab: ($link) ->
       return false if $link.length < 1
-      $tab = this.getTab $link
+      $tab = @getTab $link
 
       $tab.addClass 'is-active'
           .attr     'aria-hidden', false
       $link.attr    'aria-selected', true
       true
 
-
+    # Disables currently selected tab and activates/displays.
+    # If the activated link is clicked again, it will be deactivated and *not* reactivated.
     activateLink: (link) ->
       $newLink    = $(link)
-      $oldLink    = getCurrent()
+      $oldLink    = @getCurrent()
       activateNew = $newLink.attr('id') != $oldLink.attr('id')
 
       changed = false
-      changed = true if this.deactivateTab $oldLink
-      changed = true if activateNew and this.activateTab($newLink)
+      changed = true if @deactivateTab $oldLink
+      changed = true if activateNew and @activateTab $newLink
 
-      @$tabs.trigger 'changed.tabs'
+      @$tabs.trigger 'changed.tabs', [@getCurrent()] if changed
       changed
-
 
   # Define the plugin
   $.fn.extend activeTabs: (option, args...) ->
