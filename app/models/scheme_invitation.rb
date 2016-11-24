@@ -22,4 +22,10 @@ class SchemeInvitation < ApplicationRecord
     self.responded_at = Time.now if response_changed?
     self.save
   end
+
+  def unrespond!
+    self.response     = nil
+    self.responded_at = nil
+    self.save
+  end
 end
