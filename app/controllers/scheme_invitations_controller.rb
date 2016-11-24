@@ -4,7 +4,7 @@ class SchemeInvitationsController < ApplicationController
   load_and_authorize_resource :scheme, find_by: :token
 
   def create
-    @processor = InvitationProcessor.new @scheme, scheme_invitation_params[:invitees]
+    @processor = InvitationProcessor.new @scheme, scheme_invitation_params[:invitees], current_user
     @processor.process
 
     respond_to do |format|
