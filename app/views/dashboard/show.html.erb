@@ -11,24 +11,54 @@
           <%= icon("sitemap", "Schemes", class: "fa-fw") %>
         </a>
       </li>
-      <li class="tabs-title"><a href="#panel2v"><%= icon("envelope", "Invitations") %></a></li>
+      <li class="tabs-title"><a href="#panel2v"><%= icon("envelope", "Invitations (#{current_user.scheme_participants.count})") %></a></li>
     </ul>
   </div>
   <div class="medium-9 columns medium-border-left">
     <div class="tabs-content vertical simple" data-tabs-content="dashboard-tabs">
       <div class="tabs-panel is-active" id="panel1v">
         <h3 class="subheader"><%= icon('sitemap', 'My Schemes') %></h3>
-        <%= link_to icon("plus-circle", "New Scheme"), new_scheme_path %>
-        <ul>
-          <% current_user.scheme_participants.includes(:scheme).each do |dp| %>
-            <% d = dp.scheme %>
-            <li><%= link_to d.title, d %> <small><%= dp.role %></small></li>
-          <% end %>
-        </ul>
+        <%= link_to icon("plus-circle", "New Scheme"), new_scheme_path, class: 'float-right' %>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Role</th>
+              <th>Joined Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% current_user.scheme_participants.includes(:scheme).each do |dp| %>
+              <% d = dp.scheme %>
+              <tr>
+                <td><%= link_to d.title, d %></td>
+                <td><%= dp.role.titleize %></td>
+                <td><%= dp.created_at %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
       <div class="tabs-panel" id="panel2v">
         <h3 class="subheader"><%= icon("envelope", "My Invitations") %></h3>
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Scheme Title</th>
+              <th>Invitation Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if current_user.all_invitations.present? %>
+              <tr>
+                <% current_user.all_invitations.includes(:scheme).each do |invite| %>
+                  <td><%= link_to invite.scheme.title, invite.scheme %></td>
+                  <td><%= invite.created_at %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
