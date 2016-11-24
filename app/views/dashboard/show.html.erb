@@ -33,7 +33,7 @@
               <tr>
                 <th>Title</th>
                 <th>Role</th>
-                <th>Joined Date</th>
+                <th class="show-for-medium">Joined Date</th>
               </tr>
             </thead>
             <tbody>
@@ -42,7 +42,7 @@
                 <tr>
                   <td><%= link_to d.title, d %></td>
                   <td><%= dp.role.titleize %></td>
-                  <td><%= dp.created_at %></td>
+                  <td class="show-for-medium"><%= dp.created_at %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -62,7 +62,7 @@
             <thead>
               <tr>
                 <th>Scheme Title</th>
-                <th>Invitation Date</th>
+                <th class="show-for-medium">Invitation Date</th>
                 <th colspan="2">Reply</th>
               </tr>
             </thead>
