@@ -11,7 +11,7 @@
           <%= icon("sitemap", "Schemes", class: "fa-fw") %>
         </a>
       </li>
-      <li class="tabs-title"><a href="#panel2v"><%= icon("envelope", "Invitations (#{current_user.scheme_participants.count})") %></a></li>
+      <li class="tabs-title"><a href="#panel2v"><%= icon("envelope", "Invitations (#{current_user.all_invitations.count})") %></a></li>
     </ul>
   </div>
   <div class="medium-9 columns medium-border-left">
