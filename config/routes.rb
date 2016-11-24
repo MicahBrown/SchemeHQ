@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   end
 
   resources :schemes, only: [:new, :create, :show] do
-    resources :invitations, controller: :scheme_invitations, only: :create
+    resources :invitations, controller: :scheme_invitations, only: :create do
+      resource :response, controller: :scheme_invitation_responses, only: :update
+    end
+
     resources :polls, only: [:create, :destroy] do
       post 'vote' => 'poll_responses#create'
     end
