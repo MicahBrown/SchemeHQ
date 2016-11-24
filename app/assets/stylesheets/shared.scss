@@ -16,6 +16,14 @@ a.disabled { opacity: 0.5; }
 .va-bottom { vertical-align: bottom !important; }
 .va-top    { vertical-align: top !important; }
 
+div.empty {
+  padding: 4rem 2rem;
+  background: $white;
+  color: $secondary-color;
+  text-align: center;
+  :last-child { margin-bottom: 0; }
+}
+
 .flash {
   padding: 0.5rem 0;
   font-size: 1.2rem;

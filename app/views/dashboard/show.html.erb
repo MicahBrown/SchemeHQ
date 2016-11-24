@@ -21,47 +21,58 @@
     <div class="tabs-content vertical simple" data-tabs-content="dashboard-tabs">
       <div class="tabs-panel is-active" id="panel1v">
         <h3 class="subheader"><%= icon('book', 'My Activity Log') %></h3>
+        <div class="empty">You have no recent activity.</div>
       </div>
 
       <div class="tabs-panel" id="panel2v">
         <h3 class="subheader"><%= icon('sitemap', 'My Schemes') %></h3>
-        <%= link_to icon("plus-circle", "New Scheme"), new_scheme_path, class: 'float-right' %>
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Role</th>
-              <th>Joined Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% current_user.scheme_participants.includes(:scheme).each do |dp| %>
-              <% d = dp.scheme %>
+        <% schemes = current_user.scheme_participants.includes(:scheme) %>
+        <% if schemes.present? %>
+          <table>
+            <thead>
               <tr>
-                <td><%= link_to d.title, d %></td>
-                <td><%= dp.role.titleize %></td>
-                <td><%= dp.created_at %></td>
+                <th>Title</th>
+                <th>Role</th>
+                <th>Joined Date</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% schemes.each do |dp| %>
+                <% d = dp.scheme %>
+                <tr>
+                  <td><%= link_to d.title, d %></td>
+                  <td><%= dp.role.titleize %></td>
+                  <td><%= dp.created_at %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <div class="empty">
+            <p>You don't have any schemes yet.</p>
+            <p><%= link_to icon("plus-circle", "Start New Scheme"), new_scheme_path %></p>
+          </div>
+        <% end %>
       </div>
       <div class="tabs-panel" id="panel3v">
         <h3 class="subheader"><%= icon("envelope", "My Invitations") %></h3>
-        <table id="scheme_invitations">
-          <thead>
-            <tr>
-              <th>Scheme Title</th>
-              <th>Invitation Date</th>
-              <th colspan="2">Reply</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% if current_user.all_invitations.present? %>
-              <%= render partial: 'scheme_invitations/invitation_row', collection: current_user.all_invitations.includes(:scheme), as: :invite %>
-            <% end %>
-          </tbody>
-        </table>
+        <% invitations = current_user.all_invitations.includes(:scheme) %>
+        <% if invitations.present? %>
+          <table id="scheme_invitations">
+            <thead>
+              <tr>
+                <th>Scheme Title</th>
+                <th>Invitation Date</th>
+                <th colspan="2">Reply</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render partial: 'scheme_invitations/invitation_row', collection: invitations, as: :invite %>
+            </tbody>
+          </table>
+        <% else %>
+          <div class="empty">You haven't received any invitations yet.</div>
+        <% end %>
       </div>
     </div>
   </div>
