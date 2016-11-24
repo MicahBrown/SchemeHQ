@@ -152,13 +152,18 @@ table.simple {
   &.success { background: none; border: 1px solid; color: $success-color; }
 }
 
-.top-bar { margin-bottom: 1rem; }
+.top-bar { margin-bottom: 2rem; }
 .top-bar-title {
+  position: relative;
   > a {
+    position: absolute;
+    left: 0;
+    top: 0;
     display: block;
     background: #fff;
-    border-radius: 0 0 40px 4px;
-    padding: 0.5rem 2.5rem 0.5rem 2rem;
+    border-radius: 0 0 35px 35px;
+    padding: 0.75rem 2rem;
+    font-size: 1.25rem;
   }
 }
 

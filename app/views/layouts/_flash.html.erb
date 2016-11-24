@@ -1,9 +1,9 @@
 <% flash.each do |f| %>
-  <div class="flash <%= f.first %>" data-closable>
-    <div class="row">
-      <div class="columns">
+  <div class="row">
+    <div class="columns">
+      <div class="flash <%= f.first %>" data-closable>
         <%= close_button %>
-        <p class="message"><%= f.last %></p>
+        <%= flash_message f %>
       </div>
     </div>
   </div>

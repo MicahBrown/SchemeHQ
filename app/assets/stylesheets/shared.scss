@@ -26,16 +26,27 @@ div.empty {
 }
 
 .flash {
-  padding: 0.5rem 0;
+  position: relative;
+  padding: 0.5rem;
   font-size: 1.2rem;
-  color: #fff;
-  margin: 1rem 0 0;
-  background: $secondary-color;
-  &.alert { background: $alert-color; }
-  &.notice { background: $success-color; }
+  color: $secondary-color;
+  margin: 0;
+  border-radius: $global-radius;
+  border: 1px solid $secondary-color;
+  border-bottom-width: 2px;
+  background: scale-color($secondary-color, $lightness: $callout-background-fade);
+  &.alert {
+    border-color: $alert-color;
+    color: $alert-color;
+    background: scale-color($alert-color, $lightness: $callout-background-fade);
+  }
+  &.notice {
+    border-color: $success-color;
+    color: $success-color;
+    background: scale-color($success-color, $lightness: $callout-background-fade);
+  }
   .message { margin-bottom: 0; padding-right: 2rem; }
-  .column, .columns { position: relative; }
-  .close-button { top: -0.5rem; }
+  .close-button { top: 0.25rem; }
 }
 
 .errors {

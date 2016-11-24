@@ -1,31 +1,34 @@
-<div id="header" class="top-bar">
-  <div class="row">
-    <div class="columns">
-      <div class="top-bar-title">
-        <%= link_to content_tag(:strong, "SchemeHQ"), root_path %>
-      </div>
+<div id="header" style="margin-bottom: 1rem">
+  <div class="top-bar">
+    <div class="row">
+      <div class="columns">
+        <div class="top-bar-title">
+          <%= link_to content_tag(:strong, "SchemeHQ"), root_path %>
+        </div>
 
-      <div class="float-right hide-for-large" style="padding: 0.5rem 0;">
-        <span data-responsive-toggle="responsive-menu" data-hide-for="large">
-          <button class="menu-icon" type="button" data-toggle></button>
-        </span>
-      </div>
+        <div class="float-right hide-for-large" style="padding: 0.5rem 0;">
+          <span data-responsive-toggle="responsive-menu" data-hide-for="large">
+            <button class="menu-icon" type="button" data-toggle></button>
+          </span>
+        </div>
 
-      <div id="responsive-menu">
-        <div class="top-bar-right">
-          <ul class="menu icon-top-small-only text-center" id="main-menu">
-            <% if current_user %>
-              <li class="menu-text">Hi <%= user_display_name(current_user) %>!</li>
-              <li><%= link_to icon('cog', 'Settings'), settings_path %></li>
-              <li><%= link_to icon('sign-out', 'Log Out'), destroy_user_session_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to icon('group', 'Sign Up'), new_user_registration_path %></li>
-              <li><%= link_to icon('sign-in', 'Log In'), new_user_session_path %></li>
-            <% end %>
-          </ul>
+        <div id="responsive-menu">
+          <div class="top-bar-right">
+            <ul class="menu icon-top-small-only text-center" id="main-menu">
+              <% if current_user %>
+                <li class="menu-text">Hi <%= user_display_name(current_user) %>!</li>
+                <li><%= link_to icon('cog', 'Settings'), settings_path %></li>
+                <li><%= link_to icon('sign-out', 'Log Out'), destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to icon('group', 'Sign Up'), new_user_registration_path %></li>
+                <li><%= link_to icon('sign-in', 'Log In'), new_user_session_path %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
   <%= render 'layouts/flash' if flash.present? %>
 </div>

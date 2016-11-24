@@ -50,4 +50,13 @@ module ApplicationHelper
 
     render 'shared/form_errors', errors: errors, message: message
   end
+
+  def flash_message flash
+    icon_name = case flash.first
+                when "notice" then "check"
+                when "alert"  then "warning"
+                end
+
+    content_tag :p, icon(icon_name, flash.last), class: 'message'
+  end
 end
