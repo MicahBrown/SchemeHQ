@@ -39,6 +39,8 @@ class Ability
       can :create, Scheme
       can :manage, Scheme, user_id: user.id
       can [:read, :respond], Scheme, private: false
+      can :manage, SchemeInvitation, sender_id: user.id
+      can([:read, :update], SchemeInvitation, email: user.email) if user.email.present?
     end
   end
 end
