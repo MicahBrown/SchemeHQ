@@ -10,6 +10,9 @@ class SchemeInvitation < ApplicationRecord
   before_validation { trim_whitespace :email }
   before_validation { downcase :email }
 
+  scope :responded, -> { where.not(responded_at: nil) }
+  scope :unresponded, -> { where(responded_at: nil) }
+
   def responded?
     responded_at?
   end
