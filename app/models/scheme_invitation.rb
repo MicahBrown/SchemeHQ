@@ -8,4 +8,8 @@ class SchemeInvitation < ApplicationRecord
 
   before_validation { trim_whitespace :email }
   before_validation { downcase :email }
+
+  def responded?
+    responded_at?
+  end
 end
