@@ -17,15 +17,24 @@ class SchemeInvitation < ApplicationRecord
     responded_at?
   end
 
-  def respond boolean
+  def respond! boolean
     self.response     = boolean
     self.responded_at = Time.now if response_changed?
-    self.save
+
+    SchemeInvitation.transaction do
+      if boolean && user && scheme.participants.exclude?(user)
+        SchemeParticipant.transaction do
+          scheme.scheme_participants.create! user: user
+        end
+      end
+
+      self.save!
+    end
   end
 
   def unrespond!
     self.response     = nil
     self.responded_at = nil
-    self.save
+    self.save!
   end
 end
