@@ -5,6 +5,7 @@ a.disabled { opacity: 0.5; }
 .no-margin { margin: 0 !important; }
 .no-padding { padding: 0 !important; }
 .no-radius { border-radius: 0 !important; }
+.no-wrap { whitespace: nowrap !important; }
 
 .primary-text { color: $primary-color !important; }
 .alert-text { color: $alert-color !important; }
