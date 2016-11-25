@@ -22,6 +22,7 @@
       <div class="tabs-panel is-active" id="panel1v">
         <div class="tabs-header">
           <h3 class="tabs-header-title"><%= icon('book', 'My Activity Log', class: 'fa-fw') %></h3>
+          <%= link_to icon("plus-circle", "Start New Scheme"), new_scheme_path, class: 'float-right button small' %>
         </div>
         <div class="empty">You have no recent activity.</div>
       </div>
