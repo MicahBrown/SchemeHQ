@@ -59,4 +59,11 @@ module ApplicationHelper
 
     content_tag :p, icon(icon_name, flash.last), class: 'message'
   end
+
+  def timestamp object
+    value = time_ago_in_words(object.updated_at) + " ago"
+    value = value.gsub "about ", ""
+
+    content_tag :time, value, title: object.updated_at.strftime("%b %-e, %Y %-I:%M %p %Z"), data: { tooltip: true }
+  end
 end

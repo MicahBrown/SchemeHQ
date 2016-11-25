@@ -1,6 +1,6 @@
 <tr class="invite-<%= invite.id %>">
   <td><%= link_to invite.scheme.title, invite.scheme %></td>
-  <td class="show-for-medium"><%= invite.created_at %></td>
+  <td class="show-for-medium"><%= timestamp invite %></td>
   <% if invite.responded? %>
     <td colspan="2"><%= invitation_response_label(invite) %></td>
   <% else %>
