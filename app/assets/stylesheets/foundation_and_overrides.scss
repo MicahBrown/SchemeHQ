@@ -136,12 +136,6 @@
   .tabs-panel { padding: 0; }
 }
 
-/* Small only */
-@media screen and (max-width: 39.9375em) {
-  .tabs-content.simple { border-top: 1px solid $medium-gray; }
-}
-
-thead > :last-child { border-bottom: 1px solid $medium-gray; }
 
 table.simple {
   width: auto;
@@ -192,6 +186,11 @@ table.simple {
     background: $anchor-color-hover;
     box-shadow: 0 7px 0 $anchor-color-hover, 0 14px 0 $anchor-color-hover;
   }
+}
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+  .tabs-content.simple { border-top: 1px solid $medium-gray; }
 }
 
 /* Medium and up */
