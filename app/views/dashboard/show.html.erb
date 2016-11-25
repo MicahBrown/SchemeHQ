@@ -38,16 +38,16 @@
               <tr>
                 <th>Title</th>
                 <th>Role</th>
-                <th class="show-for-medium">Joined Date</th>
+                <th class="show-for-medium">Last Modified</th>
               </tr>
             </thead>
             <tbody>
               <% schemes.each do |dp| %>
-                <% d = dp.scheme %>
+                <% scheme = dp.scheme %>
                 <tr>
-                  <td><%= link_to d.title, d %></td>
+                  <td><%= link_to scheme.title, scheme %></td>
                   <td><%= dp.role.titleize %></td>
-                  <td class="show-for-medium"><%= dp.created_at %></td>
+                  <td class="show-for-medium"><%= scheme.updated_at %></td>
                 </tr>
               <% end %>
             </tbody>
