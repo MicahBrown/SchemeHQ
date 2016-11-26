@@ -6,7 +6,7 @@
       </div>
 
       <div class="form-container">
-        <%= link_to icon("google", "Sign In With Google"), user_google_oauth2_omniauth_authorize_path, class: 'button hollow expanded' %>
+        <%= link_to icon("google", "Sign In With Google"), user_google_oauth2_omniauth_authorize_path, class: 'button expanded' %>
         <hr/>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
