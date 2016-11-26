@@ -162,17 +162,19 @@ table.simple {
 }
 
 .top-bar { margin-bottom: 2rem; }
+.top-bar-right { position: relative; z-index: 200; }
 .top-bar-title {
-  position: relative;
   > a {
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: relative;
     display: block;
-    background: #fff;
-    border-radius: 0 0 35px 35px;
-    padding: 0.75rem 2rem;
-    font-size: 1.25rem;
+    min-width: 164px;
+    > img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 199;
+    }
   }
 }
 
