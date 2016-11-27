@@ -66,4 +66,12 @@ module ApplicationHelper
 
     content_tag :time, value, title: object.updated_at.strftime("%b %-e, %Y %-I:%M %p %Z"), data: { tooltip: true }
   end
+
+  def header_menu_link icon_name, value, path, options={}
+    if current_page?(path)
+      options[:class] = options.key?(:class) ? "#{options[:class]} active" : "active"
+    end
+
+    link_to icon(icon_name, value), path, options
+  end
 end

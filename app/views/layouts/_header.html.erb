@@ -17,12 +17,12 @@
             <ul class="menu icon-top-small-only text-center" id="main-menu">
               <% if current_user %>
                 <li class="menu-text show-for-medium">Hi <%= user_display_name(current_user) %>!</li>
-                <li class="show-for-medium"><%= link_to icon('home', 'Home'), my_path %></li>
-                <li><%= link_to icon('cog', 'Settings'), settings_path %></li>
-                <li><%= link_to icon('sign-out', 'Log Out'), destroy_user_session_path, method: :delete %></li>
+                <li class="show-for-medium"><%= header_menu_link 'home', 'Home', my_path %></li>
+                <li><%= header_menu_link 'cog', 'Settings', settings_path %></li>
+                <li><%= header_menu_link 'sign-out', 'Log Out', destroy_user_session_path, method: :delete %></li>
               <% else %>
-                <li><%= link_to icon('group', 'Sign Up'), new_user_registration_path %></li>
-                <li><%= link_to icon('sign-in', 'Log In'), new_user_session_path %></li>
+                <li><%= header_menu_link 'group', 'Sign Up', new_user_registration_path %></li>
+                <li><%= header_menu_link 'sign-in', 'Log In', new_user_session_path %></li>
               <% end %>
             </ul>
           </div>

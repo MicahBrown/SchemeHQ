@@ -162,7 +162,19 @@ table.simple {
 }
 
 .top-bar { margin-bottom: 2rem; }
-.top-bar-right { position: relative; z-index: 200; }
+.top-bar-right {
+  position: relative;
+  z-index: 200;
+  .menu {
+    > li {
+      > a {
+        border-bottom: 2px solid transparent;
+        &:hover { border-bottom-color: $success-color; color: $success-color; background: scale-color($success-color, $lightness: $callout-background-fade);}
+        &.active { border-bottom-color: $primary-color; color: $primary-color; background: scale-color($primary-color, $lightness: $callout-background-fade); }
+      }
+    }
+  }
+}
 .top-bar-title {
   > a {
     position: relative;
