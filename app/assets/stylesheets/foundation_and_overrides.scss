@@ -51,6 +51,8 @@
 // @include motion-ui-transitions;
 // @include motion-ui-animations;
 
+.button.tiny { padding: 0.6em 0.8em; }
+
 .row { max-width: 60rem; }
 
 .input-group > *:last-child > *,
