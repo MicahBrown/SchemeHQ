@@ -14,10 +14,12 @@ module SchemesHelper
   end
 
   def schemable_actions schemable
-    case schemable
-    when Comment then comment_actions(schemable)
-    when Poll    then poll_actions(schemable)
-    end
+    links = case schemable
+            when Comment then comment_links(schemable)
+            when Poll    then poll_links(schemable)
+            end
+
+    action_links links
   end
 
   def clonable_scheme_invitation

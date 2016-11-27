@@ -31,9 +31,9 @@ module PollsHelper
     content_tag :span, icon("check", "Your Vote"), class: "label hollow success float-right"
   end
 
-  def poll_actions poll
-    return nil unless current_user
+  def poll_links poll
     links = []
+    return links unless current_user
 
     if current_user == poll.user
       links.push link_to(icon("trash", "Delete"), scheme_poll_path(poll.scheme, poll),
@@ -42,6 +42,6 @@ module PollsHelper
                     data:   { confirm: "Are you sure?" })
     end
 
-    action_links links
+    links
   end
 end
