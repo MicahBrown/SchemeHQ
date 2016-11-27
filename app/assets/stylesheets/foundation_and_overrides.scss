@@ -172,8 +172,21 @@ table.simple {
     > li {
       > a {
         border-bottom: 2px solid transparent;
-        &:hover { border-bottom-color: $success-color; color: $success-color; background: scale-color($success-color, $lightness: $callout-background-fade);}
-        &.active { border-bottom-color: $primary-color; color: $primary-color; background: scale-color($primary-color, $lightness: $callout-background-fade); }
+        &:hover {
+          border-bottom-color: $success-color;
+          color: $success-color;
+          background: scale-color($success-color, $lightness: $callout-background-fade);
+        }
+        &[data-method='delete']:hover {
+          border-bottom-color: $alert-color;
+          color: $alert-color;
+          background: scale-color($alert-color, $lightness: $callout-background-fade);
+        }
+        &.active {
+          border-bottom-color: $primary-color;
+          color: $primary-color;
+          background: scale-color($primary-color, $lightness: $callout-background-fade);
+        }
       }
     }
   }
