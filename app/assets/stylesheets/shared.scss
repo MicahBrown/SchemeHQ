@@ -130,3 +130,17 @@ div.empty {
   }
   label { color: $alert-color; }
 }
+
+.actions {
+  @include clearfix;
+  .actions-left { float: left; }
+  .actions-right {
+    float: right;
+    .menu.simple {
+      li {
+        margin-right: 0;
+        margin-left: 1rem;
+      }
+    }
+  }
+}

@@ -9,6 +9,15 @@
       <%= timestamp schemable %>
     </div>
     <div class="content"><%= render schemable %></div>
-    <div class="actions"><%= schemable_actions schemable %></div>
+    <div class="actions">
+      <div class="actions-left">
+        <ul class="menu simple">
+          <li><%= link_to icon("thumbs-o-up", 0) %></li>
+          <li><%= link_to icon("thumbs-o-down", 0) %></li>
+          <li><%= link_to icon("heart", 0) %></li>
+        </ul>
+      </div>
+      <div class="actions-right"><%= schemable_actions schemable %></div>
+    </div>
   </div>
 </li>
