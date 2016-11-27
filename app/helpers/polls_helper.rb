@@ -10,7 +10,7 @@ module PollsHelper
       render('polls/poll_option_fields', :fields_for => builder, deletable: true)
     end
 
-    link_to icon("plus-circle", "Add Another Poll Option"), "javascript:void(0);",
+    link_to icon("plus-circle", "Add Poll Option"), "javascript:void(0);",
       class:    "add-poll-option float-right",
       data:     {
         field_hash: {
