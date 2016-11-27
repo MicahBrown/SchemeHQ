@@ -2,9 +2,11 @@
   <td><%= link_to invite.scheme.title, invite.scheme %></td>
   <td class="show-for-medium"><%= timestamp invite %></td>
   <% if invite.responded? %>
-    <td colspan="2"><%= invitation_response_label(invite) %></td>
+    <td><%= invitation_response_label(invite) %></td>
   <% else %>
-    <td><%= invitation_response_form invite %></td>
-    <td><%= invitation_response_form invite, false %></td>
+    <td>
+      <%= invitation_response_form invite %>
+      <%= invitation_response_form invite, false %>
+    </td>
   <% end %>
 </tr>
