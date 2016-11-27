@@ -37,7 +37,8 @@ module SchemesHelper
       method:     :put,
       form_class: "invitation-response-form",
       params:     { response: response_value },
-      data:       { disable_with: "Please wait..." } do
+      data:       { disable_with: "Please wait..." },
+      class:      "button tiny no-margin#{' alert' unless response_value}" do
       response_value ? icon("check-circle-o", "Accept") : icon("times-circle-o", "Decline")
     end
   end
