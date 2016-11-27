@@ -1,8 +1,5 @@
-<div class="content">
-  <% if can_vote?(poll, current_user) %>
-    <%= render 'polls/poll_response_form', poll: poll %>
-  <% else %>
-    <%= render 'polls/poll_display', poll: poll %>
-  <% end %>
-</div>
-<div class="actions"><%= poll_actions poll %></div>
+<% if can_vote?(poll, current_user) %>
+  <%= render 'polls/poll_response_form', poll: poll %>
+<% else %>
+  <%= render 'polls/poll_display', poll: poll %>
+<% end %>

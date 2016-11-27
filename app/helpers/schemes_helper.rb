@@ -13,6 +13,13 @@ module SchemesHelper
     user_link user, icon_name
   end
 
+  def schemable_actions schemable
+    case schemable
+    when Comment then comment_actions(schemable)
+    when Poll    then poll_actions(schemable)
+    end
+  end
+
   def clonable_scheme_invitation
     SchemeInvitation.new(email: "{ email }")
   end

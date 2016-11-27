@@ -8,6 +8,7 @@
       <b><%= schemable_author schemable %></b>
       <%= timestamp schemable %>
     </div>
-    <%= render schemable %>
+    <div class="content"><%= render schemable %></div>
+    <div class="actions"><%= schemable_actions schemable %></div>
   </div>
 </li>
