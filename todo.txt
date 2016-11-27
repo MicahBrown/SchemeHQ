@@ -1,0 +1,7 @@
+- Add reactions to scheme entries
+- Warn users to set password if one isn't set
+- file uploads
+- to-do lists/tasks
+- moderator user role
+- logging for activity log
+- SPECS!
