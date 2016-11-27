@@ -51,14 +51,72 @@
 // @include motion-ui-transitions;
 // @include motion-ui-animations;
 
-.button { font-weight: bold; }
 .button.tiny { padding: 0.6em 0.8em; }
+.button {
+  color: rgba(255,255,255,0.9);
+  box-shadow: 0 2px 0 scale-color($button-background, $lightness: -25%);
+  font-weight: bold;
+  &:hover, &:focus { color: rgba(255,255,255,0.95); }
+  &:active, &:focus {
+    box-shadow: 0 1px 0 scale-color($button-background, $lightness: -25%);
+    position: relative;
+    top: 1px;
+  }
+  &.primary {
+    box-shadow: 0 2px 0 scale-color($primary-color, $lightness: -25%);
+    &:active, &:focus { box-shadow: 0 1px 0 scale-color($primary-color, $lightness: -25%); }
+  }
+  &.success {
+    box-shadow: 0 2px 0 scale-color($success-color, $lightness: -25%);
+    &:active, &:focus { box-shadow: 0 1px 0 scale-color($success-color, $lightness: -25%); }
+  }
+  &.alert {
+    box-shadow: 0 2px 0 scale-color($alert-color, $lightness: -25%);
+    &:active, &:focus { box-shadow: 0 1px 0 scale-color($alert-color, $lightness: -25%); }
+  }
+  &.warning {
+    box-shadow: 0 2px 0 scale-color($warning-color, $lightness: -25%);
+    &:active, &:focus { box-shadow: 0 1px 0 scale-color($warning-color, $lightness: -25%); }
+  }
+  &.secondary {
+    box-shadow: 0 2px 0 scale-color($secondary-color, $lightness: -25%);
+    &:active, &:focus { box-shadow: 0 1px 0 scale-color($secondary-color, $lightness: -25%); }
+  }
+  &.tiny {
+    box-shadow: 0 1px 0 scale-color($button-background, $lightness: -25%);
+    &:active, &:focus { box-shadow: none; }
+    &.primary {
+      box-shadow: 0 1px 0 scale-color($primary-color, $lightness: -25%);
+      &:active, &:focus { box-shadow: none; }
+    }
+    &.success {
+      box-shadow: 0 1px 0 scale-color($success-color, $lightness: -25%);
+      &:active, &:focus { box-shadow: none; }
+    }
+    &.alert {
+      box-shadow: 0 1px 0 scale-color($alert-color, $lightness: -25%);
+      &:active, &:focus { box-shadow: none; }
+    }
+    &.warning {
+      box-shadow: 0 1px 0 scale-color($warning-color, $lightness: -25%);
+      &:active, &:focus { box-shadow: none; }
+    }
+    &.secondary {
+      box-shadow: 0 1px 0 scale-color($secondary-color, $lightness: -25%);
+      &:active, &:focus { box-shadow: none; }
+    }
+  }
+}
+
 
 .row { max-width: 60rem; }
 
 .input-group > *:last-child > *,
 .input-group > .input-group-field:last-child { border-radius: 0 $global-radius $global-radius 0; }
 .input-group .input-group-field:focus { box-shadow: none; }
+.input-group-button > .button,
+.input-group-button > .button:active,
+.input-group-button > .button:focus { box-shadow: none; }
 
 .tabs.active-tabs {
   border: 1px solid $secondary-color;
