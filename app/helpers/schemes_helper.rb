@@ -1,6 +1,6 @@
 module SchemesHelper
   def scheme_entries scheme
-    scheme.scheme_entries.order('id DESC').includes(:schemable => :user)
+    scheme.scheme_entries.order('id DESC').includes(:scheme_entry_votes, :schemable => :user)
   end
 
   def schemable_author schemable
