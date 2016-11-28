@@ -2,6 +2,7 @@ class SchemeEntryVotesController < ApplicationController
   load_and_authorize_resource :scheme, find_by: :token
   load_resource :scheme_entry, id_param: :entry_id, through: :scheme
   before_action :load_scheme_entry_vote
+  authorize_resource
 
   def create
     @scheme_entry_vote.save
