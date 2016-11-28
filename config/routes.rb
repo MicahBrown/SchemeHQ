@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
 
     resources :entries do
-      resource :votes, controller: :scheme_entry_votes, only: [:create, :update]
+      resource :votes, controller: :scheme_entry_votes, only: [:create, :update, :destroy]
     end
 
     resources :polls, only: [:create, :destroy] do
