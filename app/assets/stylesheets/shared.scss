@@ -144,3 +144,6 @@ div.empty {
     }
   }
 }
+
+.downvote:hover, .downvote.voted { color: $alert-color; }
+.upvote:hover, .upvote.voted { color: $success-color; }
