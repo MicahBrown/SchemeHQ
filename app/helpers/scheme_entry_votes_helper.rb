@@ -3,7 +3,7 @@ module SchemeEntryVotesHelper
     icon_name   = value.positive? ? "thumbs-o-up" : "thumbs-o-down"
     css_classes = value.positive? ? "upvote"      : "downvote"
     http_method = existing_vote   ? :patch        : :post
-    vote_count  = entry.scheme_entry_votes.select {|vote| vote.value == value }.size
+    vote_count  = entry.scheme_entry_votes(true).select {|vote| vote.value == value }.size
 
     if existing_vote && existing_vote.value == value
       css_classes += " voted"
