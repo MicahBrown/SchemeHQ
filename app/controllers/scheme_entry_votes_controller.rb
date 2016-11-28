@@ -8,7 +8,8 @@ class SchemeEntryVotesController < ApplicationController
     @scheme_entry_vote.save
 
     respond_to do |format|
-      format.html { redirect_to @scheme, notice: "vote saved!" }
+      format.html { redirect_to @scheme }
+      format.js { render :create }
     end
   end
 
@@ -20,7 +21,8 @@ class SchemeEntryVotesController < ApplicationController
     @scheme_entry_vote.destroy
 
     respond_to do |format|
-      format.html { redirect_to @scheme, notice: "Vote deleted!" }
+      format.html { redirect_to @scheme }
+      format.js { render :create }
     end
   end
 

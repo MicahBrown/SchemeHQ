@@ -102,11 +102,19 @@ class Scheme
         $submitBtn.hide()
         $list.find('.empty').show()
 
+  entries: ->
+    $entries = $(".entries").children()
+    $entries.each ->
+      $entry = $(this)
+
+      entryVoteLinks $entry
+
 $(document).on 'schemes_show.load', (e, obj) =>
   scheme = new Scheme
   scheme.pollForm()
   scheme.commentEditForm()
   scheme.invitationForm()
+  scheme.entries()
 
 
 window.postInvitationErrors = (jsonString) ->
@@ -124,3 +132,18 @@ window.postInvitationErrors = (jsonString) ->
     $item.find ".errors-ul"
          .remove()
     $item.append $errors
+
+window.entryVoteLinks = ($entry) ->
+  $entry.on 'submit', '.vote-form', (event) ->
+    event.preventDefault()
+
+    $form  = $(this)
+    path   = $form.attr 'action'
+    values = $form.serialize()
+
+    return false if $form.hasClass 'submitting'
+    $('.vote-form[action="' + path + '"]').addClass 'submitting'
+
+    $.post path, values, undefined, 'script'
+
+
