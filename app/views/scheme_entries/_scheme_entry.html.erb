@@ -11,10 +11,8 @@
     <div class="content"><%= render schemable %></div>
     <div class="actions">
       <div class="actions-left">
-        <ul class="menu simple">
-          <%= render 'scheme_entries/vote_links', scheme_entry: scheme_entry %>
-          <li><%= link_to icon("heart", 0) %></li>
-        </ul>
+        <%= render 'scheme_entries/vote_links', scheme_entry: scheme_entry %>
+        <div class="action"><%= link_to icon("heart", 0) %></div>
       </div>
       <div class="actions-right"><%= schemable_actions schemable %></div>
     </div>

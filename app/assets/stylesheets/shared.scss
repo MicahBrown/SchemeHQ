@@ -133,17 +133,18 @@ div.empty {
 
 .actions {
   @include clearfix;
+  .action { margin-right: 1rem; float: left; }
   .actions-left { float: left; }
   .actions-right {
     float: right;
-    .menu.simple {
-      li {
-        margin-right: 0;
-        margin-left: 1rem;
-      }
+    .action {
+      float: right;
+      margin-right: 0;
+      margin-left: 1rem;
     }
   }
 }
 
+.upvote, .downvote { color: $anchor-color; }
 .downvote:hover, .downvote.voted { color: $alert-color; }
 .upvote:hover, .upvote.voted { color: $success-color; }

@@ -1,3 +1,7 @@
 <% entry_vote = current_votes.detect{|v| v.scheme_entry_id == scheme_entry.id } %>
-<li><%= vote_link 1, scheme_entry, entry_vote %></li>
-<li><%= vote_link -1, scheme_entry, entry_vote %></li>
+<div class="action vote-action">
+  <%= vote_link 1, scheme_entry, entry_vote %>
+</div>
+<div class="action vote-action">
+  <%= vote_link -1, scheme_entry, entry_vote %>
+</div>

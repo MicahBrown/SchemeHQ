@@ -28,7 +28,7 @@
         time { float: right; }
       }
       .content { > *:last-child { margin-bottom: 0; } }
-      .actions .menu { margin: 1rem 0 0; }
+      .actions .action { margin-top: 1rem; }
     }
     &.empty { padding: 4rem 1rem; color: #999; text-align: center; }
     &:last-child { border-bottom-color: #ccc; }

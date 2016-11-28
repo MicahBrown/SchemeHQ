@@ -19,7 +19,8 @@ module SchemesHelper
             when Poll    then poll_links(schemable)
             end
 
-    action_links links
+    return if links.blank?
+    links.reverse.map {|link| content_tag :div, link, class: 'action' }.join.html_safe
   end
 
   def clonable_scheme_invitation
