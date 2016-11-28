@@ -9,8 +9,12 @@ module SchemeEntryVotesHelper
       http_method  = :delete
     end
 
-    link_to icon(icon_name, 0), scheme_entry_votes_path(entry.scheme, entry, scheme_entry_vote: { value: value }),
-      method: http_method,
-      class:  css_classes
+    button_to scheme_entry_votes_path(entry.scheme, entry),
+      params:     { scheme_entry_vote: { value: value } },
+      method:     http_method,
+      form_class: "vote-form",
+      class:      css_classes do
+      icon(icon_name, 0)
+    end
   end
 end
