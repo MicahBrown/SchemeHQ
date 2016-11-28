@@ -16,6 +16,14 @@ class SchemeEntryVotesController < ApplicationController
     create # do same thing for update
   end
 
+  def destroy
+    @scheme_entry_vote.destroy
+
+    respond_to do |format|
+      format.html { redirect_to @scheme, notice: "Vote deleted!" }
+    end
+  end
+
   private
     def scheme_entry_vote_params
       params.require(:scheme_entry_vote).permit(:value)
