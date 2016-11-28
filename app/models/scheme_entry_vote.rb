@@ -1,0 +1,2 @@
+class SchemeEntryVote < ApplicationRecord
+end

@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       resource :response, controller: :scheme_invitation_responses, only: :update
     end
 
+    resources :entries do
+      resource :votes, controller: :scheme_entry_votes, only: [:create, :update]
+    end
+
     resources :polls, only: [:create, :destroy] do
       post 'vote' => 'poll_responses#create'
     end
