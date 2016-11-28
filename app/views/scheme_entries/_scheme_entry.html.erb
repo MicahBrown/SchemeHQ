@@ -12,8 +12,7 @@
     <div class="actions">
       <div class="actions-left">
         <ul class="menu simple">
-          <li><%= link_to icon("thumbs-o-up", 0) %></li>
-          <li><%= link_to icon("thumbs-o-down", 0) %></li>
+          <%= render 'scheme_entries/vote_links', scheme_entry: scheme_entry %>
           <li><%= link_to icon("heart", 0) %></li>
         </ul>
       </div>
