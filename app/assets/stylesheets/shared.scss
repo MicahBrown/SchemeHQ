@@ -130,3 +130,21 @@ div.empty {
   }
   label { color: $alert-color; }
 }
+
+.actions {
+  @include clearfix;
+  .action { margin-right: 1rem; float: left; }
+  .actions-left { float: left; }
+  .actions-right {
+    float: right;
+    .action {
+      float: right;
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+  }
+}
+
+.upvote, .downvote { color: $anchor-color; &:hover { color: $anchor-color-hover; } }
+.downvote.voted { color: $alert-color; }
+.upvote.voted { color: $success-color; }

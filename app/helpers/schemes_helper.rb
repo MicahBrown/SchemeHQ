@@ -1,6 +1,6 @@
 module SchemesHelper
   def scheme_entries scheme
-    scheme.scheme_entries.order('id DESC').includes(:schemable => :user)
+    scheme.scheme_entries.order('id DESC').includes(:scheme_entry_votes, :schemable => :user)
   end
 
   def schemable_author schemable
@@ -13,8 +13,18 @@ module SchemesHelper
     user_link user, icon_name
   end
 
+  def schemable_actions schemable
+    links = case schemable
+            when Comment then comment_links(schemable)
+            when Poll    then poll_links(schemable)
+            end
+
+    return if links.blank?
+    links.reverse.map {|link| content_tag :div, link, class: 'action' }.join.html_safe
+  end
+
   def clonable_scheme_invitation
-    SchemeInvitation.new(email: "{ email }")
+    render SchemeInvitation.new(email: "{ email }")
   end
 
   def invitation_response_label invitation

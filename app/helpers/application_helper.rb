@@ -27,12 +27,6 @@ module ApplicationHelper
     end
   end
 
-  def action_links links, simple=true
-    return nil if links.blank?
-    links = links.map{|link| content_tag :li, link }.join.html_safe
-    content_tag :ul, links, class: "menu#{' simple' if simple}"
-  end
-
   def form_errors object, options={}
     return unless object.present?
     errors = case object

@@ -10,7 +10,7 @@
       <ul class="no-bullet invitations-list">
         <li class="header">
           <div class="input-group no-margin">
-            <%= text_field_tag :new_invitee, nil, data: { guard_required: true, guard_errors_container: "#new_invitee_errors" }, class: 'input-group-field', placeholder: "Enter an email address" %>
+            <%= email_field_tag :new_invitee, nil, data: { guard_required: true, guard_errors_container: "#new_invitee_errors" }, class: 'input-group-field', placeholder: "Enter an email address" %>
             <div class="input-group-button">
               <%= button_tag class: 'button expanded secondary', id: "invitation_add" do %>
                 <%= icon("plus-circle", "Add") %>
@@ -33,5 +33,5 @@
 <% end %>
 
 <ul class="toolbox">
-  <%= render clonable_scheme_invitation %>
+  <%= clonable_scheme_invitation %>
 </ul>
