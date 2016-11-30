@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
     resources :entries do
       resource :votes, controller: :scheme_entry_votes, only: [:create, :update, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
 
     resources :polls, only: [:create, :destroy] do
