@@ -5,12 +5,11 @@ class FavoritesController < ApplicationController
   authorize_resource
 
   def create
+    @favorite.save
+
     respond_to do |format|
-      if @favorite.save
-        format.html { redirect_to @scheme }
-      else
-        format.html { redirect_to @scheme }
-      end
+      format.html { redirect_to @scheme }
+      format.js
     end
   end
 
@@ -19,6 +18,7 @@ class FavoritesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @scheme }
+      format.js { render :create }
     end
   end
 
