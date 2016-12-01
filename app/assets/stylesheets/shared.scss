@@ -145,6 +145,7 @@ div.empty {
   }
 }
 
-.upvote, .downvote { color: $anchor-color; &:hover { color: $anchor-color-hover; } }
+.upvote, .downvote, .favorite { color: $anchor-color; &:hover { color: $anchor-color-hover; } }
 .downvote.voted { color: $alert-color; }
 .upvote.voted { color: $success-color; }
+.favorite.favorited { color: #900; }
