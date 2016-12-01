@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :poll_responses
   has_many :nicknames, foreign_key: :namer_id
   has_many :sent_invitations, class_name: "Invitation", foreign_key: :sender_id
-  has_many :scheme_entry_votes
+  has_many :votes
   has_many :favorites
 
   validates :display_name, presence: true, length: { in: DISPLAY_NAME_LIMIT, allow_blank: true }

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_votes
-    @current_votes ||= current_user ? current_user.scheme_entry_votes : SchemeEntryVote.none
+    @current_votes ||= current_user ? current_user.votes : Vote.none
   end
 
   def current_favorites

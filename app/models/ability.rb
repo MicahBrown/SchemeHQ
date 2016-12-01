@@ -38,8 +38,8 @@ class Ability
       can :manage, Comment, user_id: user.id
       can :create, Scheme
       can :manage, Scheme, user_id: user.id
-      can :create, SchemeEntryVote
-      can :manage, SchemeEntryVote, user_id: user.id
+      can :create, Vote
+      can :manage, Vote, user_id: user.id
       can :create, Favorite
       can :manage, Favorite, user_id: user.id
       can [:read, :respond], Scheme, private: false
