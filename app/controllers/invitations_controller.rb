@@ -1,10 +1,10 @@
 require 'invitation_processor'
 
-class SchemeInvitationsController < ApplicationController
+class InvitationsController < ApplicationController
   load_and_authorize_resource :scheme, find_by: :token
 
   def create
-    @processor = InvitationProcessor.new @scheme, scheme_invitation_params[:invitees], current_user
+    @processor = InvitationProcessor.new @scheme, invitation_params[:invitees], current_user
     @processor.process
 
     respond_to do |format|
@@ -14,7 +14,7 @@ class SchemeInvitationsController < ApplicationController
 
   private
 
-    def scheme_invitation_params
+    def invitation_params
       params.require(:scheme).permit(invitees: [])
     end
 end

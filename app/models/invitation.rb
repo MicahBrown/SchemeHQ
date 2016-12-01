@@ -1,4 +1,4 @@
-class SchemeInvitation < ApplicationRecord
+class Invitation < ApplicationRecord
   belongs_to :scheme
   belongs_to :user
   belongs_to :sender, class_name: "User"
@@ -21,7 +21,7 @@ class SchemeInvitation < ApplicationRecord
     self.response     = boolean
     self.responded_at = Time.now if response_changed?
 
-    SchemeInvitation.transaction do
+    Invitation.transaction do
       if boolean && user && scheme.participants.exclude?(user)
         SchemeParticipant.transaction do
           scheme.scheme_participants.create! user: user

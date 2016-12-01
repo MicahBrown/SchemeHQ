@@ -27,6 +27,6 @@ class InvitationProcessor
     user    = User.where('LOWER(email) = ?', email).first
     user_id = user.try(:id) || 0
 
-    scheme.scheme_invitations.new(email: email, user_id: user_id, sender: sender)
+    scheme.invitations.new(email: email, user_id: user_id, sender: sender)
   end
 end

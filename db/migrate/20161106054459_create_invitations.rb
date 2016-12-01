@@ -1,6 +1,6 @@
-class CreateSchemeInvitations < ActiveRecord::Migration[5.0]
+class CreateInvitations < ActiveRecord::Migration[5.0]
   def change
-    create_table :scheme_invitations do |t|
+    create_table :invitations do |t|
       t.integer    :user_id,      null: false, default: 0
       t.belongs_to :scheme,       null: false
       t.belongs_to :sender,       null: false
@@ -12,7 +12,7 @@ class CreateSchemeInvitations < ActiveRecord::Migration[5.0]
       t.timestamps                null: false
     end
 
-    add_index :scheme_invitations, :user_id
-    add_index :scheme_invitations, [:scheme_id, :email], unique: true
+    add_index :invitations, :user_id
+    add_index :invitations, [:scheme_id, :email], unique: true
   end
 end
