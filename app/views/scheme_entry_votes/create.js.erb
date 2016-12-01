@@ -3,4 +3,4 @@ var $entry   = $(".entry-li[data-entry-id='<%= @scheme_entry.schemable_id %>']" 
     $actions = $entry.find('.actions > .actions-left');
 
 $actions.children('.action.vote-action').remove();
-$actions.prepend("<%=j render 'scheme_entries/vote_links', scheme_entry: @scheme_entry %>");
+$actions.prepend("<%=j render 'scheme_entries/vote_links', scheme_entry: @scheme_entry, reload_votes: true %>");
