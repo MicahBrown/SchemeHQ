@@ -25,14 +25,41 @@ ActiveRecord::Schema.define(version: 20161130055521) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
+  create_table "entries", force: :cascade do |t|
+    t.integer  "scheme_id",      null: false
+    t.string   "schemable_type"
+    t.integer  "schemable_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["schemable_type", "schemable_id"], name: "index_entries_on_schemable_type_and_schemable_id", using: :btree
+    t.index ["scheme_id"], name: "index_entries_on_scheme_id", using: :btree
+  end
+
   create_table "favorites", force: :cascade do |t|
-    t.integer  "user_id",         null: false
-    t.integer  "scheme_entry_id", null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["scheme_entry_id"], name: "index_favorites_on_scheme_entry_id", using: :btree
-    t.index ["user_id", "scheme_entry_id"], name: "index_favorites_on_user_id_and_scheme_entry_id", unique: true, using: :btree
+    t.integer  "user_id",    null: false
+    t.integer  "entry_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_id"], name: "index_favorites_on_entry_id", using: :btree
+    t.index ["user_id", "entry_id"], name: "index_favorites_on_user_id_and_entry_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "user_id",      default: 0, null: false
+    t.integer  "scheme_id",                null: false
+    t.integer  "sender_id",                null: false
+    t.string   "email",                    null: false
+    t.datetime "sent_at"
+    t.datetime "accepted_at"
+    t.datetime "responded_at"
+    t.boolean  "response"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["scheme_id", "email"], name: "index_invitations_on_scheme_id_and_email", unique: true, using: :btree
+    t.index ["scheme_id"], name: "index_invitations_on_scheme_id", using: :btree
+    t.index ["sender_id"], name: "index_invitations_on_sender_id", using: :btree
+    t.index ["user_id"], name: "index_invitations_on_user_id", using: :btree
   end
 
   create_table "nicknames", force: :cascade do |t|
@@ -76,44 +103,6 @@ ActiveRecord::Schema.define(version: 20161130055521) do
     t.datetime "updated_at", null: false
     t.index ["scheme_id"], name: "index_polls_on_scheme_id", using: :btree
     t.index ["user_id"], name: "index_polls_on_user_id", using: :btree
-  end
-
-  create_table "scheme_entries", force: :cascade do |t|
-    t.integer  "scheme_id",      null: false
-    t.string   "schemable_type"
-    t.integer  "schemable_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["schemable_type", "schemable_id"], name: "index_scheme_entries_on_schemable_type_and_schemable_id", using: :btree
-    t.index ["scheme_id"], name: "index_scheme_entries_on_scheme_id", using: :btree
-  end
-
-  create_table "scheme_entry_votes", force: :cascade do |t|
-    t.integer  "user_id",                   null: false
-    t.integer  "scheme_entry_id",           null: false
-    t.integer  "value",           limit: 2, null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["scheme_entry_id"], name: "index_scheme_entry_votes_on_scheme_entry_id", using: :btree
-    t.index ["user_id", "scheme_entry_id"], name: "index_scheme_entry_votes_on_user_id_and_scheme_entry_id", unique: true, using: :btree
-    t.index ["user_id"], name: "index_scheme_entry_votes_on_user_id", using: :btree
-  end
-
-  create_table "scheme_invitations", force: :cascade do |t|
-    t.integer  "user_id",      default: 0, null: false
-    t.integer  "scheme_id",                null: false
-    t.integer  "sender_id",                null: false
-    t.string   "email",                    null: false
-    t.datetime "sent_at"
-    t.datetime "accepted_at"
-    t.datetime "responded_at"
-    t.boolean  "response"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["scheme_id", "email"], name: "index_scheme_invitations_on_scheme_id_and_email", unique: true, using: :btree
-    t.index ["scheme_id"], name: "index_scheme_invitations_on_scheme_id", using: :btree
-    t.index ["sender_id"], name: "index_scheme_invitations_on_sender_id", using: :btree
-    t.index ["user_id"], name: "index_scheme_invitations_on_user_id", using: :btree
   end
 
   create_table "scheme_participants", force: :cascade do |t|
@@ -163,6 +152,17 @@ ActiveRecord::Schema.define(version: 20161130055521) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["public_token"], name: "index_users_on_public_token", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id",              null: false
+    t.integer  "entry_id",             null: false
+    t.integer  "value",      limit: 2, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["entry_id"], name: "index_votes_on_entry_id", using: :btree
+    t.index ["user_id", "entry_id"], name: "index_votes_on_user_id_and_entry_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
   end
 
 end
