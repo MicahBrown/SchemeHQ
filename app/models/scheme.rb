@@ -5,7 +5,7 @@ class Scheme < ApplicationRecord
   has_many :scheme_participants
   has_many :invitations
   has_many :participants, through: :scheme_participants, source: :user
-  has_many :scheme_entries
+  has_many :entries
   has_one  :facilitator, -> { facilitator }, class_name: "SchemeParticipant" # condition uses the enum scope
 
   validates :user, presence: true

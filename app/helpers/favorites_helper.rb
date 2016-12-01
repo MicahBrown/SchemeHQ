@@ -1,9 +1,9 @@
 module FavoritesHelper
-  def favorite_link scheme_entry, reload_faves=false
-    existing_fave = current_favorites.detect {|fave| fave.scheme_entry_id == scheme_entry.id }
-    fave_count    = scheme_entry.favorites(reload_faves).size
+  def favorite_link entry, reload_faves=false
+    existing_fave = current_favorites.detect {|fave| fave.entry_id == entry.id }
+    fave_count    = entry.favorites(reload_faves).size
 
-    button_to scheme_entry_favorites_path(scheme_entry.scheme, scheme_entry),
+    button_to scheme_entry_favorites_path(entry.scheme, entry),
       method:     existing_fave ? :delete : :post,
       form_class: "favorite-form",
       class:      "favorite#{' favorited' if existing_fave}" do

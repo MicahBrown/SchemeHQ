@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   load_and_authorize_resource :scheme, find_by: :token
-  load_resource :scheme_entry, id_param: :entry_id, through: :scheme
+  load_resource :entry, through: :scheme
   before_action :load_vote
   authorize_resource
 
@@ -32,9 +32,9 @@ class VotesController < ApplicationController
     end
 
     def load_vote
-      return unless @scheme_entry
-      @vote   = @scheme_entry.votes.detect {|sev| sev.user_id == current_user.id }
-      @vote ||= @scheme_entry.votes.build(user: current_user)
+      return unless @entry
+      @vote   = @entry.votes.detect {|sev| sev.user_id == current_user.id }
+      @vote ||= @entry.votes.build(user: current_user)
       @vote.assign_attributes(vote_params)
       @vote
     end

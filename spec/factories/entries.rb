@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :scheme_entry do
+  factory :entry do
 
   end
 end
