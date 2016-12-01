@@ -1,0 +1,20 @@
+<% schemable = entry.schemable %>
+
+<li class="entry-li"
+    data-entry-id="<%= entry.schemable_id %>"
+    data-entry-type="<%= entry.schemable_type %>">
+  <div class="entry">
+    <div class="details">
+      <b><%= schemable_author schemable %></b>
+      <%= timestamp schemable %>
+    </div>
+    <div class="content"><%= render schemable %></div>
+    <div class="actions">
+      <div class="actions-left">
+        <%= render 'entries/vote_links', entry: entry %>
+        <%= render 'entries/favorite_link', entry: entry %>
+      </div>
+      <div class="actions-right"><%= schemable_actions schemable %></div>
+    </div>
+  </div>
+</li>

@@ -1,0 +1,10 @@
+<%
+  reload_votes ||= false
+  entry_vote     = current_votes.detect{|v| v.entry_id == entry.id }
+%>
+<div class="action vote-action">
+  <%= vote_link 1, entry, entry_vote, reload_votes %>
+</div>
+<div class="action vote-action">
+  <%= vote_link -1, entry, entry_vote, reload_votes %>
+</div>

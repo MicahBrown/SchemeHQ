@@ -2,5 +2,5 @@ var $entry   = $(".entry-li[data-entry-id='<%= @entry.schemable_id %>']" +
                           "[data-entry-type='<%= @entry.schemable_type %>']"),
     $actions = $entry.find('.actions > .actions-left');
 
-$actions.children('.action.favorite-action')
-        .replaceWith("<%=j render 'scheme_entries/favorite_link', entry: @entry, reload_faves: true %>");
+$actions.children('.action.vote-action').remove();
+$actions.prepend("<%=j render 'scheme_entries/vote_links', entry: @entry, reload_votes: true %>");

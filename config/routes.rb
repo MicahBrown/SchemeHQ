@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   end
 
   resources :schemes, only: [:new, :create, :show] do
-    resources :invitations, controller: :scheme_invitations, only: :create do
-      resource :response, controller: :scheme_invitation_responses, only: :update
+    resources :invitations, only: :create do
+      resource :response, controller: :invitation_responses, only: :update
     end
 
     resources :entries do
-      resource :votes, controller: :scheme_entry_votes, only: [:create, :update, :destroy]
+      resource :votes, only: [:create, :update, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
 

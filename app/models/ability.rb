@@ -38,13 +38,13 @@ class Ability
       can :manage, Comment, user_id: user.id
       can :create, Scheme
       can :manage, Scheme, user_id: user.id
-      can :create, SchemeEntryVote
-      can :manage, SchemeEntryVote, user_id: user.id
+      can :create, Vote
+      can :manage, Vote, user_id: user.id
       can :create, Favorite
       can :manage, Favorite, user_id: user.id
       can [:read, :respond], Scheme, private: false
-      can :manage, SchemeInvitation, sender_id: user.id
-      can([:read, :update], SchemeInvitation, email: user.email) if user.email.present?
+      can :manage, Invitation, sender_id: user.id
+      can([:read, :update], Invitation, email: user.email) if user.email.present?
     end
   end
 end

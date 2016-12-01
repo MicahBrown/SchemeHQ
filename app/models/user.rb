@@ -11,14 +11,14 @@ class User < ApplicationRecord
 
   has_many :schemes # created schemes
   has_many :scheme_participants
-  has_many :scheme_invitations
+  has_many :invitations
   has_many :participated_schemes, through: :scheme_participants, source: :scheme
   has_many :comments
   has_many :polls
   has_many :poll_responses
   has_many :nicknames, foreign_key: :namer_id
-  has_many :sent_invitations, class_name: "SchemeInvitation", foreign_key: :sender_id
-  has_many :scheme_entry_votes
+  has_many :sent_invitations, class_name: "Invitation", foreign_key: :sender_id
+  has_many :votes
   has_many :favorites
 
   validates :display_name, presence: true, length: { in: DISPLAY_NAME_LIMIT, allow_blank: true }
@@ -57,7 +57,7 @@ class User < ApplicationRecord
   end
 
   def all_invitations
-    SchemeInvitation.where(email: self.email)
+    Invitation.where(email: self.email)
   end
 
   protected

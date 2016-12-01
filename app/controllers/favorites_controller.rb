@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   load_and_authorize_resource :scheme, find_by: :token
-  load_resource :scheme_entry, through: :scheme, id_param: :entry_id
+  load_resource :entry, through: :scheme
   before_action :load_favorite
   authorize_resource
 
@@ -25,9 +25,9 @@ class FavoritesController < ApplicationController
   private
 
     def load_favorite
-      return unless @scheme_entry
-      @favorite   = @scheme_entry.favorites.detect {|faves| faves.user_id == current_user.id }
-      @favorite ||= @scheme_entry.favorites.build(user: current_user)
+      return unless @entry
+      @favorite   = @entry.favorites.detect {|faves| faves.user_id == current_user.id }
+      @favorite ||= @entry.favorites.build(user: current_user)
       @favorite
     end
 end
