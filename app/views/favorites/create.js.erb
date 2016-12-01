@@ -3,4 +3,4 @@ var $entry   = $(".entry-li[data-entry-id='<%= @entry.schemable_id %>']" +
     $actions = $entry.find('.actions > .actions-left');
 
 $actions.children('.action.favorite-action')
-        .replaceWith("<%=j render 'scheme_entries/favorite_link', entry: @entry, reload_faves: true %>");
+        .replaceWith("<%=j render 'entries/favorite_link', entry: @entry, reload_faves: true %>");
