@@ -107,7 +107,8 @@ class Scheme
     $entries.each ->
       $entry = $(this)
 
-      entryVoteLinks $entry
+      entryVoteLinks     $entry
+      entryFavoriteLinks $entry
 
 $(document).on 'schemes_show.load', (e, obj) =>
   scheme = new Scheme
@@ -147,3 +148,15 @@ window.entryVoteLinks = ($entry) ->
     $.post path, values, undefined, 'script'
 
 
+window.entryFavoriteLinks = ($entry) ->
+  $entry.on 'submit', '.favorite-form', (event) ->
+    event.preventDefault()
+
+    $form  = $(this)
+    path   = $form.attr 'action'
+    values = $form.serialize()
+
+    return false if $form.hasClass 'submitting'
+    $('.favorite-form[action="' + path + '"]').addClass 'submitting'
+
+    $.post path, values, undefined, 'script'
