@@ -43,8 +43,8 @@ class Ability
       can :create, Favorite
       can :manage, Favorite, user_id: user.id
       can [:read, :respond], Scheme, private: false
-      can :manage, SchemeInvitation, sender_id: user.id
-      can([:read, :update], SchemeInvitation, email: user.email) if user.email.present?
+      can :manage, Invitation, sender_id: user.id
+      can([:read, :update], Invitation, email: user.email) if user.email.present?
     end
   end
 end

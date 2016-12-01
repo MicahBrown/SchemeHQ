@@ -1,11 +1,11 @@
 require 'to_boolean'
 
-class SchemeInvitationResponsesController < ApplicationController
+class InvitationResponsesController < ApplicationController
   load_and_authorize_resource :scheme, find_by: :token
-  load_and_authorize_resource :scheme_invitation, through: :scheme, id_param: :invitation_id
+  load_and_authorize_resource :invitation, through: :scheme
 
   def update
-    @scheme_invitation.respond!(response_params)
+    @invitation.respond!(response_params)
 
     respond_to do |format|
       format.js

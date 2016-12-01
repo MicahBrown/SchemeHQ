@@ -1,6 +1,6 @@
-module SchemeInvitationHelper
-  def clonable_scheme_invitation
-    render SchemeInvitation.new(email: "{ email }")
+module InvitationsHelper
+  def clonable_invitation
+    render Invitation.new(email: "{ email }")
   end
 
   def invitation_response_label invitation
