@@ -40,6 +40,8 @@ class Ability
       can :manage, Scheme, user_id: user.id
       can :create, SchemeEntryVote
       can :manage, SchemeEntryVote, user_id: user.id
+      can :create, Favorite
+      can :manage, Favorite, user_id: user.id
       can [:read, :respond], Scheme, private: false
       can :manage, SchemeInvitation, sender_id: user.id
       can([:read, :update], SchemeInvitation, email: user.email) if user.email.present?
