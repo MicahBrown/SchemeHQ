@@ -15,6 +15,9 @@
       <li class="tabs-title">
         <%= link_to icon("envelope", "Invitations #{content_tag :span, "(#{current_user.all_invitations.unresponded.count})"}".html_safe, class: 'fa-fw'), "#panel3v" %>
       </li>
+      <li class="tabs-title">
+        <%= link_to icon("heart", "Favorites", class: 'fa-fw'), "#panel4v" %>
+      </li>
     </ul>
   </div>
   <div class="medium-9 columns medium-border-left">
@@ -81,6 +84,12 @@
         <% else %>
           <div class="empty">You haven't received any invitations yet.</div>
         <% end %>
+      </div>
+      <div class="tabs-panel" id="panel4v">
+        <div class="tabs-header">
+          <h3 class="tabs-header-title"><%= icon('heart', 'My Favorites', class: 'fa-fw') %></h3>
+        </div>
+        <div class="empty">You have no favorites.</div>
       </div>
     </div>
   </div>
