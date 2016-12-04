@@ -16,4 +16,10 @@ module EntriesHelper
       render "polls/#{can_vote?(schemable, current_user) ? 'poll_response_form' : 'poll_display'}", poll: schemable
     end
   end
+
+  def entry_details entry
+    schemable = entry.schemable
+
+    content_tag(:b, schemable_author(schemable)) + timestamp(schemable)
+  end
 end
