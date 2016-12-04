@@ -1,4 +1,8 @@
-<% schemable = entry.schemable %>
+<%
+  left_action_links  ||= nil
+  right_action_links ||= nil
+  schemable            = entry.schemable
+%>
 
 <li class="entry-li"
     data-entry-id="<%= entry.schemable_id %>"
@@ -9,12 +13,6 @@
       <%= timestamp schemable %>
     </div>
     <div class="content"><%= render schemable %></div>
-    <div class="actions">
-      <div class="actions-left">
-        <%= render 'entries/vote_links', entry: entry %>
-        <%= render 'entries/favorite_link', entry: entry %>
-      </div>
-      <div class="actions-right"><%= schemable_actions schemable %></div>
-    </div>
+    <div class="actions"><%= entry_actions entry, left_action_links, right_action_links %></div>
   </div>
 </li>
