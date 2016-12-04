@@ -1,5 +1,0 @@
-<% if can_vote?(poll, current_user) %>
-  <%= render 'polls/poll_response_form', poll: poll %>
-<% else %>
-  <%= render 'polls/poll_display', poll: poll %>
-<% end %>
