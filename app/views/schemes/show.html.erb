@@ -25,15 +25,15 @@
         </div>
       </div>
 
-      <% if scheme_entries(@scheme).present? %>
-        <ul class="entries">
+      <ul class="entries">
+        <% if scheme_entries(@scheme).present? %>
           <% scheme_entries(@scheme).each do |se| %>
             <li class="entry-li"><%= render se %></li>
           <% end %>
-        </ul>
-      <% else %>
-        <%= content_tag(:div, "No scheme entries have been made yet.", class: "entry-li empty") %>
-      <% end %>
+        <% else %>
+          <%= content_tag(:li, "No scheme entries have been made yet.", class: "entry-li empty") %>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
