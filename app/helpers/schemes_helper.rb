@@ -20,6 +20,6 @@ module SchemesHelper
             end
 
     return if links.blank?
-    links.reverse.map {|link| content_tag :div, link, class: 'action' }.join.html_safe
+    action_links links.reverse
   end
 end

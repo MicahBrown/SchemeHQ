@@ -68,4 +68,8 @@ module ApplicationHelper
 
     link_to icon(icon_name, value), path, options
   end
+
+  def action_links links
+    Array(links).map {|link| content_tag :div, link, class: 'action' }.join.html_safe
+  end
 end
