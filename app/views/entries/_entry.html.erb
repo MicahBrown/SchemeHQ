@@ -1,7 +1,7 @@
 <%
-  left_action_links  ||= nil
-  right_action_links ||= nil
-  schemable            = entry.schemable
+  left_action_links  = nil unless local_assigns.has_key?(:left_action_links)
+  right_action_links = nil unless local_assigns.has_key?(:right_action_links)
+  schemable          = entry.schemable
 %>
 
 <div class="entry"

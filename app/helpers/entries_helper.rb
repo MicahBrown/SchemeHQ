@@ -1,10 +1,13 @@
 module EntriesHelper
-  def entry_actions entry, left_links=nil, right_links=nil
-    right_links ||= schemable_actions entry.schemable
-    left_links  ||= render('entries/vote_links', entry: entry) +
-                    render('entries/favorite_link', entry: entry)
+  def entry_actions entry, left_links, right_links
+    right_links = schemable_actions entry.schemable if right_links.nil?
+    left_links  = render('entries/vote_links', entry: entry) +
+                  render('entries/favorite_link', entry: entry) if left_links.nil?
 
-    render 'entries/actions', left_links: left_links, right_links: right_links
+    links = []
+    links.push content_tag(:div, left_links,  class: 'actions-left')  if left_links.present?
+    links.push content_tag(:div, right_links, class: 'actions-right') if right_links.present?
+    links.inject(:+)
   end
 
   def entry_content entry
