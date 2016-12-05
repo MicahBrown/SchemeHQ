@@ -5,18 +5,18 @@
 
 <div class="row">
   <div class="medium-3 columns">
-    <ul class="tabs vertical simple" id="dashboard-tabs" data-tabs>
+    <ul class="tabs vertical-for-medium simple" id="dashboard-tabs" data-tabs>
       <li class="tabs-title is-active">
-        <%= link_to icon("book", "Activity Log", class: 'fa-fw'), '#panel1v', aria_selected: true %>
+        <%= dashboard_link "book", "Activity Log", "#panel1v", aria_selected: true %>
       </li>
       <li class="tabs-title">
-        <%= link_to icon("sitemap", "Schemes", class: "fa-fw"), "#panel2v" %>
+        <%= dashboard_link "sitemap", "Schemes", "#panel2v" %>
       </li>
       <li class="tabs-title">
-        <%= link_to icon("envelope", "Invitations #{content_tag :span, "(#{current_user.all_invitations.unresponded.count})"}".html_safe, class: 'fa-fw'), "#panel3v" %>
+        <%= dashboard_link "envelope", "Invitations (#{current_user.all_invitations.unresponded.count})", "#panel3v" %>
       </li>
       <li class="tabs-title">
-        <%= link_to icon("heart", "Favorites", class: 'fa-fw'), "#panel4v" %>
+        <%= dashboard_link "heart", "Favorites", "#panel4v" %>
       </li>
     </ul>
   </div>
