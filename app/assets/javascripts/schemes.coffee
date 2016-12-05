@@ -107,8 +107,7 @@ class Scheme
     $entries.each ->
       $entry = $(this)
 
-      entryVoteLinks     $entry
-      entryFavoriteLinks $entry
+      initializeEntry $entry
 
 $(document).on 'schemes_show.load', (e, obj) =>
   scheme = new Scheme
@@ -133,6 +132,12 @@ window.postInvitationErrors = (jsonString) ->
     $item.find ".errors-ul"
          .remove()
     $item.append $errors
+
+window.initializeEntry = ($entry) ->
+  entryVoteLinks     $entry
+  entryFavoriteLinks $entry
+
+  $entry
 
 window.entryVoteLinks = ($entry) ->
   $entry.on 'submit', '.vote-form', (event) ->

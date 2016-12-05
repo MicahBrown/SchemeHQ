@@ -1,5 +1,5 @@
-var $entry   = $(".entry-li[data-entry-id='<%= @entry.schemable_id %>']" +
-                          "[data-entry-type='<%= @entry.schemable_type %>']"),
+var $entry   = $(".entry[data-entry-id='<%= @entry.schemable_id %>']" +
+                       "[data-entry-type='<%= @entry.schemable_type %>']"),
     $actions = $entry.find('.actions > .actions-left');
 
 $actions.children('.action.favorite-action')

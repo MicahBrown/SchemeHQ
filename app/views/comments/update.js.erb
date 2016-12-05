@@ -1,2 +1,8 @@
-$(".entries [data-entry-type='Comment'][data-entry-id='<%= @comment.id %>']")
-  .replaceWith("<%=j render @comment.entry %>")
+var $entry = $(".entries [data-entry-type='Comment'][data-entry-id='<%= @comment.id %>']")
+               .parent(".entry-li")
+               .html("<%=j render @comment.entry %>")
+               .find(".entry");
+
+initializeEntry( $entry );
+
+new Foundation.Tooltip( $entry.find("[data-tooltip]") );
