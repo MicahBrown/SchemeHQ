@@ -14,7 +14,7 @@ module FavoritesHelper
   def fave_action_links fave
     entry = fave.entry
     links = []
-    links.push link_to(icon("heart", "Remove Favorite"), scheme_entry_favorites_path(entry.scheme, entry), method: :delete)
+    links.push link_to(icon("heart", "Remove Favorite"), scheme_entry_favorites_path(entry.scheme, entry), method: :delete, data: { disable_with: "Removing...", confirm: "Are you sure?" })
 
     action_links links
   end
