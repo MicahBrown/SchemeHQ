@@ -1,13 +1,13 @@
 window.userLinks = (method, opt_id) ->
   initializeProfile = (id) ->
     $dialog      = getDialog id
-    $formWrapper = $dialog.find '.nickname-form'
+    $formWrapper = $dialog.find '.nickname-form, .display-name-form'
     $form        = $formWrapper.find 'form'
 
     setValidator $form
 
     $dialog.find '.menu'
-           .find '.nickname-edit-link, .nickname-add-link'
+           .find '.nickname-edit-link, .nickname-add-link, .display-name-link'
            .on "click", (e) ->
       e.preventDefault()
       $formWrapper.toggle()

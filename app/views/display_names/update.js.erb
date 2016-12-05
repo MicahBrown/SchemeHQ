@@ -1,0 +1,22 @@
+var id      = "<%= @user.to_param %>",
+    $reveal = $(".user-profile[data-user='" + id + "']");
+
+if (parseInt("<%= @user.errors.size %>") > 0) {
+  var $form = $reveal.find('form');
+
+  if ($reveal.is(':hidden'))
+    $reveal.foundation('open');
+
+  $form.find('.errors').closest('.row').remove();
+  $form.append("<%=j form_errors @user %>");
+} else {
+  $reveal.html("<%=j render 'users/profile', user: @user.reload %>");
+  userLinks('initializeProfile', id);
+
+  // Update user links to new user
+  var $links = $(".user-link[data-user='<%= @user.to_param %>']");
+
+  $links.find('.value').text("<%= user_display_name(@user) %>");
+
+  // TO-DO: Add success message
+}

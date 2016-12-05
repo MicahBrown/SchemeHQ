@@ -1,26 +1,25 @@
-<% nickname = current_nicknames.detect { |n| n.namee_id == @user.id } %>
+<% nickname = current_nicknames.detect { |n| n.namee_id == user.id } if current_user != user %>
+
 <div class="profile">
-  <h1><%= user_display_name @user %></h1>
+  <h1><%= user_display_name user %></h1>
   <div class="menu-centered">
     <ul class="menu">
-      <% if nickname %>
-        <li><%= link_to icon("trash", "Remove Nickname"), [@user, nickname], method: :delete, class: 'nickname-delete-link' %></li>
-        <li><%= link_to icon("pencil", "Edit Nickname"), "javscript:void(0);", class: "nickname-edit-link" %></li>
+      <% if current_user == user %>
+        <li><%= link_to icon("pencil", "Edit Display Name"), "javascript:void(0);", class: 'display-name-link' %></li>
       <% else %>
-        <li><%= link_to icon("plus-circle", "Add Nickname"), "javascript:void(0);", class: 'nickname-add-link' %></li>
+        <% if nickname %>
+          <li><%= link_to icon("trash", "Remove Nickname"), [user, nickname], method: :delete, class: 'nickname-delete-link' %></li>
+          <li><%= link_to icon("pencil", "Edit Nickname"), "javscript:void(0);", class: "nickname-edit-link" %></li>
+        <% else %>
+          <li><%= link_to icon("plus-circle", "Add Nickname"), "javascript:void(0);", class: 'nickname-add-link' %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>
 
-  <div class="nickname-form" style="display: none;">
-    <%= form_for [@user, nickname || Nickname.new] do |f| %>
-      <div class="input-group">
-        <%= f.text_field :value, class: 'input-group-field', data: { guard_required: true, guard_length: [User::DISPLAY_NAME_LIMIT.min, User::DISPLAY_NAME_LIMIT.max].inspect, guard_errors_container: "#nickname_errors" } %>
-        <div class="input-group-button">
-          <%= f.submit class: 'button' %>
-        </div>
-      </div>
-      <div id="nickname_errors" class="text-left"></div>
-    <% end %>
-  </div>
+  <% if current_user == user %>
+    <%= render 'display_names/form', user: user %>
+  <% else %>
+    <%= render 'nicknames/form', nickname: nickname || Nickname.new %>
+  <% end %>
 </div>

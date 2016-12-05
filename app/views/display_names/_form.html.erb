@@ -1,0 +1,18 @@
+<div class="display-name-form" style="display: none;">
+  <%= form_for user, url: user_display_name_path(user) do |f| %>
+    <div class="input-group">
+      <%= f.text_field :display_name,
+        class: 'input-group-field',
+        data:  {
+          guard_required:         true,
+          guard_length:           [User::DISPLAY_NAME_LIMIT.min, User::DISPLAY_NAME_LIMIT.max].inspect,
+          guard_errors_container: "#display_name_errors"
+        }
+      %>
+      <div class="input-group-button">
+        <%= f.submit class: 'button' %>
+      </div>
+    </div>
+    <div id="display_name_errors" class="text-left"></div>
+  <% end %>
+</div>
