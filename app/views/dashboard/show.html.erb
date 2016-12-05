@@ -98,7 +98,8 @@
                   <%= timestamp fave %>
                 </small>
                 <%= render fave.entry, right_action_links: false,
-                                        left_action_links: fave_action_links(fave)
+                                        left_action_links: fave_action_links(fave),
+                                                poll_vote: false
                 %>
               </li>
             <% end %>

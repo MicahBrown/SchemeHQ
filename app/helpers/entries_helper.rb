@@ -10,13 +10,18 @@ module EntriesHelper
     links.inject(:+)
   end
 
-  def entry_content entry
+  def entry_content entry, options={}
     schemable = entry.schemable
 
     case schemable
     when Comment then simple_format(schemable.message)
     when Poll    then
-      render "polls/#{can_vote?(schemable, current_user) ? 'poll_response_form' : 'poll_display'}", poll: schemable
+      poll_content = options[:poll_vote] != false &&
+                     can_vote?(schemable, current_user) ?
+                        'poll_response_form' :
+                        'poll_display'
+
+      render "polls/#{poll_content}", poll: schemable
     end
   end
 

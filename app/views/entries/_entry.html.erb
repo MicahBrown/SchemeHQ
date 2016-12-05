@@ -1,6 +1,7 @@
 <%
   left_action_links  = nil unless local_assigns.has_key?(:left_action_links)
   right_action_links = nil unless local_assigns.has_key?(:right_action_links)
+  poll_vote          = true unless local_assigns.has_key?(:poll_vote)
   schemable          = entry.schemable
 %>
 
@@ -8,6 +9,6 @@
      data-entry-id="<%= entry.schemable_id %>"
      data-entry-type="<%= entry.schemable_type %>">
   <div class="details"><%= entry_details entry %></div>
-  <div class="content"><%= entry_content entry %></div>
+  <div class="content"><%= entry_content entry, poll_vote: poll_vote %></div>
   <div class="actions"><%= entry_actions entry, left_action_links, right_action_links %></div>
 </div>
