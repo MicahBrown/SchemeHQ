@@ -17,7 +17,7 @@ class FavoritesController < ApplicationController
     @favorite.destroy
 
     respond_to do |format|
-      format.html { redirect_to @scheme }
+      format.html { redirect_to my_path, notice: "Favorite successfully removed!" }
       format.js { render :create }
     end
   end

@@ -10,4 +10,12 @@ module FavoritesHelper
       icon("heart", fave_count)
     end
   end
+
+  def fave_action_links fave
+    entry = fave.entry
+    links = []
+    links.push link_to(icon("heart", "Remove Favorite"), scheme_entry_favorites_path(entry.scheme, entry), method: :delete)
+
+    action_links links
+  end
 end

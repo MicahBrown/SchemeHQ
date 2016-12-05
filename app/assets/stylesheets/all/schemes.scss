@@ -7,9 +7,25 @@
   margin: 0 0 2rem;
 }
 
-.entries {
+
+
+.entries, .favorites {
   margin: 0 0 1rem;
   list-style-type: none;
+}
+
+.favorites {
+  .favorite-li {
+    margin-bottom: 1rem;
+    .entry {
+      padding: 0.75rem 1rem;
+      margin: 0.5rem 0 0;
+      background: #fff;
+    }
+  }
+}
+
+.entries {
   .entry-li {
     border: 1px solid #ccc;
     border-bottom-color: transparent;

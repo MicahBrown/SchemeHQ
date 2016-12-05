@@ -89,7 +89,23 @@
         <div class="tabs-header">
           <h3 class="tabs-header-title"><%= icon('heart', 'My Favorites', class: 'fa-fw') %></h3>
         </div>
-        <div class="empty">You have no favorites.</div>
+        <% if current_favorites.present? %>
+          <ul class="favorites">
+            <% current_favorites.each do |fave| %>
+              <li class="favorite-li">
+                <small>
+                  <%= icon('heart', style: "color: #900") %>
+                  <%= timestamp fave %>
+                </small>
+                <%= render fave.entry, right_action_links: false,
+                                        left_action_links: fave_action_links(fave)
+                %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <div class="empty">You have no favorites.</div>
+        <% end %>
       </div>
     </div>
   </div>
