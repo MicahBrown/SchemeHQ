@@ -30,6 +30,7 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
     if user
+      can :manage, User, id: user.id
       can :create, Nickname
       can :manage, Nickname, namer_id: user.id
       can :create, Poll
