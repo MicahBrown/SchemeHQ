@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: :show do
     resources :nicknames, only: [:create, :update, :destroy]
+    resource  :display_name, only: :update
   end
 
   resources :schemes, only: [:new, :create, :show] do
