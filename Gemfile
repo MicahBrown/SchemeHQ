@@ -58,6 +58,7 @@ gem 'font-awesome-sass', '~> 4.6.2'
 gem 'cancancan', '~> 1.10'
 gem 'devise'
 gem 'omniauth-google-oauth2'
+gem 'kaminari'
 
 group :test do
   # command line tool to easily handle events on file system modifications
