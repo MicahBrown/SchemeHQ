@@ -1,4 +1,4 @@
-var $poll        = $(".entry[data-entry-type='Poll'][data-entry-id='<%= @poll.id %>']"),
+var $poll        = $(".entry[data-schemable-type='Poll'][data-schemable-id='<%= @poll.id %>']"),
     $pollContent = $poll.find('.content');
 
 if (parseInt("<%= @poll_response.errors.size %>") > 0) {

@@ -1,2 +1,10 @@
-$(".entries").find('.entry-li.next-entries')
-             .replaceWith("<%=j entry_list(@entries) %>")
+var $entries = $(".entries");
+
+$entries.find('.entry-li.next-entries')
+        .replaceWith("<%=j entry_list(@entries) %>");
+
+
+$entries.find("<%=j @entries.map{|e| "[data-entry-id='#{e.id}']"  }.join(',').html_safe %>")
+        .each(function(){
+          initializeEntry( $(this) );
+        });

@@ -1,4 +1,4 @@
-var $form = $(".entries [data-entry-type='Comment'][data-entry-id='<%= @comment.id %>']")
+var $form = $(".entries [data-schemable-type='Comment'][data-schemable-id='<%= @comment.id %>']")
               .siblings('.form')
               .html("<%=j render 'edit_form' %>")
               .find("form");

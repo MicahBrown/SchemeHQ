@@ -1,4 +1,4 @@
-var $entry = $(".entries [data-entry-type='Comment'][data-entry-id='<%= @comment.id %>']")
+var $entry = $(".entries [data-schemable-type='Comment'][data-schemable-id='<%= @comment.id %>']")
                .parent(".entry-li")
                .html("<%=j render @comment.entry %>")
                .find(".entry");
