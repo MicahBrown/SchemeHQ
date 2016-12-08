@@ -118,11 +118,13 @@ class Scheme
            .html inlineSpinner + " Loading more entries... "
 
       url = $link.attr "href"
+      url = updateQueryStringParameter url, 'load_dir', $link.attr('rel')
+
       $.getScript url
 
 
     # trigger loading next entries by click
-    $entries.on "click", ".entry-li.next-entries a", (e) ->
+    $entries.on "click", ".entry-li.next-entries a, .entry-li.prev-entries a", (e) ->
       e.preventDefault()
 
       loadLink $(this)

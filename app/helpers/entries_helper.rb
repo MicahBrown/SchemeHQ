@@ -1,11 +1,17 @@
 module EntriesHelper
-  def entry_list entries, show_list_end: false
+  def entry_list entries, show_prev_link: false, show_next_link: true, show_list_end: false
     if entries.present?
-      items = entries.map do |entry|
-                content_tag :li, render(entry), class: 'entry-li'
-              end
+      items = []
 
-      if next_link = link_to_next_page(entries, "Load next #{Kaminari.config.default_per_page} entries")
+      if show_prev_link && prev_link = link_to_previous_page(entries, "Load previous entries")
+        items.push content_tag(:li, prev_link, class: 'entry-li prev-entries')
+      end
+
+      entries.map do |entry|
+        items.push content_tag(:li, render(entry), class: 'entry-li')
+      end
+
+      if show_next_link && next_link = link_to_next_page(entries, "Load next #{Kaminari.config.default_per_page} entries")
         items.push content_tag :li, next_link, class: 'entry-li next-entries'
       elsif show_list_end
         list_end = content_tag(:small, "No more entries to load", class: 'secondary-text')
@@ -48,5 +54,9 @@ module EntriesHelper
     schemable = entry.schemable
 
     content_tag(:b, schemable_author(schemable)) + timestamp(schemable)
+  end
+
+  def loading_prev?
+    params[:load_dir] == 'previous'
   end
 end
