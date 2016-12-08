@@ -17,7 +17,8 @@
 //= require validator/parsley
 //= require_tree .
 
-var spinner = "<div class='spinner'>Loading...</div>";
+var spinner       = "<div class='spinner'>Loading...</div>";
+var inlineSpinner = "<div class='inline-spinner'>Loading...</div>";
 
 var loadJavascript = function(controller, action){
   $.event.trigger( controller + ".load");

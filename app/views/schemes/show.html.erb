@@ -26,13 +26,7 @@
       </div>
 
       <ul class="entries">
-        <% if scheme_entries(@scheme).present? %>
-          <% scheme_entries(@scheme).each do |se| %>
-            <li class="entry-li"><%= render se %></li>
-          <% end %>
-        <% else %>
-          <%= content_tag(:li, "No scheme entries have been made yet.", class: "entry-li empty") %>
-        <% end %>
+        <%= entry_list(@entries) %>
       </ul>
     </div>
   </div>

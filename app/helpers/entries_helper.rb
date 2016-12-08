@@ -1,4 +1,20 @@
 module EntriesHelper
+  def entry_list entries
+    if entries.present?
+      items = entries.map do |entry|
+                content_tag :li, render(entry), class: 'entry-li'
+              end
+
+      if next_link = link_to_next_page(entries, "Load next #{Kaminari.config.default_per_page} entries")
+        items.push content_tag :li, next_link, class: 'entry-li next-entries'
+      end
+
+      items.inject(:+)
+    else
+      content_tag(:li, "No scheme entries have been made yet.", class: "entry-li empty")
+    end
+  end
+
   def entry_actions entry, left_links, right_links
     right_links = schemable_actions entry.schemable if right_links.nil?
     left_links  = render('entries/vote_links', entry: entry) +

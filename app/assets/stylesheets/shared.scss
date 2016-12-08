@@ -149,3 +149,13 @@ div.empty {
 .downvote.voted { color: $alert-color; }
 .upvote.voted { color: $success-color; }
 .favorite.favorited { color: #900; }
+
+
+.loading {
+  color: $secondary-color;
+  cursor: default;
+  &:hover, &:active, &:focus { color: $secondary-color; }
+  > .inline-spinner {
+    &:before, &:after { background: $secondary-color; }
+  }
+}

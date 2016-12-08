@@ -1,8 +1,4 @@
 module SchemesHelper
-  def scheme_entries scheme
-    scheme.entries.order('id DESC').includes(:votes, :schemable => :user)
-  end
-
   def schemable_author schemable
     user      = schemable.user
     icon_name = case schemable

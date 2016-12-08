@@ -15,6 +15,14 @@ class SchemesController < ApplicationController
   end
 
   def show
+    @entries = @scheme.entries.order('id DESC')
+                              .includes(:votes, :schemable => :user)
+                              .page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

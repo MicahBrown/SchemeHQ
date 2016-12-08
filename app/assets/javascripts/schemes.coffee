@@ -109,12 +109,39 @@ class Scheme
 
       initializeEntry $entry
 
-$(document).on 'schemes_show.load', (e, obj) =>
+  pagination: ->
+    $entries = $(".entries")
+
+    loadLink = ($link) ->
+      return false if $link.hasClass "loading"
+      $link.addClass "loading"
+           .html inlineSpinner + " Loading more entries... "
+
+      url = $link.attr "href"
+      $.getScript url
+
+
+    # trigger loading next entries by click
+    $entries.on "click", ".entry-li.next-entries a", (e) ->
+      e.preventDefault()
+
+      loadLink $(this)
+
+    # trigger loading next entries by
+    $(window).scroll ->
+      $link = $entries.find ".entry-li.next-entries a"
+
+      loadLink $link if $link[0] && $(window).scrollTop() > $(document).height() - $(window).height() - 50
+    .scroll()
+
+
+$(document).on "schemes_show.load", (e, obj) =>
   scheme = new Scheme
   scheme.pollForm()
   scheme.commentEditForm()
   scheme.invitationForm()
   scheme.entries()
+  scheme.pagination()
 
 
 window.postInvitationErrors = (jsonString) ->
