@@ -1,5 +1,5 @@
 module EntriesHelper
-  def entry_list entries
+  def entry_list entries, show_list_end: false
     if entries.present?
       items = entries.map do |entry|
                 content_tag :li, render(entry), class: 'entry-li'
@@ -7,6 +7,9 @@ module EntriesHelper
 
       if next_link = link_to_next_page(entries, "Load next #{Kaminari.config.default_per_page} entries")
         items.push content_tag :li, next_link, class: 'entry-li next-entries'
+      elsif show_list_end
+        list_end = content_tag(:small, "No more entries to load", class: 'secondary-text')
+        items.push content_tag :li, list_end, class: 'entry-li'
       end
 
       items.inject(:+)
