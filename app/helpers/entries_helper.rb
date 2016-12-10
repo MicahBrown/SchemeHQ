@@ -39,7 +39,10 @@ module EntriesHelper
     schemable = entry.schemable
 
     case schemable
-    when Comment then simple_format(schemable.message)
+    when Comment then
+      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(hard_wrap: true))
+      markdown.render(schemable.message).html_safe
+      # simple_format(schemable.message)
     when Poll    then
       poll_content = options[:poll_vote] != false &&
                      can_vote?(schemable, current_user) ?
