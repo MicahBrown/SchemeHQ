@@ -6,15 +6,12 @@ window.userLinks = (method, opt_id) ->
 
     setValidator $form
 
-    $dialog.find '.menu'
-           .find '.nickname-edit-link, .nickname-add-link, .display-name-link'
-           .on "click", (e) ->
+    $dialog.off "click"
+           .on "click", '.nickname-edit-link, .nickname-add-link, .display-name-link', (e) ->
       e.preventDefault()
       $formWrapper.toggle()
 
-    $dialog.find '.menu'
-           .find '.nickname-delete-link'
-           .on "click", (e) ->
+    $dialog.on "click", '.nickname-delete-link', (e) ->
       e.preventDefault()
 
       return false if $dialog.hasClass 'deleting'
@@ -74,7 +71,7 @@ window.userLinks = (method, opt_id) ->
     $dialog
 
   initialize = ->
-    $(".user-link").off("click").on "click", (e) ->
+    $(document).on 'click', '.user-link', (e) ->
       e.preventDefault()
 
       $link = $(this)
