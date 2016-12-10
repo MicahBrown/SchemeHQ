@@ -59,6 +59,7 @@ gem 'cancancan', '~> 1.10'
 gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'kaminari'
+gem 'redcarpet'
 
 group :test do
   # command line tool to easily handle events on file system modifications
