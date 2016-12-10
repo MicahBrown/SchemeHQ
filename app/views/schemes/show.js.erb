@@ -4,7 +4,7 @@ $entries.find('.entry-li.<%= loading_prev? ? "prev" : "next" %>-entries')
         .replaceWith("<%=j entry_list(@entries, show_prev_link: loading_prev?, show_next_link: !loading_prev?, show_list_end: true) %>");
 
 
-$entries.find("<%=j @entries.map{|e| "#entry-#{e.id}"  }.join(',').html_safe %>")
+$entries.find("<%=j @entries.map{|e| "##{e.tag}"  }.join(',').html_safe %>")
         .each(function(){
           initializeEntry( $(this) );
         });
